@@ -24,6 +24,7 @@
 		9621BF69215C521B00C8EBB3 /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF68215C521B00C8EBB3 /* ComplicationController.swift */; };
 		9621BF6B215C521C00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF6A215C521C00C8EBB3 /* Assets.xcassets */; };
 		964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C2B8D215DC91400FC3B11 /* Tevye.swift */; };
+		96DCE691216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE690216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +110,7 @@
 		9621BF6C215C521C00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF6D215C521C00C8EBB3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		964C2B8D215DC91400FC3B11 /* Tevye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tevye.swift; sourceTree = "<group>"; };
+		96DCE690216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesMinutesSecondsFormatter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				9621BF29215C521800C8EBB3 /* AppDelegate.swift */,
 				9621BF30215C521A00C8EBB3 /* Assets.xcassets */,
+				96DCE690216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift */,
 				9621BF35215C521A00C8EBB3 /* Info.plist */,
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
@@ -417,6 +420,7 @@
 			files = (
 				964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */,
 				9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */,
+				96DCE691216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
