@@ -171,12 +171,12 @@
 			isa = PBXGroup;
 			children = (
 				9621BF29215C521800C8EBB3 /* AppDelegate.swift */,
-				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
-				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				9621BF30215C521A00C8EBB3 /* Assets.xcassets */,
-				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF35215C521A00C8EBB3 /* Info.plist */,
+				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
+				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				964C2B8D215DC91400FC3B11 /* Tevye.swift */,
+				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 			);
 			path = "Tempus Romanum";
 			sourceTree = "<group>";
