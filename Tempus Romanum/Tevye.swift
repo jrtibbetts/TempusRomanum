@@ -6,6 +6,7 @@ import Foundation
 open class Tevye: NSObject, CLLocationManagerDelegate {
 
     open func sunriseSunset(for location: CLLocation) -> (Date, Date) {
+        return (Date(), Date())
     }
 
 }
