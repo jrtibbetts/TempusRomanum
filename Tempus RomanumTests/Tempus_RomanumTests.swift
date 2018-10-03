@@ -1,10 +1,4 @@
-//
-//  Tempus_RomanumTests.swift
-//  Tempus RomanumTests
-//
-//  Created by Jason R Tibbetts on 9/26/18.
 //  Copyright © 2018 Poikile Creations. All rights reserved.
-//
 
 import XCTest
 @testable import Tempus_Romanum

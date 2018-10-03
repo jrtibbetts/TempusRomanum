@@ -184,8 +184,8 @@
 		9621BF3D215C521A00C8EBB3 /* Tempus RomanumTests */ = {
 			isa = PBXGroup;
 			children = (
-				9621BF3E215C521A00C8EBB3 /* Tempus_RomanumTests.swift */,
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
+				9621BF3E215C521A00C8EBB3 /* Tempus_RomanumTests.swift */,
 			);
 			path = "Tempus RomanumTests";
 			sourceTree = "<group>";
@@ -193,8 +193,8 @@
 		9621BF48215C521A00C8EBB3 /* Tempus RomanumUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */,
 				9621BF4B215C521A00C8EBB3 /* Info.plist */,
+				9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */,
 			);
 			path = "Tempus RomanumUITests";
 			sourceTree = "<group>";
@@ -202,9 +202,9 @@
 		9621BF52215C521A00C8EBB3 /* Tempus Romanum WatchKit App */ = {
 			isa = PBXGroup;
 			children = (
-				9621BF53215C521A00C8EBB3 /* Interface.storyboard */,
 				9621BF56215C521B00C8EBB3 /* Assets.xcassets */,
 				9621BF58215C521B00C8EBB3 /* Info.plist */,
+				9621BF53215C521A00C8EBB3 /* Interface.storyboard */,
 			);
 			path = "Tempus Romanum WatchKit App";
 			sourceTree = "<group>";
@@ -212,12 +212,12 @@
 		9621BF61215C521B00C8EBB3 /* Tempus Romanum WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
-				9621BF62215C521B00C8EBB3 /* InterfaceController.swift */,
-				9621BF64215C521B00C8EBB3 /* ExtensionDelegate.swift */,
-				9621BF66215C521B00C8EBB3 /* NotificationController.swift */,
-				9621BF68215C521B00C8EBB3 /* ComplicationController.swift */,
 				9621BF6A215C521C00C8EBB3 /* Assets.xcassets */,
+				9621BF68215C521B00C8EBB3 /* ComplicationController.swift */,
+				9621BF64215C521B00C8EBB3 /* ExtensionDelegate.swift */,
 				9621BF6C215C521C00C8EBB3 /* Info.plist */,
+				9621BF62215C521B00C8EBB3 /* InterfaceController.swift */,
+				9621BF66215C521B00C8EBB3 /* NotificationController.swift */,
 				9621BF6D215C521C00C8EBB3 /* PushNotificationPayload.apns */,
 			);
 			path = "Tempus Romanum WatchKit Extension";

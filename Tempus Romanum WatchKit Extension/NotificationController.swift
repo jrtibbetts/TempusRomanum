@@ -1,10 +1,4 @@
-//
-//  NotificationController.swift
-//  Tempus Romanum WatchKit Extension
-//
-//  Created by Jason R Tibbetts on 9/26/18.
 //  Copyright © 2018 Poikile Creations. All rights reserved.
-//
 
 import WatchKit
 import Foundation
