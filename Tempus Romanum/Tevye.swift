@@ -6,7 +6,7 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
-public final class Tevye: NSObject, CLLocationManagerDelegate {
+public final class Tevye: NSObject {
 
     public typealias SunriseSunset = (Date, Date)
 
