@@ -15,10 +15,10 @@ public struct SolarAndLunarData: Codable {
     var timeZoneOffset: Int
     var year: Int
 
-    var lunarData: [PhenomenonTime]
-    var solarData: [PhenomenonTime]
+    var lunarData: [Phenomenon]
+    var solarData: [Phenomenon]
 
-    var closestPhase: [Phase]
+    var closestPhase: Phase
     var currentPhase: String
     var fracillum: String
 
@@ -44,34 +44,18 @@ public struct SolarAndLunarData: Codable {
 
     public struct Phase: Codable {
         var phase: String
-        var date: Date
-        var time: Date
+        var date: String
+        var time: String
     }
 
-    public struct PhenomenonTime: Codable {
+    public struct Phenomenon: Codable {
 
-        var phenomenon: Phenomenon
+        var phenomenon: String
         var time: String
 
         fileprivate enum CodingKeys: String, CodingKey {
             case phenomenon = "phen"
             case time
-        }
-
-        public enum Phenomenon: String, Codable {
-            case BC
-            case sunrise
-            case U
-            case sunset
-            case EC
-
-            fileprivate enum CodingKeys: String, CodingKey {
-                case BC
-                case sunrise = "R"
-                case U
-                case sunset = "S"
-                case EC
-            }
         }
 
     }

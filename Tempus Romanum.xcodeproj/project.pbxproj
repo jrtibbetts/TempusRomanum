@@ -13,7 +13,6 @@
 		9621BF31215C521A00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF30215C521A00C8EBB3 /* Assets.xcassets */; };
 		9621BF34215C521A00C8EBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */; };
 		9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */; };
-		9621BF4A215C521A00C8EBB3 /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */; };
 		9621BF4F215C521A00C8EBB3 /* Tempus Romanum WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9621BF4E215C521A00C8EBB3 /* Tempus Romanum WatchKit App.app */; };
 		9621BF55215C521A00C8EBB3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF53215C521A00C8EBB3 /* Interface.storyboard */; };
 		9621BF57215C521B00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF56215C521B00C8EBB3 /* Assets.xcassets */; };
@@ -34,6 +33,8 @@
 		96DCE69C2166FEA100E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
 		96DCE69D2166FEA100E6A95F /* PMKCoreLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */; };
+		96DCE6A1216C517F00E6A95F /* SolarAndLunarDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */; };
+		96DCE6A3216C5A1A00E6A95F /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,7 +119,6 @@
 		9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TevyeTests.swift; sourceTree = "<group>"; };
 		9621BF40215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF45215C521A00C8EBB3 /* Tempus RomanumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 		9621BF4B215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF4E215C521A00C8EBB3 /* Tempus Romanum WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus Romanum WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF54215C521A00C8EBB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -139,6 +139,8 @@
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
 		96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarData.swift; sourceTree = "<group>"; };
+		96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarDataTests.swift; sourceTree = "<group>"; };
+		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
+				96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */,
 				9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */,
 			);
 			path = "Tempus RomanumTests";
@@ -234,7 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				9621BF4B215C521A00C8EBB3 /* Info.plist */,
-				9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */,
+				96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */,
 			);
 			path = "Tempus RomanumUITests";
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 					};
 					9621BF44215C521A00C8EBB3 = {
 						CreatedOnToolsVersion = 10.0;
+						LastSwiftMigration = 1000;
 						TestTargetID = 9621BF25215C521800C8EBB3;
 					};
 					9621BF4D215C521A00C8EBB3 = {
@@ -468,6 +472,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DCE6A1216C517F00E6A95F /* SolarAndLunarDataTests.swift in Sources */,
 				9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,7 +481,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9621BF4A215C521A00C8EBB3 /* Tempus_RomanumUITests.swift in Sources */,
+				96DCE6A3216C5A1A00E6A95F /* Tempus_RomanumUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -832,6 +837,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MY7LL9G36;
 				INFOPLIST_FILE = "Tempus RomanumUITests/Info.plist";
@@ -842,6 +848,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.poikile.Tempus-RomanumUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Tempus Romanum";
@@ -852,6 +859,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MY7LL9G36;
 				INFOPLIST_FILE = "Tempus RomanumUITests/Info.plist";
