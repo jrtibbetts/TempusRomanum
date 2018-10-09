@@ -1,4 +1,9 @@
 [![Build Status](https://travis-ci.org/jrtibbetts/TempusRomanum.svg?branch=master)](https://travis-ci.org/jrtibbetts/TempusRomanum)
+![Swift 4.0](https://img.shields.io/badge/Swift-4.0-orange.svg)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+![CodeCov](https://img.shields.io/codecov/c/github/jrtibbetts/TempusRomanum.svg)
+[![Codebeat](https://codebeat.co/badges/9db4672f-1ffc-4981-a7d0-3bb71e97cd62)](https://codebeat.co/projects/github-com-jrtibbetts-tempusromanum-master)
+[![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 # TempusRomanum
 An 📱 and ⌚️ clock that tells time the [Roman way](https://en.wikipedia.org/wiki/Roman_timekeeping): sunrise is considered 6 am, sunset is 6 pm, and the 12 daylight and 12 nighttime hours are divided evenly between them. It was inspired by the [XKCD comic comic "6/6 Time"]((https://xkcd.com/2050/), which goes
