@@ -25,6 +25,14 @@
 		9621BF6B215C521C00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF6A215C521C00C8EBB3 /* Assets.xcassets */; };
 		964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C2B8D215DC91400FC3B11 /* Tevye.swift */; };
 		96DCE691216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE690216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift */; };
+		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
+		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
+		96DCE697216474F300E6A95F /* PromiseKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96DCE69A2166FEA100E6A95F /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; };
+		96DCE69B2166FEA100E6A95F /* PMKFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96DCE69C2166FEA100E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
+		96DCE69D2166FEA100E6A95F /* PMKCoreLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +89,20 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		96DCE68B21644FE700E6A95F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */,
+				96DCE69B2166FEA100E6A95F /* PMKFoundation.framework in Embed Frameworks */,
+				96DCE697216474F300E6A95F /* PromiseKit.framework in Embed Frameworks */,
+				96DCE69D2166FEA100E6A95F /* PMKCoreLocation.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +133,10 @@
 		9621BF6D215C521C00C8EBB3 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		964C2B8D215DC91400FC3B11 /* Tevye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tevye.swift; sourceTree = "<group>"; };
 		96DCE690216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesMinutesSecondsFormatter.swift; sourceTree = "<group>"; };
+		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
+		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
+		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
+		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +144,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */,
+				96DCE69A2166FEA100E6A95F /* PMKFoundation.framework in Frameworks */,
+				96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */,
+				96DCE69C2166FEA100E6A95F /* PMKCoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +183,10 @@
 				9621BF48215C521A00C8EBB3 /* Tempus RomanumUITests */,
 				9621BF52215C521A00C8EBB3 /* Tempus Romanum WatchKit App */,
 				9621BF61215C521B00C8EBB3 /* Tempus Romanum WatchKit Extension */,
+				96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */,
+				96DCE6982166FEA100E6A95F /* PMKFoundation.framework */,
+				96DCE693216474F300E6A95F /* PromiseKit.framework */,
+				96DCE692216474F300E6A95F /* Stylobate.framework */,
 				9621BF27215C521800C8EBB3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -237,6 +271,7 @@
 				9621BF23215C521800C8EBB3 /* Frameworks */,
 				9621BF24215C521800C8EBB3 /* Resources */,
 				9621BF77215C521C00C8EBB3 /* Embed Watch Content */,
+				96DCE68B21644FE700E6A95F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -709,6 +744,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MY7LL9G36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tempus Romanum/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -727,6 +766,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3MY7LL9G36;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Tempus Romanum/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
