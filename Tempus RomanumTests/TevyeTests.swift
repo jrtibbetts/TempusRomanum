@@ -3,7 +3,7 @@
 import XCTest
 @testable import Tempus_Romanum
 
-class Tempus_RomanumTests: XCTestCase {
+class TevyeTests: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

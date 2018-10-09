@@ -12,7 +12,7 @@
 		9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF2D215C521800C8EBB3 /* Main.storyboard */; };
 		9621BF31215C521A00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF30215C521A00C8EBB3 /* Assets.xcassets */; };
 		9621BF34215C521A00C8EBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */; };
-		9621BF3F215C521A00C8EBB3 /* Tempus_RomanumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF3E215C521A00C8EBB3 /* Tempus_RomanumTests.swift */; };
+		9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */; };
 		9621BF4A215C521A00C8EBB3 /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */; };
 		9621BF4F215C521A00C8EBB3 /* Tempus Romanum WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 9621BF4E215C521A00C8EBB3 /* Tempus Romanum WatchKit App.app */; };
 		9621BF55215C521A00C8EBB3 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF53215C521A00C8EBB3 /* Interface.storyboard */; };
@@ -115,7 +115,7 @@
 		9621BF33215C521A00C8EBB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9621BF35215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF3A215C521A00C8EBB3 /* Tempus RomanumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9621BF3E215C521A00C8EBB3 /* Tempus_RomanumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumTests.swift; sourceTree = "<group>"; };
+		9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TevyeTests.swift; sourceTree = "<group>"; };
 		9621BF40215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF45215C521A00C8EBB3 /* Tempus RomanumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF49215C521A00C8EBB3 /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
@@ -225,7 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
-				9621BF3E215C521A00C8EBB3 /* Tempus_RomanumTests.swift */,
+				9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */,
 			);
 			path = "Tempus RomanumTests";
 			sourceTree = "<group>";
@@ -468,7 +468,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9621BF3F215C521A00C8EBB3 /* Tempus_RomanumTests.swift in Sources */,
+				9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
