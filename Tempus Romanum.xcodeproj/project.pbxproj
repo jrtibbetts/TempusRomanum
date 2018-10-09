@@ -33,6 +33,7 @@
 		96DCE69B2166FEA100E6A95F /* PMKFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE69C2166FEA100E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
 		96DCE69D2166FEA100E6A95F /* PMKCoreLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -137,6 +138,7 @@
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
+		96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +216,7 @@
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				964C2B8D215DC91400FC3B11 /* Tevye.swift */,
 				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
+				96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */,
 			);
 			path = "Tempus Romanum";
 			sourceTree = "<group>";
@@ -454,6 +457,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */,
+				96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */,
 				9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */,
 				96DCE691216458AE00E6A95F /* DegreesMinutesSecondsFormatter.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
