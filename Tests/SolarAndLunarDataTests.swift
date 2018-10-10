@@ -12,7 +12,8 @@ class SolarAndLunarDataTests: XCTestCase {
         }
 
         do {
-            let parsedData = try JSONDecoder().decode(SolarAndLunarData.self, from: rawData)
+            let parsedData = try JSONDecoder().decode(SolarAndLunarData.self,
+                                                      from: rawData)
             XCTAssertFalse(parsedData.error)
             XCTAssertEqual(parsedData.year, 2016)
             XCTAssertEqual(parsedData.timeZoneOffset, 1)
