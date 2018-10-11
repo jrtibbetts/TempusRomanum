@@ -43,7 +43,7 @@ public final class Tevye: NSObject {
     // MARK: - Private Functions
 
     fileprivate func request(for coordinate: CLLocationCoordinate2D) throws -> URLRequest? {
-        let (latString, longString) = coordinate.degreesMinutesSeconds
+        let (latString, longString) = coordinate.degreesMinutesSecondsString
         let urlString = String(format: urlPattern, latString, longString)
         if let url = URL(string: urlString) {
             return URLRequest(url: url)

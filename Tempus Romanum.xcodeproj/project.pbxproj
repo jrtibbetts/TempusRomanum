@@ -35,6 +35,7 @@
 		96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */; };
 		96DCE6A1216C517F00E6A95F /* SolarAndLunarDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */; };
 		96DCE6A3216C5A1A00E6A95F /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */; };
+		96DCE6A5216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarData.swift; sourceTree = "<group>"; };
 		96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarDataTests.swift; sourceTree = "<group>"; };
 		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
+		96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesMinutesSecondsFormatterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,6 +228,7 @@
 		9621BF3D215C521A00C8EBB3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */,
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
 				96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */,
 				9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */,
@@ -472,6 +475,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DCE6A5216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift in Sources */,
 				96DCE6A1216C517F00E6A95F /* SolarAndLunarDataTests.swift in Sources */,
 				9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */,
 			);
