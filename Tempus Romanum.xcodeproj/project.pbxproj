@@ -36,6 +36,8 @@
 		96DCE6A1216C517F00E6A95F /* SolarAndLunarDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */; };
 		96DCE6A3216C5A1A00E6A95F /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */; };
 		96DCE6A5216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */; };
+		96DCE6AC2170522E00E6A95F /* MockLocation.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 96DCE6AB2170522E00E6A95F /* MockLocation.geojson */; };
+		96DCE6AE217052DD00E6A95F /* MockLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 96DCE6AD217052DD00E6A95F /* MockLocation.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +145,8 @@
 		96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarDataTests.swift; sourceTree = "<group>"; };
 		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 		96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DegreesMinutesSecondsFormatterTests.swift; sourceTree = "<group>"; };
+		96DCE6AB2170522E00E6A95F /* MockLocation.geojson */ = {isa = PBXFileReference; lastKnownFileType = text; path = MockLocation.geojson; sourceTree = "<group>"; };
+		96DCE6AD217052DD00E6A95F /* MockLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MockLocation.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +234,8 @@
 			children = (
 				96DCE6A4216D7EE900E6A95F /* DegreesMinutesSecondsFormatterTests.swift */,
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
+				96DCE6AB2170522E00E6A95F /* MockLocation.geojson */,
+				96DCE6AD217052DD00E6A95F /* MockLocation.gpx */,
 				96DCE6A0216C517F00E6A95F /* SolarAndLunarDataTests.swift */,
 				9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */,
 			);
@@ -429,6 +435,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96DCE6AE217052DD00E6A95F /* MockLocation.gpx in Resources */,
+				96DCE6AC2170522E00E6A95F /* MockLocation.geojson in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
