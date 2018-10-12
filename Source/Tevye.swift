@@ -10,20 +10,16 @@ public final class Tevye: NSObject {
 
     public typealias SunriseSunset = (Date, Date)
 
+    public static var timeZoneOffset: Int = 0
+
     // MARK: - Private Properties
 
-    fileprivate lazy var dateFormatter: DateFormatter = {
+    fileprivate static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        formatter.timeStyle = .none
+        formatter.dateFormat = "MM/dd/yyyy"
 
         return formatter
     }()
-    fileprivate var latitudeString: String = ""
-    fileprivate var longitudeString: String = ""
-    fileprivate var timezoneOffset: Int = 0  // GMT
-    // Example: http://api.usno.navy.mil/rstt/oneday?date=12/1/2016&coords=41.89N,12.48E&tz=1
-    fileprivate let urlPattern = "http://api.usno.navy.mil/rstt/oneday?date=%@&coords=%@,%@&tz=%@"
 
     // MARK: - Public Functions
 
@@ -31,7 +27,7 @@ public final class Tevye: NSObject {
         return Promise<SolarAndLunarData>() { (seal) in
             CLLocationManager.requestLocation().then {
                 URLSession.shared.dataTask(.promise,
-                                           with: try self.request(for: $0[0].coordinate)!).validate()
+                                           with: try Tevye.request(for: $0[0].coordinate)!).validate()
                 }.done {
                     seal.fulfill(try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data))
                 }.catch { (error) in
@@ -40,12 +36,26 @@ public final class Tevye: NSObject {
         }
     }
 
-    // MARK: - Private Functions
+    // MARK: - Utility Functions
 
-    fileprivate func request(for coordinate: CLLocationCoordinate2D) throws -> URLRequest? {
-        let (latString, longString) = coordinate.degreesMinutesSecondsString
-        let urlString = String(format: urlPattern, latString, longString)
-        if let url = URL(string: urlString) {
+    /// Example: http://api.usno.navy.mil/rstt/oneday?date=12/1/2016&coords=41.89N,12.48E&tz=1
+    public static func url(for coordinate: CLLocationCoordinate2D,
+                           date: Date) throws -> URL? {
+        let urlPattern = "http://api.usno.navy.mil/rstt/oneday?date=%@&coords=%@,%@&tz=%d"
+
+        // format the date, latitude, longitude, and time zone for the URL
+        let dateString = dateFormatter.string(from: date)
+        let latString = String(format: "%.2f", coordinate.latitude)
+        let lonString = String(format: "%.2f", coordinate.longitude)
+        let urlString = String(format: urlPattern, dateString, latString, lonString, Int(timeZoneOffset))
+
+        return URL(string: urlString)
+    }
+
+    public static func request(for coordinate: CLLocationCoordinate2D,
+                               date: Date = Date()) throws -> URLRequest? {
+
+        if let url = try url(for: coordinate, date: date) {
             return URLRequest(url: url)
         } else {
             return nil
