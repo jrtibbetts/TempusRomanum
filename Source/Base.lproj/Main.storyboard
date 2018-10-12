@@ -95,6 +95,11 @@
                         <viewLayoutGuide key="safeArea" id="OKQ-Kr-609"/>
                     </view>
                     <navigationItem key="navigationItem" title="TEMPVS ROMANVM" id="Fzr-u3-w1l"/>
+                    <connections>
+                        <outlet property="clockView" destination="dim-oQ-clJ" id="qkE-r9-F59"/>
+                        <outlet property="modernTimeLabel" destination="T6d-WH-kDV" id="5Vx-t0-HWd"/>
+                        <outlet property="romanTimeLabel" destination="HXY-Q3-cKp" id="O6B-im-Zw8"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Ip-TMr" sceneMemberID="firstResponder"/>
             </objects>

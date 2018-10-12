@@ -39,6 +39,7 @@
 		96DCE6A7216F088600E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
 		96DCE6A8216F088600E6A95F /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; };
 		96DCE6A9216F088600E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
+		96DCE6AA216F088600E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE6AC2170522E00E6A95F /* MockLocation.geojson in Resources */ = {isa = PBXBuildFile; fileRef = 96DCE6AB2170522E00E6A95F /* MockLocation.geojson */; };
 		96DCE6AE217052DD00E6A95F /* MockLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 96DCE6AD217052DD00E6A95F /* MockLocation.gpx */; };
 /* End PBXBuildFile section */
@@ -171,6 +172,7 @@
 				96DCE6A7216F088600E6A95F /* PMKCoreLocation.framework in Frameworks */,
 				96DCE6A8216F088600E6A95F /* PMKFoundation.framework in Frameworks */,
 				96DCE6A9216F088600E6A95F /* PromiseKit.framework in Frameworks */,
+				96DCE6AA216F088600E6A95F /* Stylobate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
