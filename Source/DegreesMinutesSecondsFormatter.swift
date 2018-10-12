@@ -3,37 +3,53 @@
 import CoreLocation
 import Foundation
 
-public extension Double {
-
-    public var minutesPerHour: Double { return 60.0 }
-    public var secondsPerHour: Double { return minutesPerHour * 60.0 }
-
-    public var minutes: Double {
-        return (self * secondsPerHour)
-            .truncatingRemainder(dividingBy: secondsPerHour) / minutesPerHour
+// See https://stackoverflow.com/questions/35120793/convert-mapkit-latitude-and-longitude-to-dms-format/35120978#35120978
+public struct DMSCoordinate: Codable {
+    
+    public var degrees: Int {
+        return abs(Int(decimalDegrees)) // == floor(self)
     }
 
-    public var seconds: Double {
-        return (self * secondsPerHour)
-            .truncatingRemainder(dividingBy: secondsPerHour)
-            .truncatingRemainder(dividingBy: minutesPerHour)
+    public var minutes: Int {
+        let x = (decimalDegrees * 3600.0)
+        let y = x.truncatingRemainder(dividingBy: 3600.0).rounded()
+        let z = y / 60.0
+        return abs(Int(z))
     }
 
+    public var seconds: Int {
+        let x = (decimalDegrees * 3600.0)
+        let y = x.truncatingRemainder(dividingBy: 3600.0)
+        let z = y.truncatingRemainder(dividingBy: 60.0).rounded()
+
+        return abs(Int(z))
+    }
+
+    fileprivate let decimalDegrees: Double
+
+    public init(decimalDegrees: Double) {
+        self.decimalDegrees = decimalDegrees
+    }
+
+    var asString: String {
+        return String(format: "\(degrees)° \(minutes)' \(seconds)\"", seconds)
+    }
+    
 }
 
 extension CLLocationCoordinate2D {
+    
+    var degreesMinutesSeconds: (latitude: DMSCoordinate, longitude: DMSCoordinate) {
+        let lat = DMSCoordinate(decimalDegrees: self.latitude)
+        let lon = DMSCoordinate(decimalDegrees: self.longitude)
 
-    var degreesMinutesSeconds: (latitude: String, longitude: String) {
-        return (String(format:"%d° %d' %.4f\" %@",
-                       Int(abs(latitude)),
-                       Int(abs(latitude.minutes)),
-                       abs(latitude.seconds),
-                       latitude >= 0 ? "N" : "S"),
-                String(format:"%d° %d' %.4f\" %@",
-                       Int(abs(longitude)),
-                       Int(abs(longitude.minutes)),
-                       abs(longitude.seconds),
-                       longitude >= 0 ? "E" : "W"))
+        return (lat, lon)
     }
-
+    
+    var degreesMinutesSecondsString: (latitude: String, longitude: String) {
+        let dms = degreesMinutesSeconds
+        return ("\(dms.latitude.asString) " + (dms.latitude.degrees >= 0 ? "N" : "S"),
+                "\(dms.longitude.asString) " + (dms.longitude.degrees >= 0 ? "E" : "W"))
+    }
+    
 }

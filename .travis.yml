@@ -3,6 +3,6 @@ language: swift
 os: osx
 osx_image: xcode10
 script:
-  xcodebuild -scheme Stylobate -project Stylobate.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4' test
+  xcodebuild -scheme Tempus\ Romanum -project Tempus\ Romanum.xcodeproj -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone X,OS=11.4' test
 after_success:
   bash <(curl -s https://codecov.io/bash)
