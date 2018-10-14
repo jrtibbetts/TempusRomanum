@@ -38,16 +38,11 @@
                BlueprintName = "Tempus RomanumTests"
                ReferencedContainer = "container:Tempus Romanum.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9621BF44215C521A00C8EBB3"
-               BuildableName = "Tempus RomanumUITests.xctest"
-               BlueprintName = "Tempus RomanumUITests"
-               ReferencedContainer = "container:Tempus Romanum.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TevyeTests/testSunriseSunsetReturnsOk()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
@@ -71,7 +66,7 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
+      allowLocationSimulation = "NO"
       showNonLocalizedStrings = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
