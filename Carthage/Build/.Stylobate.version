@@ -1,18 +1,9 @@
 {
-  "Mac" : [
-
-  ],
-  "watchOS" : [
-
-  ],
-  "tvOS" : [
-
-  ],
-  "commitish" : "0.9.0",
+  "commitish" : "0.10.0",
   "iOS" : [
     {
       "name" : "Stylobate",
-      "hash" : "ff19c3e38943546eda12722a840d96c1abcc87f437e9511c82e7890f442634a9"
+      "hash" : "98f1191f669959e66712456877678bafab4de6f4a8cbe759ff3dccedfa04d253"
     }
   ]
 }
