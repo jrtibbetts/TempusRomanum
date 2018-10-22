@@ -1,5 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
+import Stylobate
 import Foundation
 
 public struct SolarAndLunarData: Codable {
@@ -62,3 +63,44 @@ public struct SolarAndLunarData: Codable {
 
 }
 
+public extension SolarAndLunarData {
+
+    /// A `DateFormatter` for getting `Date`s from the phenenoma time strings,
+    /// which are simple military time.
+    fileprivate static var timeFormatter = DateFormatter() <~ {
+        $0.dateFormat = "HH:mm"
+    }
+
+    /// A dictionary of the solar phenomena times, keyed by phenomena codes.
+    ///
+    /// The codes are:
+    ///  * R: sunrise
+    ///  * U: upper transit
+    ///  * BC: beginning of civil twilight
+    ///  * EC: end of civil twilight
+    ///  * S: sunset
+    public var solarPhenomena: [String: String] {
+        return phenomenaMap(solarData)
+    }
+
+    fileprivate func phenomenaMap(_ phenomena: [Phenomenon]) -> [String: String] {
+        return phenomena.reduce(into: [String: String]()) { $0[$1.phenomenon] = $1.time }
+    }
+
+    public var sunriseString: String {
+        return solarPhenomena["R"]!
+    }
+
+    public var sunrise: Date {
+        return SolarAndLunarData.timeFormatter.date(from: sunriseString)!
+    }
+
+    public var sunsetString: String! {
+        return solarPhenomena["S"]!
+    }
+
+    public var sunset: Date {
+        return SolarAndLunarData.timeFormatter.date(from: sunsetString)!
+    }
+
+}

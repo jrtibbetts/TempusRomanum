@@ -1,19 +1,15 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 @testable import Tempus_Romanum
+import Stylobate
 import XCTest
 
 class SolarAndLunarDataTests: XCTestCase {
 
     func testSolarAndLunarDataParsesCorrectly() {
-        guard let rawData = sampleJson.data(using: .utf8) else {
-            XCTFail("Failed to create raw data from the sampleJSON property.")
-            return
-        }
-
         do {
             let parsedData = try JSONDecoder().decode(SolarAndLunarData.self,
-                                                      from: rawData)
+                                                      from: sampleData)
             XCTAssertFalse(parsedData.error)
             XCTAssertEqual(parsedData.year, 2016)
             XCTAssertEqual(parsedData.timeZoneOffset, 1)
@@ -21,6 +17,37 @@ class SolarAndLunarDataTests: XCTestCase {
             XCTFail("Failed to parse the sample JSON property as valid JSON.")
         }
     }
+
+    func testSunriseAndSunsetStringsOk() {
+        do {
+            let solarData = try JSONDecoder().decode(SolarAndLunarData.self,
+                                                      from: sampleData)
+            XCTAssertEqual(solarData.sunriseString, "07:18")
+            XCTAssertEqual(solarData.sunsetString, "16:40")
+        } catch {
+            XCTFail("Failed to parse the sample JSON property as valid JSON.")
+        }
+    }
+
+    func testSunriseAndSunsetDatesOk() {
+        let timeFormatter = DateFormatter() <~ {
+            $0.dateFormat = "HH:mm"
+        }
+
+        do {
+            let solarData = try JSONDecoder().decode(SolarAndLunarData.self,
+                                                     from: sampleData)
+            XCTAssertEqual(solarData.sunrise, timeFormatter.date(from: "07:18"))
+            XCTAssertEqual(solarData.sunset, timeFormatter.date(from: "16:40"))
+        } catch {
+            XCTFail("Failed to parse the sample JSON property as valid JSON.")
+        }
+
+    }
+
+    lazy var sampleData: Data = {
+        return sampleJson.data(using: .utf8)!
+    }()
 
     let sampleJson = """
 {
