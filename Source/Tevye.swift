@@ -24,14 +24,14 @@ public final class Tevye: NSObject {
     // MARK: - Public Functions
 
     public func sunriseSunset() -> Promise<SolarAndLunarData> {
-        return Promise<SolarAndLunarData>() { (seal) in
+        return Promise<SolarAndLunarData>() { (promise) in
             CLLocationManager.requestLocation().then {
                 URLSession.shared.dataTask(.promise,
                                            with: try Tevye.request(for: $0[0].coordinate)!).validate()
                 }.done {
-                    seal.fulfill(try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data))
+                    promise.fulfill(try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data))
                 }.catch { (error) in
-                    seal.reject(error)
+                    promise.reject(error)
             }
         }
     }
