@@ -22,8 +22,7 @@ public final class ViewController: UIViewController {
         super.viewDidLoad()
 
         tevye.sunriseSunset().done { [weak self] (solarAndLunarData) in
-            let sunrise = solarAndLunarData.solarData.filter { $0.phenomenon == "U" }.first?.time
-            self?.romanTimeLabel?.text = sunrise
+            self?.romanTimeLabel?.text = solarAndLunarData.sunriseString
             }.catch { (error) in
                 self.presentAlert(for: error, title: "Error")
         }
