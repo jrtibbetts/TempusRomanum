@@ -3,6 +3,7 @@
 import Stylobate
 import Foundation
 
+/// The JSON data that's returned by the US Naval Observatory's REST API.
 public struct SolarAndLunarData: Codable {
 
     var apiVersion: String
