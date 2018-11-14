@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yEL-cS-pYL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yEL-cS-pYL">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -25,7 +24,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="TTA-zJ-V0f" kind="relationship" relationship="rootViewController" id="frd-Qi-2Pj"/>
+                        <segue destination="TTA-zJ-V0f" kind="relationship" relationship="rootViewController" id="MOh-7m-V9d"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HJ7-j2-b3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -40,65 +39,134 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="q47-lq-wyH" userLabel="Roman Time">
-                                <rect key="frame" x="110.5" y="20" width="154" height="20"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="134" width="240" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
+                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBackgroundColor">
+                                        <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
+                                <rect key="frame" x="84.5" y="20" width="206" height="106"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Roman Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGt-xx-Tn0" userLabel="Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="102" height="20"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAi-Dx-ZQd">
+                                        <rect key="frame" x="74.5" y="0.0" width="57.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HXY-Q3-cKp" userLabel="Roman Time">
-                                        <rect key="frame" x="110" y="0.0" width="44" height="20"/>
-                                        <fontDescription key="fontDescription" name="Palatino-Roman" family="Palatino" pointSize="18"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
+                                        <rect key="frame" x="0.0" y="28.5" width="206" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="prima hora diei" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
+                                                <rect key="frame" x="71.5" y="0.0" width="134.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="GGF-Lh-qEu" secondAttribute="bottom" id="3vW-O4-vnd"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="GGF-Lh-qEu" secondAttribute="trailing" id="9Na-XT-gAp"/>
+                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="LIv-9n-Ypw"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="f5D-iC-JKC" secondAttribute="bottom" id="LMC-GY-RLa"/>
+                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="leading" secondItem="f5D-iC-JKC" secondAttribute="trailing" constant="8" symbolic="YES" id="SJW-fK-aAe"/>
+                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="leading" secondItem="MAn-LU-vNo" secondAttribute="leadingMargin" id="Z5T-mc-IvQ"/>
+                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="Zqj-xM-56s"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gus-me-V4r" userLabel="Sunset Times">
+                                        <rect key="frame" x="0.0" y="85.5" width="206" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
+                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prima hora noctis" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ft-lmX" userLabel="Roman Sunset">
+                                                <rect key="frame" x="72.5" y="0.0" width="133.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailingMargin" secondItem="gdH-Ft-lmX" secondAttribute="trailing" id="2v5-qh-JVb"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="gdH-Ft-lmX" secondAttribute="bottom" id="Ctn-L7-vzx"/>
+                                            <constraint firstItem="gdH-Ft-lmX" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="GYS-M1-sAg"/>
+                                            <constraint firstItem="gdH-Ft-lmX" firstAttribute="leading" secondItem="hfr-ad-evj" secondAttribute="trailing" constant="8" symbolic="YES" id="JiW-PM-JDy"/>
+                                            <constraint firstItem="hfr-ad-evj" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="WIC-a5-XGJ"/>
+                                            <constraint firstItem="hfr-ad-evj" firstAttribute="leading" secondItem="gus-me-V4r" secondAttribute="leadingMargin" id="hSi-5i-TwO"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="hfr-ad-evj" secondAttribute="bottom" id="jLE-a5-Rmk"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-2W-lci">
+                                        <rect key="frame" x="76.5" y="57" width="53.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                            </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ">
-                                <rect key="frame" x="88" y="48" width="199" height="199"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="1pv-jh-fDh"/>
+                                    <constraint firstItem="d2l-2W-lci" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="bottom" constant="8" symbolic="YES" id="2jX-WO-FW2"/>
+                                    <constraint firstItem="MAn-LU-vNo" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="4FS-fw-ny6"/>
+                                    <constraint firstAttribute="trailing" secondItem="gus-me-V4r" secondAttribute="trailing" id="8MZ-nB-zMS"/>
+                                    <constraint firstItem="MAn-LU-vNo" firstAttribute="top" secondItem="YAi-Dx-ZQd" secondAttribute="bottom" constant="8" symbolic="YES" id="BVx-lS-Oqz"/>
+                                    <constraint firstItem="YAi-Dx-ZQd" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="top" id="MxU-qk-0uA"/>
+                                    <constraint firstItem="gus-me-V4r" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="OTf-Xj-t2v"/>
+                                    <constraint firstItem="YAi-Dx-ZQd" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="T1b-uY-GP6"/>
+                                    <constraint firstAttribute="trailing" secondItem="MAn-LU-vNo" secondAttribute="trailing" id="aRq-g3-7mb"/>
+                                    <constraint firstItem="gus-me-V4r" firstAttribute="top" secondItem="d2l-2W-lci" secondAttribute="bottom" constant="8" symbolic="YES" id="eFR-Ff-aeG"/>
+                                    <constraint firstItem="d2l-2W-lci" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="gZ9-8J-2o4"/>
+                                    <constraint firstAttribute="bottom" secondItem="gus-me-V4r" secondAttribute="bottom" id="jhb-dl-7uJ"/>
+                                    <constraint firstItem="gus-me-V4r" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="suj-q3-vQM"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Aac-w0-qru" userLabel="Modern Time">
-                                <rect key="frame" x="108" y="255" width="159.5" height="21.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Modern Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SzO-1P-8w1" userLabel="Label">
-                                        <rect key="frame" x="0.0" y="0.0" width="107.5" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T6d-WH-kDV" userLabel="Modern Time">
-                                        <rect key="frame" x="115.5" y="0.0" width="44" height="21.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Aac-w0-qru" firstAttribute="top" secondItem="dim-oQ-clJ" secondAttribute="bottom" constant="8" symbolic="YES" id="AMe-b1-kkd"/>
-                            <constraint firstItem="q47-lq-wyH" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="Ia1-R0-Vke"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="height" secondItem="tHB-PF-3mm" secondAttribute="height" multiplier="0.33" id="MXp-fK-ZJi"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="Mcj-BO-yep"/>
-                            <constraint firstItem="q47-lq-wyH" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="QBo-vE-E4z"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="q47-lq-wyH" secondAttribute="bottom" constant="8" symbolic="YES" id="uIs-lJ-Qka"/>
-                            <constraint firstItem="Aac-w0-qru" firstAttribute="centerX" secondItem="dim-oQ-clJ" secondAttribute="centerX" id="wxr-0P-5QK"/>
+                            <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tHB-PF-3mm" secondAttribute="leadingMargin" id="7e4-MF-LtS"/>
+                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="8" symbolic="YES" id="CrE-HS-cVf"/>
+                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="bottom" id="Oq7-Xk-V5A"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="trailing" id="gay-et-5ry"/>
+                            <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="hIN-pn-jrc"/>
+                            <constraint firstItem="m2s-IF-A0T" firstAttribute="centerX" secondItem="tHB-PF-3mm" secondAttribute="centerXWithinMargins" id="mqS-h8-Ica"/>
+                            <constraint firstAttribute="topMargin" secondItem="m2s-IF-A0T" secondAttribute="top" id="vDL-qP-jms"/>
                         </constraints>
+                        <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
                         <viewLayoutGuide key="safeArea" id="OKQ-Kr-609"/>
                     </view>
                     <navigationItem key="navigationItem" title="TEMPVS ROMANVM" id="Fzr-u3-w1l"/>
                     <connections>
                         <outlet property="clockView" destination="dim-oQ-clJ" id="qkE-r9-F59"/>
-                        <outlet property="modernTimeLabel" destination="T6d-WH-kDV" id="5Vx-t0-HWd"/>
-                        <outlet property="romanTimeLabel" destination="HXY-Q3-cKp" id="O6B-im-Zw8"/>
+                        <outlet property="modernSunriseLabel" destination="f5D-iC-JKC" id="avG-OW-WbW"/>
+                        <outlet property="modernSunsetLabel" destination="hfr-ad-evj" id="PXC-rc-PBh"/>
+                        <outlet property="romanSunriseLabel" destination="GGF-Lh-qEu" id="qhf-cs-OLN"/>
+                        <outlet property="romanSunsetLabel" destination="gdH-Ft-lmX" id="Azk-Ba-IWE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Ip-TMr" sceneMemberID="firstResponder"/>
