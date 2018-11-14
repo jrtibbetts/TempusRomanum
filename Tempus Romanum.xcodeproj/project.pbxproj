@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B52F2217FEDA3004754A5 /* RomanClockView.swift */; };
 		9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF29215C521800C8EBB3 /* AppDelegate.swift */; };
 		9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF2B215C521800C8EBB3 /* ViewController.swift */; };
 		9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF2D215C521800C8EBB3 /* Main.storyboard */; };
@@ -76,6 +77,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		960B52F2217FEDA3004754A5 /* RomanClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockView.swift; sourceTree = "<group>"; };
 		9621BF26215C521800C8EBB3 /* Tempus Romanum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus Romanum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF29215C521800C8EBB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9621BF2B215C521800C8EBB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				9621BF35215C521A00C8EBB3 /* Info.plist */,
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
+				960B52F2217FEDA3004754A5 /* RomanClockView.swift */,
 				96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */,
 				964C2B8D215DC91400FC3B11 /* Tevye.swift */,
 				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
@@ -333,6 +336,7 @@
 			files = (
 				964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */,
 				96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */,
+				960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */,
 				9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
 			);
