@@ -6,17 +6,19 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
+/// A pair of `Date`s for the sunrise and sunset times on a given date at
+/// a given location.
+public typealias SunriseSunset = (Date, Date)
+
 /// Provides sunrise and sunset times for a given date at a given location. It
 /// obtains them from a [REST API hosted by the US Naval
 /// Observatory](http://api.usno.navy.mil/rstt/oneday).
 public final class Tevye: NSObject {
 
-    /// A pair of `Date`s for the sunrise and sunset times on a given date at
-    /// a given location.
-    public typealias SunriseSunset = (Date, Date)
-
     /// The current location's time zone offset from UMT.
-    public static var timeZoneOffset: Int = 0
+    public static var timeZoneOffset: Int {
+        return (TimeZone.autoupdatingCurrent.secondsFromGMT() / 60 / 60)
+    }
 
     // MARK: - Private Properties
 
@@ -36,9 +38,9 @@ public final class Tevye: NSObject {
     /// - returns: The solar & lunar data promise.
     public func sunriseSunset() -> Promise<SolarAndLunarData> {
         return Promise<SolarAndLunarData>() { (promise) in
-            CLLocationManager.requestLocation().then {
-                URLSession.shared.dataTask(.promise,
-                                           with: try Tevye.request(for: $0[0].coordinate)!).validate()
+            CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
+                let request = try Tevye.request(for: locations[0].coordinate)!
+                return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
                     let solarAndLunarData = try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data)
                     promise.fulfill(solarAndLunarData)
