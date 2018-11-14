@@ -6,14 +6,23 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
+/// A pair of `Date`s for the sunrise and sunset times on a given date at
+/// a given location.
+public typealias SunriseSunset = (Date, Date)
+
+/// Provides sunrise and sunset times for a given date at a given location. It
+/// obtains them from a [REST API hosted by the US Naval
+/// Observatory](http://api.usno.navy.mil/rstt/oneday).
 public final class Tevye: NSObject {
 
-    public typealias SunriseSunset = (Date, Date)
-
-    public static var timeZoneOffset: Int = 0
+    /// The current location's time zone offset from UMT.
+    public static var timeZoneOffset: Int {
+        return (TimeZone.autoupdatingCurrent.secondsFromGMT() / 60 / 60)
+    }
 
     // MARK: - Private Properties
 
+    /// Formats dates like `09/24/1489`.
     fileprivate static var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "MM/dd/yyyy"
@@ -23,24 +32,38 @@ public final class Tevye: NSObject {
 
     // MARK: - Public Functions
 
+    /// Get a promise that will contain the sunrise & sunset data, when it's
+    /// calculated.
+    ///
+    /// - returns: The solar & lunar data promise.
     public func sunriseSunset() -> Promise<SolarAndLunarData> {
-        return Promise<SolarAndLunarData>() { (seal) in
-            CLLocationManager.requestLocation().then {
-                URLSession.shared.dataTask(.promise,
-                                           with: try Tevye.request(for: $0[0].coordinate)!).validate()
+        return Promise<SolarAndLunarData>() { (promise) in
+            CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
+                let request = try Tevye.request(for: locations[0].coordinate)!
+                return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
-                    seal.fulfill(try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data))
+                    let solarAndLunarData = try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data)
+                    promise.fulfill(solarAndLunarData)
                 }.catch { (error) in
-                    seal.reject(error)
+                    promise.reject(error)
             }
         }
     }
 
     // MARK: - Utility Functions
 
+    /// Generate the URL that will provide the sunrise and sunset data.
+    ///
     /// Example: http://api.usno.navy.mil/rstt/oneday?date=12/1/2016&coords=41.89N,12.48E&tz=1
-    public static func url(for coordinate: CLLocationCoordinate2D,
-                           date: Date) throws -> URL? {
+    ///
+    /// - parameter: coordinate - The location for which sunrise and sunset
+    ///              data is desired.
+    /// - parameter: date - The date whose data is being requested.
+    ///
+    /// - returns: The US Naval Observatory URL with the coordinates, date, and
+    ///            time zone properly formatted.
+    internal static func url(for coordinate: CLLocationCoordinate2D,
+                             date: Date) throws -> URL? {
         let urlPattern = "http://api.usno.navy.mil/rstt/oneday?date=%@&coords=%@,%@&tz=%d"
 
         // format the date, latitude, longitude, and time zone for the URL
@@ -52,9 +75,16 @@ public final class Tevye: NSObject {
         return URL(string: urlString)
     }
 
-    public static func request(for coordinate: CLLocationCoordinate2D,
-                               date: Date = Date()) throws -> URLRequest? {
-
+    /// Get the `URLRequest` that will be used to get sunrise & sunset info.
+    ///
+    /// - parameter: coordinate - The location for which sunrise and sunset
+    ///              data is desired.
+    /// - parameter: date - The date whose data is being requested.
+    ///
+    /// - returns: The request for the US Naval Observatory's API, with the
+    ///            coordinates, date, and ime zone properly formatted.
+    internal static func request(for coordinate: CLLocationCoordinate2D,
+                                 date: Date = Date()) throws -> URLRequest? {
         if let url = try url(for: coordinate, date: date) {
             return URLRequest(url: url)
         } else {

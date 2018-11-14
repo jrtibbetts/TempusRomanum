@@ -8,9 +8,11 @@ public final class ViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet fileprivate weak var romanTimeLabel: UILabel!
-    @IBOutlet fileprivate weak var modernTimeLabel: UILabel!
-    @IBOutlet fileprivate weak var clockView: UIView!
+    @IBOutlet fileprivate weak var romanSunriseLabel: UILabel!
+    @IBOutlet fileprivate weak var romanSunsetLabel: UILabel!
+    @IBOutlet fileprivate weak var modernSunriseLabel: UILabel!
+    @IBOutlet fileprivate weak var modernSunsetLabel: UILabel!
+    @IBOutlet fileprivate weak var clockView: RomanClockView!
 
     // MARK: - Private Properties
 
@@ -22,13 +24,12 @@ public final class ViewController: UIViewController {
         super.viewDidLoad()
 
         tevye.sunriseSunset().done { [weak self] (solarAndLunarData) in
-            let sunrise = solarAndLunarData.solarData.filter { $0.phenomenon == "U" }.first?.time
-            self?.romanTimeLabel?.text = sunrise
+            self?.modernSunriseLabel?.text = solarAndLunarData.sunriseString
+            self?.modernSunsetLabel?.text = solarAndLunarData.sunsetString
+            self?.clockView?.sunriseSunset = (solarAndLunarData.sunrise, solarAndLunarData.sunset)
             }.catch { (error) in
                 self.presentAlert(for: error, title: "Error")
         }
     }
 
-
 }
-

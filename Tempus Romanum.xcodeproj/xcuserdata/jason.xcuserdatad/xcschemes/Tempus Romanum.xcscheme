@@ -38,16 +38,11 @@
                BlueprintName = "Tempus RomanumTests"
                ReferencedContainer = "container:Tempus Romanum.xcodeproj">
             </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9621BF44215C521A00C8EBB3"
-               BuildableName = "Tempus RomanumUITests.xctest"
-               BlueprintName = "Tempus RomanumUITests"
-               ReferencedContainer = "container:Tempus Romanum.xcodeproj">
-            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "TevyeTests/testSunriseSunsetReturnsOk()">
+               </Test>
+            </SkippedTests>
          </TestableReference>
       </Testables>
       <MacroExpansion>
@@ -86,8 +81,8 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../../Tests/MockLocation.gpx"
-         referenceType = "0">
+         identifier = "New York, NY, USA"
+         referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
