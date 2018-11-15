@@ -3,6 +3,12 @@
 import Stylobate
 import Foundation
 
+/// A `DateFormatter` for getting `Date`s from the phenenoma time strings,
+/// which are simple military time.
+fileprivate let timeFormatter = DateFormatter() <~ {
+    $0.dateFormat = "HH:mm"
+}
+
 /// The JSON data that's returned by the US Naval Observatory's REST API.
 public struct SolarAndLunarData: Codable {
 
@@ -66,12 +72,6 @@ public struct SolarAndLunarData: Codable {
 
 public extension SolarAndLunarData {
 
-    /// A `DateFormatter` for getting `Date`s from the phenenoma time strings,
-    /// which are simple military time.
-    fileprivate static var timeFormatter = DateFormatter() <~ {
-        $0.dateFormat = "HH:mm"
-    }
-
     /// A dictionary of the solar phenomena times, keyed by phenomena codes.
     ///
     /// The codes are:
@@ -93,7 +93,7 @@ public extension SolarAndLunarData {
     }
 
     public var sunrise: Date {
-        return SolarAndLunarData.timeFormatter.date(from: sunriseString)!
+        return timeFormatter.date(from: sunriseString)!
     }
 
     public var sunsetString: String! {
@@ -101,7 +101,28 @@ public extension SolarAndLunarData {
     }
 
     public var sunset: Date {
-        return SolarAndLunarData.timeFormatter.date(from: sunsetString)!
+        return timeFormatter.date(from: sunsetString)!
+    }
+
+}
+
+/// Encapsulates `Date`s for a day's sunrise and sunset, and has numerous
+/// handy properties for calculating things like number of minutes of
+/// nighttime.
+public struct SunriseSunset {
+
+    public let sunrise: Date
+
+    public let sunset: Date
+
+    // MARK: - Computed Properties
+
+    public var sunriseString: String {
+        return timeFormatter.string(from: sunrise)
+    }
+
+    public var sunsetString: String {
+        return timeFormatter.string(from: sunset)
     }
 
     public var daylightMinutes: TimeInterval {

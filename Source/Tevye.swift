@@ -6,10 +6,6 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
-/// A pair of `Date`s for the sunrise and sunset times on a given date at
-/// a given location.
-public typealias SunriseSunset = (Date, Date)
-
 /// Provides sunrise and sunset times for a given date at a given location. It
 /// obtains them from a [REST API hosted by the US Naval
 /// Observatory](http://api.usno.navy.mil/rstt/oneday).
@@ -36,7 +32,7 @@ public final class Tevye: NSObject {
     /// calculated.
     ///
     /// - returns: The solar & lunar data promise.
-    public func sunriseSunset() -> Promise<SolarAndLunarData> {
+    public func solarData() -> Promise<SolarAndLunarData> {
         return Promise<SolarAndLunarData>() { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
                 let request = try Tevye.request(for: locations[0].coordinate)!
@@ -44,6 +40,20 @@ public final class Tevye: NSObject {
                 }.done {
                     let solarAndLunarData = try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data)
                     promise.fulfill(solarAndLunarData)
+                }.catch { (error) in
+                    promise.reject(error)
+            }
+        }
+    }
+
+    /// Get a promise that will contain the sunrise & sunset data, when it's
+    /// calculated.
+    ///
+    /// - returns: The solar & lunar data promise.
+    public func sunriseSunset() -> Promise<SunriseSunset> {
+        return Promise<SunriseSunset>() { (promise) in
+            self.solarData().done {
+                promise.fulfill(SunriseSunset(sunrise: $0.sunrise, sunset: $0.sunset))
                 }.catch { (error) in
                     promise.reject(error)
             }

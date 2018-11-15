@@ -15,8 +15,8 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.sunriseString & .sunsetString
 
     func testSunriseAndSunsetStringsOk() {
-        XCTAssertEqual(solarData.sunriseString, "07:18")
-        XCTAssertEqual(solarData.sunsetString, "16:40")
+        XCTAssertEqual(sunriseSunset.sunriseString, "07:18")
+        XCTAssertEqual(sunriseSunset.sunsetString, "16:40")
     }
 
     // MARK: - SolarAndLunarData.sunrise & .sunset
@@ -26,15 +26,14 @@ class SolarAndLunarDataTests: XCTestCase {
             $0.dateFormat = "HH:mm"
         }
 
-
-        XCTAssertEqual(solarData.sunrise, timeFormatter.date(from: "07:18"))
-        XCTAssertEqual(solarData.sunset, timeFormatter.date(from: "16:40"))
+        XCTAssertEqual(sunriseSunset.sunrise, timeFormatter.date(from: "07:18"))
+        XCTAssertEqual(sunriseSunset.sunset, timeFormatter.date(from: "16:40"))
     }
 
     // MARK: - SolarAndLunarData.daylightHourInterval
 
     func testDaylightMinutesOk() {
-        let minutes = solarData.daylightMinutes
+        let minutes = sunriseSunset.daylightMinutes
         // 9:22 hours = 562 minutes
         XCTAssertLessThan(fabs(minutes - 562.0), 0.1)
     }
@@ -42,7 +41,7 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.daylightMinutes
 
     func testDaylightHourIntervalOk() {
-        let interval = solarData.daylightHourInterval
+        let interval = sunriseSunset.daylightHourInterval
         // Interval should be = (9:22 / 12) = 46.8 minutes
         XCTAssertLessThan(fabs(interval - 46.8333), 0.1)
     }
@@ -50,10 +49,10 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.daylightHours
 
     func testDaylightHoursOk() {
-        let hours = solarData.daylightHourTimes
+        let hours = sunriseSunset.daylightHourTimes
 
         hours.enumerated().forEach { (offset, hour) in
-            let expectedHour = solarData.sunrise.addingTimeInterval(46.8333 * Double(offset))
+            let expectedHour = sunriseSunset.sunrise.addingTimeInterval(46.8333 * Double(offset))
             XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
         }
     }
@@ -61,7 +60,7 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.nighttimeMinutes
 
     func testNighttimeMinutesOk() {
-        let minutes = solarData.nighttimeMinutes
+        let minutes = sunriseSunset.nighttimeMinutes
         // 13:38 hours = 878 minutes
         XCTAssertLessThan(fabs(minutes - 878.0), 0.1)
     }
@@ -69,7 +68,7 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.nighttimeHourInterval
 
     func testNighttimeHourIntervalOk() {
-        let interval = solarData.nighttimeHourInterval
+        let interval = sunriseSunset.nighttimeHourInterval
         // Interval should be = (13:38 / 12) = 73.2 minutes
         XCTAssertLessThan(fabs(interval - 73.1667), 0.1)
     }
@@ -77,10 +76,10 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.nighttimeHours
 
     func testNighttimeHoursOk() {
-        let hours = solarData.nighttimeHourTimes
+        let hours = sunriseSunset.nighttimeHourTimes
 
         hours.enumerated().forEach { (offset, hour) in
-            let expectedHour = solarData.sunset.addingTimeInterval(73.1667 * Double(offset))
+            let expectedHour = sunriseSunset.sunset.addingTimeInterval(73.1667 * Double(offset))
             XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
         }
     }
@@ -89,6 +88,9 @@ class SolarAndLunarDataTests: XCTestCase {
 
     var solarData: SolarAndLunarData {
         return try! JSONDecoder().decode(SolarAndLunarData.self, from: sampleData)
+    }
+    var sunriseSunset: SunriseSunset {
+        return SunriseSunset(sunrise: solarData.sunrise, sunset: solarData.sunset)
     }
 
     var sampleData: Data {
