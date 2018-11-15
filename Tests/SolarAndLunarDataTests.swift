@@ -7,47 +7,93 @@ import XCTest
 class SolarAndLunarDataTests: XCTestCase {
 
     func testSolarAndLunarDataParsesCorrectly() {
-        do {
-            let parsedData = try JSONDecoder().decode(SolarAndLunarData.self,
-                                                      from: sampleData)
-            XCTAssertFalse(parsedData.error)
-            XCTAssertEqual(parsedData.year, 2016)
-            XCTAssertEqual(parsedData.timeZoneOffset, 1)
-        } catch {
-            XCTFail("Failed to parse the sample JSON property as valid JSON.")
-        }
+        XCTAssertFalse(solarData.error)
+        XCTAssertEqual(solarData.year, 2016)
+        XCTAssertEqual(solarData.timeZoneOffset, 1)
     }
 
+    // MARK: - SolarAndLunarData.sunriseString & .sunsetString
+
     func testSunriseAndSunsetStringsOk() {
-        do {
-            let solarData = try JSONDecoder().decode(SolarAndLunarData.self,
-                                                      from: sampleData)
-            XCTAssertEqual(solarData.sunriseString, "07:18")
-            XCTAssertEqual(solarData.sunsetString, "16:40")
-        } catch {
-            XCTFail("Failed to parse the sample JSON property as valid JSON.")
-        }
+        XCTAssertEqual(solarData.sunriseString, "07:18")
+        XCTAssertEqual(solarData.sunsetString, "16:40")
     }
+
+    // MARK: - SolarAndLunarData.sunrise & .sunset
 
     func testSunriseAndSunsetDatesOk() {
         let timeFormatter = DateFormatter() <~ {
             $0.dateFormat = "HH:mm"
         }
 
-        do {
-            let solarData = try JSONDecoder().decode(SolarAndLunarData.self,
-                                                     from: sampleData)
-            XCTAssertEqual(solarData.sunrise, timeFormatter.date(from: "07:18"))
-            XCTAssertEqual(solarData.sunset, timeFormatter.date(from: "16:40"))
-        } catch {
-            XCTFail("Failed to parse the sample JSON property as valid JSON.")
-        }
 
+        XCTAssertEqual(solarData.sunrise, timeFormatter.date(from: "07:18"))
+        XCTAssertEqual(solarData.sunset, timeFormatter.date(from: "16:40"))
     }
 
-    lazy var sampleData: Data = {
+    // MARK: - SolarAndLunarData.daylightHourInterval
+
+    func testDaylightMinutesOk() {
+        let minutes = solarData.daylightMinutes
+        // 9:22 hours = 562 minutes
+        XCTAssertLessThan(fabs(minutes - 562.0), 0.1)
+    }
+
+    // MARK: - SolarAndLunarData.daylightMinutes
+
+    func testDaylightHourIntervalOk() {
+        let interval = solarData.daylightHourInterval
+        // Interval should be = (9:22 / 12) = 46.8 minutes
+        XCTAssertLessThan(fabs(interval - 46.8333), 0.1)
+    }
+
+    // MARK: - SolarAndLunarData.daylightHours
+
+    func testDaylightHoursOk() {
+        let hours = solarData.daylightHourTimes
+
+        hours.enumerated().forEach { (offset, hour) in
+            let expectedHour = solarData.sunrise.addingTimeInterval(46.8333 * Double(offset))
+            XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
+        }
+    }
+
+    // MARK: - SolarAndLunarData.nighttimeMinutes
+
+    func testNighttimeMinutesOk() {
+        let minutes = solarData.nighttimeMinutes
+        // 13:38 hours = 878 minutes
+        XCTAssertLessThan(fabs(minutes - 878.0), 0.1)
+    }
+
+    // MARK: - SolarAndLunarData.nighttimeHourInterval
+
+    func testNighttimeHourIntervalOk() {
+        let interval = solarData.nighttimeHourInterval
+        // Interval should be = (13:38 / 12) = 73.2 minutes
+        XCTAssertLessThan(fabs(interval - 73.1667), 0.1)
+    }
+
+    // MARK: - SolarAndLunarData.nighttimeHours
+
+    func testNighttimeHoursOk() {
+        let hours = solarData.nighttimeHourTimes
+
+        hours.enumerated().forEach { (offset, hour) in
+            let expectedHour = solarData.sunset.addingTimeInterval(73.1667 * Double(offset))
+            XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
+        }
+    }
+
+    // MARK: - Test Data
+
+    var solarData: SolarAndLunarData {
+        return try! JSONDecoder().decode(SolarAndLunarData.self, from: sampleData)
+    }
+
+    var sampleData: Data {
         return sampleJson.data(using: .utf8)!
-    }()
+    }
 
     let sampleJson = """
 {

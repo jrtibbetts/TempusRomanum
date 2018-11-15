@@ -104,4 +104,28 @@ public extension SolarAndLunarData {
         return SolarAndLunarData.timeFormatter.date(from: sunsetString)!
     }
 
+    public var daylightMinutes: TimeInterval {
+        return sunset.timeIntervalSince(sunrise) / 60.0
+    }
+
+    public var daylightHourInterval: TimeInterval {
+        return daylightMinutes / 12.0
+    }
+
+    public var daylightHourTimes: [Date] {
+        return (0..<12).map { sunrise.addingTimeInterval(daylightHourInterval * Double($0)) }
+    }
+
+    public var nighttimeMinutes: TimeInterval {
+        return (24 * 60.0) - daylightMinutes
+    }
+
+    public var nighttimeHourInterval: TimeInterval {
+        return nighttimeMinutes / 12.0
+    }
+
+    public var nighttimeHourTimes: [Date] {
+        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourInterval * Double($0)) }
+    }
+
 }
