@@ -27,8 +27,7 @@ class TevyeTests: XCTestCase {
         let coords = CLLocationCoordinate2D(latitude: 45.00, longitude: -45.00)
         let date = Date()
         let dateString = dateFormatter.string(from: date)
-        let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=\(dateString)&coords=45.00,-45.00&tz=-4")!
-        Tevye.timeZoneOffset = -4
+        let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=\(dateString)&coords=45.00,-45.00&tz=-5")!
 
         do {
             guard let actualUrl = try Tevye.url(for: coords, date: date) else {
@@ -44,8 +43,7 @@ class TevyeTests: XCTestCase {
 
     func testUrlWithSpecificDateOk() {
         let coords = CLLocationCoordinate2D(latitude: 45.00, longitude: -45.00)
-        let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=10/11/1987&coords=45.00,-45.00&tz=10")!
-        Tevye.timeZoneOffset = 10
+        let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=10/11/1987&coords=45.00,-45.00&tz=-5")!
 
         do {
             guard let actualUrl = try Tevye.url(for: coords,
