@@ -53,7 +53,13 @@ public final class Tevye: NSObject {
     public func sunriseSunset() -> Promise<SunriseSunset> {
         return Promise<SunriseSunset>() { (promise) in
             self.solarData().done {
-                promise.fulfill(SunriseSunset(sunrise: $0.sunrise, sunset: $0.sunset))
+                let midnight = Calendar.autoupdatingCurrent.startOfDay(for: Date())
+                let rawSunrise = $0.sunrise
+                let rawMidnight = Calendar.autoupdatingCurrent.startOfDay(for: rawSunrise)
+                let sunrise = rawSunrise.addingTimeInterval(midnight.timeIntervalSince(rawMidnight))
+                let rawSunset = $0.sunset
+                let sunset = rawSunset.addingTimeInterval(midnight.timeIntervalSince(rawMidnight))
+                promise.fulfill(SunriseSunset(sunrise: sunrise, sunset: sunset))
                 }.catch { (error) in
                     promise.reject(error)
             }
