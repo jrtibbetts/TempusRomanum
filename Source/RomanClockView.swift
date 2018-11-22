@@ -2,42 +2,19 @@
 
 import UIKit
 
+fileprivate var midnight: Date = Calendar.autoupdatingCurrent.startOfDay(for: Date())
+
 public final class RomanClockView: UIView {
 
-    // MARK: - Inspectable Properties
+    // MARK: - Private Properties
 
-    @IBInspectable public var clockBackgroundColor: UIColor? {
-        didSet {
-            clockFace.fillColor = (clockBackgroundColor ?? UIColor.white).cgColor
-            setNeedsDisplay()
-        }
-    }
-
-    @IBInspectable public var clockForegroundColor: UIColor? {
-        didSet {
-            setNeedsDisplay()
-        }
-    }
-
-    @IBInspectable public var borderColor: UIColor? {
-        didSet {
-            clockFace.strokeColor = (borderColor ?? UIColor.black).cgColor
-            setNeedsDisplay()
-        }
-    }
-
-    @IBInspectable public var borderThickness: NSDecimalNumber? {
-        didSet {
-            clockFace.lineWidth = CGFloat(borderThickness?.floatValue ?? 3.0)
-            setNeedsDisplay()
-        }
-    }
+    fileprivate var labelsLayer: CALayer?
 
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-//        layer.addSublayer(borderLayer)
+        awakeFromNib()
     }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -50,56 +27,124 @@ public final class RomanClockView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         layer.addSublayer(clockFace)
+        layer.masksToBounds = true
     }
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
+    fileprivate var daylightHourLinesLayer: CAShapeLayer?
+    fileprivate var nighttimeHourLinesLayer: CAShapeLayer?
 
     public var sunriseSunset: SunriseSunset? {
         didSet {
+            labelsLayer?.removeFromSuperlayer()
+            labelsLayer = CALayer()
+            labelsLayer?.frame = layer.bounds
+            let radius = minimumDimension / 2.0
+            let layerCenter = CGPoint(x: layer.frame.width / 2.0, y: layer.frame.height / 2.0)
+
+            if let sunriseSunset = sunriseSunset {
+                let sunriseAngle = sunriseSunset.sunrise.rotationAngle
+                let sunsetAngle = sunriseSunset.sunset.rotationAngle
+                let daylightPath = UIBezierPath(sliceCenter: layerCenter,
+                                                radius: radius,
+                                                startAngle: sunriseAngle,
+                                                endAngle: sunsetAngle,
+                                                clockwise: true)
+                let daylightLayer = CAShapeLayer()
+                daylightLayer.path = daylightPath.cgPath
+                daylightLayer.fillColor = UIColor.yellow.cgColor
+                clockFace.addSublayer(daylightLayer)
+
+                let nighttimePath = UIBezierPath(sliceCenter: layerCenter,
+                                                 radius: radius,
+                                                 startAngle: sunsetAngle,
+                                                 endAngle: sunriseAngle,
+                                                 clockwise: true)
+                let nighttimeLayer = CAShapeLayer()
+                nighttimeLayer.path = nighttimePath.cgPath
+                nighttimeLayer.fillColor = UIColor.blue.cgColor
+                clockFace.addSublayer(nighttimeLayer)
+
+                daylightHourLinesLayer?.removeFromSuperlayer()
+                daylightHourLinesLayer = HourLinesLayer(rect: bounds, dates: sunriseSunset.daylightHourTimes)
+                daylightHourLinesLayer?.lineWidth = 1.0
+                daylightHourLinesLayer?.strokeColor = UIColor.lightGray.cgColor
+                clockFace.addSublayer(daylightHourLinesLayer!)
+
+                nighttimeHourLinesLayer?.removeFromSuperlayer()
+                nighttimeHourLinesLayer?.lineWidth = 1.0
+                nighttimeHourLinesLayer?.strokeColor = UIColor.white.cgColor
+                nighttimeHourLinesLayer = HourLinesLayer(rect: bounds, dates: sunriseSunset.nighttimeHourTimes)
+                clockFace.addSublayer(nighttimeHourLinesLayer!)
+            }
+
+//            layer.addSublayer(labelsLayer!)
+
             setNeedsDisplay()
         }
     }
 
-    fileprivate lazy var clockFace: CAShapeLayer = {
-        let layer = CAShapeLayer()
-        layer.frame = self.bounds
-
+    fileprivate var clockFaceFrame: CGRect {
         // We want a circle, so determine the largest circle that will fit in
         // the bounds, minus a margin for the numerals.
         let frameHeight = self.bounds.height
         let frameWidth = self.bounds.width
-        let minDimension = (minimumDimension * 0.9)
-        let circleSize = CGSize(width: minDimension, height: minDimension)
-        let circleOrigin = CGPoint(x: (frameWidth / 2.0 - minDimension / 2.0),
-                                   y: (frameHeight / 2.0 - minDimension / 2.0))
-        layer.path = CGPath(ellipseIn: CGRect(origin: circleOrigin, size: circleSize), transform: nil)
+        let faceOrigin = CGPoint(x: (frameWidth - minimumDimension) / 2.0, y: (frameHeight - minimumDimension) / 2.0)
+        let faceSize = CGSize(width: minimumDimension, height: minimumDimension)
 
-        if let solarData = sunriseSunset {
-            (1...24).forEach { (i) in
-                if i % 6 == 0 {
-                    let textLayer = CATextLayer()
-                    textLayer.frame = CGRect(origin: circleOrigin, size: circleSize.applying(CGAffineTransform(translationX: 30.0, y: 30.0)))
-                    textLayer.setAffineTransform(CGAffineTransform(rotationAngle: (CGFloat(i) / 12.0) * CGFloat.pi + (CGFloat.pi / 4)))
-                    textLayer.string = "\(i)"
-                    textLayer.fontSize = 16.0
-                    textLayer.foregroundColor = UIColor.black.cgColor
-                    textLayer.backgroundColor = UIColor.clear.cgColor
-                    layer.addSublayer(textLayer)
-                }
-            }
-        }
+        return CGRect(origin: faceOrigin, size: faceSize)
+    }
+
+    fileprivate lazy var clockFace: CAShapeLayer = {
+        let layer = CAShapeLayer()
+        layer.frame = clockFaceFrame
+        layer.path = CGPath(ellipseIn: layer.frame, transform: nil)
+        layer.strokeColor = UIColor.black.cgColor
+        layer.lineWidth = 3.0
+        layer.fillColor = UIColor.clear.cgColor
 
         return layer
     }()
 
     fileprivate var minimumDimension: CGFloat {
         return min(self.bounds.height, self.bounds.width)
+    }
+
+}
+
+open class HourLinesLayer: CAShapeLayer {
+
+    public convenience init(rect: CGRect,
+                            dates: [Date]) {
+        self.init()
+
+        frame = rect
+        let path = UIBezierPath()
+        path.lineWidth = 2.0
+
+        let center = CGPoint(x: rect.width / 2.0, y: rect.height / 2.0)
+        let minimumDimension = min(rect.width, rect.height)
+        let radius = minimumDimension / 2.0
+
+        dates.forEach { (date) in
+            let angle = date.rotationAngle
+            path.move(to: center)
+            let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
+                                      y: center.y + (radius * sin(angle)))
+            path.addLine(to: borderPoint)
+        }
+
+        self.path = path.cgPath
+    }
+
+}
+
+fileprivate extension Date {
+
+    var rotationAngle: CGFloat {
+        let timeInMinutes = timeIntervalSince(midnight) / 60
+        let percentage = timeInMinutes / 1440.0
+
+        return (CGFloat.pi / 2.0) + (CGFloat.pi * 2 * CGFloat(percentage))
     }
 
 }
