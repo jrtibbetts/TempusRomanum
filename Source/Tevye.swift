@@ -33,7 +33,7 @@ public final class Tevye: NSObject {
     ///
     /// - returns: The solar & lunar data promise.
     public func solarData() -> Promise<SolarAndLunarData> {
-        return Promise<SolarAndLunarData>() { (promise) in
+        return Promise<SolarAndLunarData> { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
                 let request = try Tevye.request(for: locations[0].coordinate)!
                 return URLSession.shared.dataTask(.promise, with: request).validate()
@@ -51,7 +51,7 @@ public final class Tevye: NSObject {
     ///
     /// - returns: The solar & lunar data promise.
     public func sunriseSunset() -> Promise<SunriseSunset> {
-        return Promise<SunriseSunset>() { (promise) in
+        return Promise<SunriseSunset> { (promise) in
             self.solarData().done {
                 let midnight = Calendar.autoupdatingCurrent.startOfDay(for: Date())
                 let rawSunrise = $0.sunrise
