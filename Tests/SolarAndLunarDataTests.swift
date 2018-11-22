@@ -50,11 +50,19 @@ class SolarAndLunarDataTests: XCTestCase {
 
     func testDaylightHoursOk() {
         let hours = sunriseSunset.daylightHourTimes
+        XCTAssertEqual(hours.count, 12)
 
         hours.enumerated().forEach { (offset, hour) in
-            let expectedHour = sunriseSunset.sunrise.addingTimeInterval(46.8333 * Double(offset))
+            let expectedHour = sunriseSunset.sunrise.addingTimeInterval(46.8333 * 60 * Double(offset))
             XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
         }
+    }
+
+    func testDaylightHoursContainsSunrise() {
+        let hours = sunriseSunset.daylightHourTimes
+
+        XCTAssertTrue(hours.contains(sunriseSunset.sunrise))
+        XCTAssertFalse(hours.contains(sunriseSunset.sunset))
     }
 
     // MARK: - SolarAndLunarData.nighttimeMinutes
@@ -79,7 +87,7 @@ class SolarAndLunarDataTests: XCTestCase {
         let hours = sunriseSunset.nighttimeHourTimes
 
         hours.enumerated().forEach { (offset, hour) in
-            let expectedHour = sunriseSunset.sunset.addingTimeInterval(73.1667 * Double(offset))
+            let expectedHour = sunriseSunset.sunset.addingTimeInterval(73.1667 * 60 * Double(offset))
             XCTAssertLessThan(fabs(hour.timeIntervalSince(expectedHour)), 0.1)
         }
     }
