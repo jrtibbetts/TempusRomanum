@@ -16,6 +16,7 @@
 		9621BF3F215C521A00C8EBB3 /* TevyeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF3E215C521A00C8EBB3 /* TevyeTests.swift */; };
 		964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */ = {isa = PBXBuildFile; fileRef = 964C2B8D215DC91400FC3B11 /* Tevye.swift */; };
 		965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */; };
+		965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66E21A66D8600A40698 /* SunriseSunset.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -93,6 +94,7 @@
 		9621BF4B215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		964C2B8D215DC91400FC3B11 /* Tevye.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tevye.swift; sourceTree = "<group>"; };
 		965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Pie.swift"; sourceTree = "<group>"; };
+		965DF66E21A66D8600A40698 /* SunriseSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunset.swift; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -170,9 +172,10 @@
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				960B52F2217FEDA3004754A5 /* RomanClockView.swift */,
 				96DCE69E216C45C600E6A95F /* SolarAndLunarData.swift */,
+				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
 				964C2B8D215DC91400FC3B11 /* Tevye.swift */,
-				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 				965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */,
+				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
 				964C2B8E215DC91400FC3B11 /* Tevye.swift in Sources */,
 				96DCE69F216C45C600E6A95F /* SolarAndLunarData.swift in Sources */,

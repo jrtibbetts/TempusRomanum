@@ -12,13 +12,6 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertEqual(solarData.timeZoneOffset, 1)
     }
 
-    // MARK: - SolarAndLunarData.sunriseString & .sunsetString
-
-    func testSunriseAndSunsetStringsOk() {
-        XCTAssertEqual(sunriseSunset.sunriseString, "07:18")
-        XCTAssertEqual(sunriseSunset.sunsetString, "16:40")
-    }
-
     // MARK: - SolarAndLunarData.sunrise & .sunset
 
     func testSunriseAndSunsetDatesOk() {
@@ -97,6 +90,7 @@ class SolarAndLunarDataTests: XCTestCase {
     var solarData: SolarAndLunarData {
         return try! JSONDecoder().decode(SolarAndLunarData.self, from: sampleData)
     }
+    
     var sunriseSunset: SunriseSunset {
         return SunriseSunset(sunrise: solarData.sunrise, sunset: solarData.sunset)
     }
