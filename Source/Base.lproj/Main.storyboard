@@ -49,14 +49,6 @@
                                     <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
                                     <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
                                 </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBackgroundColor">
-                                        <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
                                 <rect key="frame" x="84.5" y="20" width="206" height="106"/>
