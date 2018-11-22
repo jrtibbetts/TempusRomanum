@@ -134,7 +134,7 @@ public struct SunriseSunset {
     }
 
     public var daylightHourTimes: [Date] {
-        return (0..<12).map { sunrise.addingTimeInterval(daylightHourInterval * Double($0)) }
+        return (0..<12).map { sunrise.addingTimeInterval(daylightHourInterval * 60 * Double($0)) }
     }
 
     public var nighttimeMinutes: TimeInterval {
@@ -146,7 +146,7 @@ public struct SunriseSunset {
     }
 
     public var nighttimeHourTimes: [Date] {
-        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourInterval * Double($0)) }
+        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourInterval * 60 * Double($0)) }
     }
 
 }
