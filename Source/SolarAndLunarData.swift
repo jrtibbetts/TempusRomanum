@@ -83,11 +83,7 @@ public extension SolarAndLunarData {
     ///  * EC: end of civil twilight
     ///  * S: sunset
     public var solarPhenomena: [String: String] {
-        return phenomenaMap(solarData)
-    }
-
-    fileprivate func phenomenaMap(_ phenomena: [Phenomenon]) -> [String: String] {
-        return phenomena.reduce(into: [String: String]()) { $0[$1.phenomenon] = $1.time }
+        return solarData.reduce(into: [String: String]()) { $0[$1.phenomenon] = $1.time }
     }
 
     public var sunriseString: String {
