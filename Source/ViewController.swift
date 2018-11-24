@@ -34,7 +34,7 @@ public final class ViewController: UIViewController {
             guard let self = self else { return }
             self.modernSunriseLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunrise)
             self.modernSunsetLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunset)
-            self.clockView?.sunriseSunset = sunriseSunset
+//            self.clockView?.sunriseSunset = sunriseSunset
             }.catch { (error) in
                 self.presentAlert(for: error, title: "Error")
         }
