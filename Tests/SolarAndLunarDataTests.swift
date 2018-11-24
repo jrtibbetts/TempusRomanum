@@ -87,8 +87,8 @@ class SolarAndLunarDataTests: XCTestCase {
 
     // MARK: - Test Data
 
-    var solarData: SolarAndLunarData {
-        return try! JSONDecoder().decode(SolarAndLunarData.self, from: sampleData)
+    var solarData: USNOSolarAndLunarData {
+        return try! JSONDecoder().decode(USNOSolarAndLunarData.self, from: sampleData)
     }
     
     var sunriseSunset: SunriseSunset {
