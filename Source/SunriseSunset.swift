@@ -17,28 +17,34 @@ public struct SunriseSunset {
 
     // MARK: - Computed Properties
 
+    /// The duration, in minutes, of daylight.
     public var daylightMinutes: TimeInterval {
         return sunset.timeIntervalSince(sunrise) / 60.0
     }
 
-    public var daylightHourInterval: TimeInterval {
+    /// The number of minutes in each daylight hour.
+    public var daylightHourDuration: TimeInterval {
         return daylightMinutes / 12.0
     }
 
+    /// An array of `Date`s of the daylight hours.
     public var daylightHourTimes: [Date] {
-        return (0..<12).map { sunrise.addingTimeInterval(daylightHourInterval * 60 * Double($0)) }
+        return (0..<12).map { sunrise.addingTimeInterval(daylightHourDuration * 60 * Double($0)) }
     }
 
+    /// The duration, in minutes, of nighttime.
     public var nighttimeMinutes: TimeInterval {
         return (24 * 60.0) - daylightMinutes
     }
 
-    public var nighttimeHourInterval: TimeInterval {
+    /// The number of minutes in each nighttime hour.
+    public var nighttimeHourDuration: TimeInterval {
         return nighttimeMinutes / 12.0
     }
 
+    /// An array of `Date`s of the nighttime hours.
     public var nighttimeHourTimes: [Date] {
-        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourInterval * 60 * Double($0)) }
+        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourDuration * 60 * Double($0)) }
     }
 
 }

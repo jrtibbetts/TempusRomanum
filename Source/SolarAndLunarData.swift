@@ -3,7 +3,8 @@
 import Stylobate
 import Foundation
 
-/// The JSON data that's returned by the US Naval Observatory's REST API.
+/// The JSON data that's returned by the US Naval Observatory
+/// [REST API](http://api.usno.navy.mil/rstt/oneday).
 public struct SolarAndLunarData: Codable {
 
     var apiVersion: String
@@ -86,18 +87,22 @@ public extension SolarAndLunarData {
         return solarData.reduce(into: [String: String]()) { $0[$1.phenomenon] = $1.time }
     }
 
+    /// The `solarPhenomena["R"]` value in the 24-hour format `"14:23"`.
     public var sunriseString: String {
         return solarPhenomena["R"]!
     }
 
+    /// The parsed `Date` object from the `sunriseString`.
     public var sunrise: Date {
         return SolarAndLunarData.timeFormatter.date(from: sunriseString)!
     }
 
+    /// The `solarPhenomena["S"]` value in the 24-hour format `"14:23"`.
     public var sunsetString: String! {
         return solarPhenomena["S"]!
     }
 
+    /// The parsed `Date` object from the `sunsetString`.
     public var sunset: Date {
         return SolarAndLunarData.timeFormatter.date(from: sunsetString)!
     }

@@ -34,7 +34,7 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.daylightMinutes
 
     func testDaylightHourIntervalOk() {
-        let interval = sunriseSunset.daylightHourInterval
+        let interval = sunriseSunset.daylightHourDuration
         // Interval should be = (9:22 / 12) = 46.8 minutes
         XCTAssertLessThan(fabs(interval - 46.8333), 0.1)
     }
@@ -69,7 +69,7 @@ class SolarAndLunarDataTests: XCTestCase {
     // MARK: - SolarAndLunarData.nighttimeHourInterval
 
     func testNighttimeHourIntervalOk() {
-        let interval = sunriseSunset.nighttimeHourInterval
+        let interval = sunriseSunset.nighttimeHourDuration
         // Interval should be = (13:38 / 12) = 73.2 minutes
         XCTAssertLessThan(fabs(interval - 73.1667), 0.1)
     }
