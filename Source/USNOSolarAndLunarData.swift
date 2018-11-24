@@ -3,9 +3,17 @@
 import Stylobate
 import Foundation
 
+public protocol SolarAndLunarData {
+
+    var sunrise: Date { get }
+
+    var sunset: Date { get }
+
+}
+
 /// The JSON data that's returned by the US Naval Observatory
 /// [REST API](http://api.usno.navy.mil/rstt/oneday).
-public struct SolarAndLunarData: Codable {
+public struct USNOSolarAndLunarData: Codable {
 
     var apiVersion: String
     var dateChanged: Bool
@@ -67,7 +75,7 @@ public struct SolarAndLunarData: Codable {
 
 // MARK: Non-`Codable` Stuff
 
-public extension SolarAndLunarData {
+extension USNOSolarAndLunarData: SolarAndLunarData {
 
     /// A `DateFormatter` for getting `Date`s from the phenenoma time strings,
     /// which are simple military time.
@@ -94,7 +102,7 @@ public extension SolarAndLunarData {
 
     /// The parsed `Date` object from the `sunriseString`.
     public var sunrise: Date {
-        return SolarAndLunarData.timeFormatter.date(from: sunriseString)!
+        return USNOSolarAndLunarData.timeFormatter.date(from: sunriseString)!
     }
 
     /// The `solarPhenomena["S"]` value in the 24-hour format `"14:23"`.
@@ -104,7 +112,7 @@ public extension SolarAndLunarData {
 
     /// The parsed `Date` object from the `sunsetString`.
     public var sunset: Date {
-        return SolarAndLunarData.timeFormatter.date(from: sunsetString)!
+        return USNOSolarAndLunarData.timeFormatter.date(from: sunsetString)!
     }
 
 }

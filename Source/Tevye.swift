@@ -38,7 +38,7 @@ public final class Tevye: NSObject {
                 let request = try Tevye.request(for: locations[0].coordinate)!
                 return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
-                    let solarAndLunarData = try JSONDecoder().decode(SolarAndLunarData.self, from: $0.data)
+                    let solarAndLunarData = try JSONDecoder().decode(USNOSolarAndLunarData.self, from: $0.data)
                     promise.fulfill(solarAndLunarData)
                 }.catch { (error) in
                     promise.reject(error)
