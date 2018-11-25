@@ -6,10 +6,20 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
+public protocol SunriseSunsetProvider {
+
+    /// Get a promise that will contain the sunrise & sunset data, when it's
+    /// calculated.
+    ///
+    /// - returns: The solar & lunar data promise.
+    func sunriseSunset() -> Promise<SunriseSunset>
+
+}
+
 /// Provides sunrise and sunset times for a given date at a given location. It
 /// obtains them from a [REST API hosted by the US Naval
 /// Observatory](http://api.usno.navy.mil/rstt/oneday).
-public final class Tevye: NSObject {
+public final class Tevye: NSObject, SunriseSunsetProvider {
 
     /// The current location's time zone offset from UMT.
     public static var timeZoneOffset: Int {
@@ -32,7 +42,7 @@ public final class Tevye: NSObject {
     /// calculated.
     ///
     /// - returns: The solar & lunar data promise.
-    public func solarData() -> Promise<SolarAndLunarData> {
+    fileprivate func solarData() -> Promise<SolarAndLunarData> {
         return Promise<SolarAndLunarData> { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
                 let request = try Tevye.request(for: locations[0].coordinate)!

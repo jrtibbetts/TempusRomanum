@@ -16,7 +16,7 @@ public final class ViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    fileprivate let tevye = Tevye()
+    fileprivate let sunriseSunsetProvider = Tevye()
 
     /// A `DateFormatter` for getting displaying 24-hour time for `Date`s,
     /// like `08:00` (as opposed to true military time, which doesn't use
@@ -30,7 +30,7 @@ public final class ViewController: UIViewController {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-        tevye.sunriseSunset().done { [weak self] (sunriseSunset) in
+        sunriseSunsetProvider.sunriseSunset().done { [weak self] (sunriseSunset) in
             guard let self = self else { return }
             self.modernSunriseLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunrise)
             self.modernSunsetLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunset)

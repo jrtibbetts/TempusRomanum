@@ -3,14 +3,6 @@
 import Stylobate
 import Foundation
 
-public protocol SolarAndLunarData {
-
-    var sunrise: Date { get }
-
-    var sunset: Date { get }
-
-}
-
 /// The JSON data that's returned by the US Naval Observatory
 /// [REST API](http://api.usno.navy.mil/rstt/oneday).
 public struct USNOSolarAndLunarData: Codable {
