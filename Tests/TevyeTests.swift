@@ -30,7 +30,7 @@ class TevyeTests: XCTestCase {
         let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=\(dateString)&coords=45.00,-45.00&tz=-5")!
 
         do {
-            guard let actualUrl = try Tevye.url(for: coords, date: date) else {
+            guard let actualUrl = try USNOSunriseSunsetProvider.url(for: coords, date: date) else {
                 XCTFail("The URL returned by Tevye is nil.")
                 return
             }
@@ -46,7 +46,7 @@ class TevyeTests: XCTestCase {
         let expectedUrl = URL(string: "http://api.usno.navy.mil/rstt/oneday?date=10/11/1987&coords=45.00,-45.00&tz=-5")!
 
         do {
-            guard let actualUrl = try Tevye.url(for: coords,
+            guard let actualUrl = try USNOSunriseSunsetProvider.url(for: coords,
                                                 date: Date(timeIntervalSince1970: 560994216.106689)) else {
                 XCTFail("The URL returned by Tevye is nil.")
                 return
@@ -65,7 +65,7 @@ class TevyeTests: XCTestCase {
     func testSunriseSunsetReturnsOk() {
         let exp = expectation(description: "sunriseSunset()")
 
-        let tevye = Tevye()
+        let tevye = USNOSunriseSunsetProvider()
         tevye.sunriseSunset().done { (solarAndLunarData) in
             exp.fulfill()
             }.catch { (error) in

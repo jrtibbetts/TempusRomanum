@@ -4,15 +4,15 @@
 import Stylobate
 import XCTest
 
-class SolarAndLunarDataTests: XCTestCase {
+class USNOSolarAndLunarDataTests: XCTestCase {
 
-    func testSolarAndLunarDataParsesCorrectly() {
+    func testUSNOSolarAndLunarDataParsesCorrectly() {
         XCTAssertFalse(solarData.error)
         XCTAssertEqual(solarData.year, 2016)
         XCTAssertEqual(solarData.timeZoneOffset, 1)
     }
 
-    // MARK: - SolarAndLunarData.sunrise & .sunset
+    // MARK: - USNOSolarAndLunarData.sunrise & .sunset
 
     func testSunriseAndSunsetDatesOk() {
         let timeFormatter = DateFormatter() <~ {
@@ -23,7 +23,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertEqual(sunriseSunset.sunset, timeFormatter.date(from: "16:40"))
     }
 
-    // MARK: - SolarAndLunarData.daylightHourInterval
+    // MARK: - USNOSolarAndLunarData.daylightHourInterval
 
     func testDaylightMinutesOk() {
         let minutes = sunriseSunset.daylightMinutes
@@ -31,7 +31,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertLessThan(fabs(minutes - 562.0), 0.1)
     }
 
-    // MARK: - SolarAndLunarData.daylightMinutes
+    // MARK: - USNOSolarAndLunarData.daylightMinutes
 
     func testDaylightHourIntervalOk() {
         let interval = sunriseSunset.daylightHourDuration
@@ -39,7 +39,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertLessThan(fabs(interval - 46.8333), 0.1)
     }
 
-    // MARK: - SolarAndLunarData.daylightHours
+    // MARK: - USNOSolarAndLunarData.daylightHours
 
     func testDaylightHoursOk() {
         let hours = sunriseSunset.daylightHourTimes
@@ -58,7 +58,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertFalse(hours.contains(sunriseSunset.sunset))
     }
 
-    // MARK: - SolarAndLunarData.nighttimeMinutes
+    // MARK: - USNOSolarAndLunarData.nighttimeMinutes
 
     func testNighttimeMinutesOk() {
         let minutes = sunriseSunset.nighttimeMinutes
@@ -66,7 +66,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertLessThan(fabs(minutes - 878.0), 0.1)
     }
 
-    // MARK: - SolarAndLunarData.nighttimeHourInterval
+    // MARK: - USNOSolarAndLunarData.nighttimeHourInterval
 
     func testNighttimeHourIntervalOk() {
         let interval = sunriseSunset.nighttimeHourDuration
@@ -74,7 +74,7 @@ class SolarAndLunarDataTests: XCTestCase {
         XCTAssertLessThan(fabs(interval - 73.1667), 0.1)
     }
 
-    // MARK: - SolarAndLunarData.nighttimeHours
+    // MARK: - USNOSolarAndLunarData.nighttimeHours
 
     func testNighttimeHoursOk() {
         let hours = sunriseSunset.nighttimeHourTimes

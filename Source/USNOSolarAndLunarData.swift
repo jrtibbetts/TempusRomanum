@@ -67,7 +67,7 @@ public struct USNOSolarAndLunarData: Codable {
 
 // MARK: Non-`Codable` Stuff
 
-extension USNOSolarAndLunarData: SolarAndLunarData {
+extension USNOSolarAndLunarData {
 
     /// A `DateFormatter` for getting `Date`s from the phenenoma time strings,
     /// which are simple military time.
