@@ -24,7 +24,8 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
     }
 
     public func sunriseSunset(for coordinate: CLLocationCoordinate2D,
-                              date: Date = Date()) -> Promise<SunriseSunset> {
+                              date: Date = Date(),
+                              formatDates: Bool = false) -> Promise<SunriseSunset> {
         return Promise<SunriseSunset> { (promise) in
             promise.reject(NSError(domain: "SunriseSunsetDotOrgProvider", code: 1, userInfo: nil))
         }
