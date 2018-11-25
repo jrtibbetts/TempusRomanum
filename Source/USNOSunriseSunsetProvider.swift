@@ -19,7 +19,7 @@ public protocol SunriseSunsetProvider {
 /// Provides sunrise and sunset times for a given date at a given location. It
 /// obtains them from a [REST API hosted by the US Naval
 /// Observatory](http://api.usno.navy.mil/rstt/oneday).
-public final class Tevye: NSObject, SunriseSunsetProvider {
+public final class USNOSunriseSunsetProvider: NSObject, SunriseSunsetProvider {
 
     /// The current location's time zone offset from UMT.
     public static var timeZoneOffset: Int {
@@ -42,10 +42,10 @@ public final class Tevye: NSObject, SunriseSunsetProvider {
     /// calculated.
     ///
     /// - returns: The solar & lunar data promise.
-    fileprivate func solarData() -> Promise<SolarAndLunarData> {
-        return Promise<SolarAndLunarData> { (promise) in
+    fileprivate func solarData() -> Promise<USNOSolarAndLunarData> {
+        return Promise<USNOSolarAndLunarData> { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
-                let request = try Tevye.request(for: locations[0].coordinate)!
+                let request = try USNOSunriseSunsetProvider.request(for: locations[0].coordinate)!
                 return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
                     let solarAndLunarData = try JSONDecoder().decode(USNOSolarAndLunarData.self, from: $0.data)
