@@ -23,6 +23,7 @@
 		965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67721A7B49A00A40698 /* ClockLayer.swift */; };
 		965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */; };
 		965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */; };
+		965DF67F21A8DD3F00A40698 /* SolarAndLunarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67E21A8DD3F00A40698 /* SolarAndLunarData.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -107,6 +108,7 @@
 		965DF67721A7B49A00A40698 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
 		965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayer.swift; sourceTree = "<group>"; };
 		965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayerTests.swift; sourceTree = "<group>"; };
+		965DF67E21A8DD3F00A40698 /* SolarAndLunarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolarAndLunarData.swift; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				9621BF35215C521A00C8EBB3 /* Info.plist */,
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
+				965DF67E21A8DD3F00A40698 /* SolarAndLunarData.swift */,
 				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
 				964C2B8D215DC91400FC3B11 /* Tevye.swift */,
 				96DCE69E216C45C600E6A95F /* USNOSolarAndLunarData.swift */,
@@ -374,6 +377,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				965DF67F21A8DD3F00A40698 /* SolarAndLunarData.swift in Sources */,
 				965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */,
 				965DF67421A6740200A40698 /* HourLinesLayer.swift in Sources */,
 				965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */,
