@@ -5,7 +5,7 @@ import Foundation
 /// Encapsulates `Date`s for a day's sunrise and sunset, and has numerous
 /// handy properties for calculating things like number of minutes of
 /// nighttime.
-public struct SunriseSunset {
+public struct SunriseSunset: Codable {
 
     /// Sunrise. It's assumed that it's for the same date as the `sunset`; if
     /// not, then that's a problem that this struct doesn't address.

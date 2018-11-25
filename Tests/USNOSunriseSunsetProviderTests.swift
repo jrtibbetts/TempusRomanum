@@ -5,7 +5,7 @@ import CoreLocation
 import PromiseKit
 import XCTest
 
-class TevyeTests: XCTestCase {
+class USNOSunriseSunsetProviderTests: XCTestCase {
 
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()

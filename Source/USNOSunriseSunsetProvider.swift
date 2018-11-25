@@ -6,16 +6,6 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
-public protocol SunriseSunsetProvider {
-
-    /// Get a promise that will contain the sunrise & sunset data, when it's
-    /// calculated.
-    ///
-    /// - returns: The solar & lunar data promise.
-    func sunriseSunset() -> Promise<SunriseSunset>
-
-}
-
 /// Provides sunrise and sunset times for a given date at a given location. It
 /// obtains them from a [REST API hosted by the US Naval
 /// Observatory](http://api.usno.navy.mil/rstt/oneday).
