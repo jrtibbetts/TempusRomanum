@@ -39,64 +39,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="134" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
-                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBackgroundColor">
-                                        <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
-                                <rect key="frame" x="84.5" y="20" width="206" height="106"/>
+                                <rect key="frame" x="84.5" y="20" width="206" height="129"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunrise" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YAi-Dx-ZQd">
-                                        <rect key="frame" x="74.5" y="0.0" width="57.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
-                                        <rect key="frame" x="0.0" y="28.5" width="206" height="20.5"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
-                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="prima hora diei" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
-                                                <rect key="frame" x="71.5" y="0.0" width="134.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="zB1-cO-fiO">
+                                        <rect key="frame" x="83" y="0.0" width="40" height="40"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="GGF-Lh-qEu" secondAttribute="bottom" id="3vW-O4-vnd"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="GGF-Lh-qEu" secondAttribute="trailing" id="9Na-XT-gAp"/>
-                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="LIv-9n-Ypw"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="f5D-iC-JKC" secondAttribute="bottom" id="LMC-GY-RLa"/>
-                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="leading" secondItem="f5D-iC-JKC" secondAttribute="trailing" constant="8" symbolic="YES" id="SJW-fK-aAe"/>
-                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="leading" secondItem="MAn-LU-vNo" secondAttribute="leadingMargin" id="Z5T-mc-IvQ"/>
-                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="Zqj-xM-56s"/>
+                                            <constraint firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="height" multiplier="1:1" id="FEc-Q1-gHQ"/>
+                                            <constraint firstAttribute="width" constant="40" id="TcX-f6-td4"/>
                                         </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-                                    </view>
+                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunset" translatesAutoresizingMaskIntoConstraints="NO" id="rmR-Ve-gkR">
+                                        <rect key="frame" x="83" y="60.5" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="rmR-Ve-gkR" secondAttribute="height" multiplier="1:1" id="9dQ-QJ-8BQ"/>
+                                        </constraints>
+                                    </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gus-me-V4r" userLabel="Sunset Times">
-                                        <rect key="frame" x="0.0" y="85.5" width="206" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="108.5" width="206" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
                                                 <rect key="frame" x="0.0" y="0.0" width="64.5" height="20.5"/>
@@ -123,34 +83,76 @@
                                         </constraints>
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sunset" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2l-2W-lci">
-                                        <rect key="frame" x="76.5" y="57" width="53.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
+                                        <rect key="frame" x="0.0" y="32" width="206" height="20.5"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
+                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="prima hora diei" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
+                                                <rect key="frame" x="71.5" y="0.0" width="134.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottomMargin" secondItem="GGF-Lh-qEu" secondAttribute="bottom" id="3vW-O4-vnd"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="GGF-Lh-qEu" secondAttribute="trailing" id="9Na-XT-gAp"/>
+                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="LIv-9n-Ypw"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="f5D-iC-JKC" secondAttribute="bottom" id="LMC-GY-RLa"/>
+                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="leading" secondItem="f5D-iC-JKC" secondAttribute="trailing" constant="8" symbolic="YES" id="SJW-fK-aAe"/>
+                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="leading" secondItem="MAn-LU-vNo" secondAttribute="leadingMargin" id="Z5T-mc-IvQ"/>
+                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="Zqj-xM-56s"/>
+                                        </constraints>
+                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="d2l-2W-lci" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="bottom" constant="8" symbolic="YES" id="2jX-WO-FW2"/>
                                     <constraint firstItem="MAn-LU-vNo" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="4FS-fw-ny6"/>
+                                    <constraint firstItem="zB1-cO-fiO" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="top" id="7Ac-qR-DNZ"/>
                                     <constraint firstAttribute="trailing" secondItem="gus-me-V4r" secondAttribute="trailing" id="8MZ-nB-zMS"/>
-                                    <constraint firstItem="MAn-LU-vNo" firstAttribute="top" secondItem="YAi-Dx-ZQd" secondAttribute="bottom" constant="8" symbolic="YES" id="BVx-lS-Oqz"/>
-                                    <constraint firstItem="YAi-Dx-ZQd" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="top" id="MxU-qk-0uA"/>
+                                    <constraint firstItem="zB1-cO-fiO" firstAttribute="bottom" secondItem="MAn-LU-vNo" secondAttribute="top" constant="8" symbolic="YES" id="Kzm-6s-nkS"/>
                                     <constraint firstItem="gus-me-V4r" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="OTf-Xj-t2v"/>
-                                    <constraint firstItem="YAi-Dx-ZQd" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="T1b-uY-GP6"/>
+                                    <constraint firstItem="gus-me-V4r" firstAttribute="top" secondItem="rmR-Ve-gkR" secondAttribute="bottom" constant="8" symbolic="YES" id="Ul3-Ai-ZgC"/>
+                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="bottom" constant="8" symbolic="YES" id="YY7-Si-IJK"/>
                                     <constraint firstAttribute="trailing" secondItem="MAn-LU-vNo" secondAttribute="trailing" id="aRq-g3-7mb"/>
-                                    <constraint firstItem="gus-me-V4r" firstAttribute="top" secondItem="d2l-2W-lci" secondAttribute="bottom" constant="8" symbolic="YES" id="eFR-Ff-aeG"/>
-                                    <constraint firstItem="d2l-2W-lci" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="gZ9-8J-2o4"/>
                                     <constraint firstAttribute="bottom" secondItem="gus-me-V4r" secondAttribute="bottom" id="jhb-dl-7uJ"/>
+                                    <constraint firstItem="zB1-cO-fiO" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="lLz-wv-aai"/>
+                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="width" id="nfG-ll-NiW"/>
                                     <constraint firstItem="gus-me-V4r" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="suj-q3-vQM"/>
+                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="xSG-FL-QN7"/>
                                 </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="169" width="240" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
+                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBackgroundColor">
+                                        <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tHB-PF-3mm" secondAttribute="leadingMargin" id="7e4-MF-LtS"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="8" symbolic="YES" id="CrE-HS-cVf"/>
+                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="20" id="CrE-HS-cVf"/>
                             <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="bottom" id="Oq7-Xk-V5A"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="trailing" id="gay-et-5ry"/>
                             <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="hIN-pn-jrc"/>
@@ -174,5 +176,9 @@
             <point key="canvasLocation" x="895.20000000000005" y="68.815592203898049"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Sunrise" width="512" height="512"/>
+        <image name="Sunset" width="512" height="512"/>
+    </resources>
     <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>
