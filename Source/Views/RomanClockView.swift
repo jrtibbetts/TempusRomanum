@@ -20,6 +20,14 @@ import UIKit
 /// Layers marked in **bold** change when the `sunriseSunset` value changes.
 public final class RomanClockView: UIView {
 
+    fileprivate var backgroundLayer: BackgroundSquareLayer!
+    
+    public var sunriseSunset: SunriseSunset? {
+        didSet {
+            backgroundLayer.sunriseSunset = sunriseSunset
+        }
+    }
+    
     public override func awakeFromNib() {
         super.awakeFromNib()
         let backgroundLayer = BackgroundSquareLayer()
@@ -137,8 +145,6 @@ fileprivate final class BackgroundSquareLayer: CALayer {
             layoutSublayers()
         }
     }
-
-    // MARK: - Initializers
 
     public var sunriseSunset: SunriseSunset? {
         didSet {
