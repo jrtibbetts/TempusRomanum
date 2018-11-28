@@ -39,34 +39,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
-                                <rect key="frame" x="84.5" y="20" width="206" height="129"/>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
+                                <rect key="frame" x="85.5" y="20" width="204.5" height="130"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="zB1-cO-fiO">
-                                        <rect key="frame" x="83" y="0.0" width="40" height="40"/>
+                                        <rect key="frame" x="82" y="0.0" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="height" multiplier="1:1" id="FEc-Q1-gHQ"/>
                                             <constraint firstAttribute="width" constant="40" id="TcX-f6-td4"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunset" translatesAutoresizingMaskIntoConstraints="NO" id="rmR-Ve-gkR">
-                                        <rect key="frame" x="83" y="60.5" width="40" height="40"/>
+                                        <rect key="frame" x="82" y="61" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="rmR-Ve-gkR" secondAttribute="height" multiplier="1:1" id="9dQ-QJ-8BQ"/>
                                         </constraints>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gus-me-V4r" userLabel="Sunset Times">
-                                        <rect key="frame" x="0.0" y="108.5" width="206" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="109" width="204.5" height="21"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 pm" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
-                                                <rect key="frame" x="0.0" y="0.0" width="64.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="MI3-Ht-iOV"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="prima hora noctis" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ft-lmX" userLabel="Roman Sunset">
-                                                <rect key="frame" x="72.5" y="0.0" width="133.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(prima hora noctis)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ft-lmX" userLabel="Roman Sunset">
+                                                <rect key="frame" x="58" y="0.0" width="146.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -84,17 +87,20 @@
                                         <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
-                                        <rect key="frame" x="0.0" y="32" width="206" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="32" width="204.5" height="21"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="6:03 am" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
-                                                <rect key="frame" x="0.0" y="0.0" width="63.5" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="dnc-8l-7vE"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="prima hora diei" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
-                                                <rect key="frame" x="71.5" y="0.0" width="134.5" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(prima hora diei)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
+                                                <rect key="frame" x="58" y="0.0" width="146.5" height="21"/>
+                                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -130,7 +136,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="169" width="240" height="240"/>
+                                <rect key="frame" x="67.5" y="170" width="240" height="240"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <accessibility key="accessibilityConfiguration">
                                     <accessibilityTraits key="traits" notEnabled="YES"/>
