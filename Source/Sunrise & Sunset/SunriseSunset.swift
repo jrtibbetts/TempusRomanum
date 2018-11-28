@@ -46,5 +46,12 @@ public struct SunriseSunset: Codable {
     public var nighttimeHourTimes: [Date] {
         return (0..<12).map { sunset.addingTimeInterval(nighttimeHourDuration * 60 * Double($0)) }
     }
+    
+    // MARK: - Initializers
+    
+    public init(sunrise: Date, sunset: Date) {
+        self.sunrise = sunrise
+        self.sunset = sunset
+    }
 
 }

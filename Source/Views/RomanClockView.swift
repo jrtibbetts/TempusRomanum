@@ -30,7 +30,7 @@ public final class RomanClockView: UIView {
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        let backgroundLayer = BackgroundSquareLayer()
+        backgroundLayer = BackgroundSquareLayer()
         let backgroundSideLength = min(frame.width, frame.height)
         let backgroundSize = CGSize(width: backgroundSideLength,
                                     height: backgroundSideLength)
