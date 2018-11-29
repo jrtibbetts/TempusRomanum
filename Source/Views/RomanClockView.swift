@@ -177,6 +177,8 @@ fileprivate final class BackgroundSquareLayer: CALayer {
 //                nighttimeHourLinesLayer?.strokeColor = UIColor.white.cgColor
 //                nighttimeHourLinesLayer = HourLinesLayer(rect: bounds, dates: sunriseSunset.nighttimeHourTimes)
 //                clockFace.addSublayer(nighttimeHourLinesLayer!)
+            setNeedsLayout()
+            layoutIfNeeded()
         }
     }
 

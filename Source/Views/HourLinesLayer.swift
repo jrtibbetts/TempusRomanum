@@ -25,6 +25,23 @@ open class HourLinesLayer: ClockLayer {
     public init(hours: [Date]) {
         self.hours = hours
         super.init()
+
+        // Create the path with a line from the layer's center point to the
+        // points at which each hour falls on the circle.
+        let path = UIBezierPath()
+        path.lineWidth = 1.0
+        
+        hours.forEach { (hour) in
+            let angle = hour.rotationAngle  // relative to midnight of that
+            // hour.
+            path.move(to: center)
+            let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
+                                      y: center.y + (radius * sin(angle)))
+            path.addLine(to: borderPoint)
+        }
+        
+        self.path = path.cgPath
+        setNeedsDisplay()
     }
 
     /// Create an hours layer by deserializing one.
@@ -41,28 +58,6 @@ open class HourLinesLayer: ClockLayer {
     override open func encode(with aCoder: NSCoder) {
         super.encode(with: aCoder)
         aCoder.encode(hours, forKey: hoursKey)
-    }
-
-    // MARK: - CALayer
-
-    override open func layoutIfNeeded() {
-        super.layoutIfNeeded()
-
-        // Create the path with a line from the layer's center point to the
-        // points at which each hour falls on the circle.
-        let path = UIBezierPath()
-        path.lineWidth = 2.0
-
-        hours.forEach { (hour) in
-            let angle = hour.rotationAngle  // relative to midnight of that
-                                            // hour.
-            path.move(to: center)
-            let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
-                                      y: center.y + (radius * sin(angle)))
-            path.addLine(to: borderPoint)
-        }
-
-        self.path = path.cgPath
     }
 
 }
