@@ -2,59 +2,27 @@
 
 import UIKit
 
+/// The background layer of the clock view.
 final class BackgroundSquareLayer: CALayer {
-    
-    fileprivate var nighttimeLinesLayer: HourLinesLayer?
-    
-    override init() {
-        nighttimeClockFace = CAShapeLayer()
-        nighttimeClockFace.fillColor = UIColor.blue.cgColor
-        
-        daylightLayer = DaylightLayer()
-        
-        super.init()
-        
-        modernHourMarksLabel = ModernHourMarksLayer(radius: 120.0, margin: modernHourMarksInset)
-        addSublayer(modernHourMarksLabel!)
-        addSublayer(nighttimeClockFace)
-        addSublayer(daylightLayer)
-    }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSublayers() {
-        super.layoutSublayers()
-        
-        // Calculate the size of the clock layer
-        let marksInsets = modernHourMarksInset + romanHourMarksInset
-        let sublayerSideLength = min(frame.size.width - marksInsets, frame.size.width - marksInsets)
-        let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
-        nighttimeClockFace.frame = clockFaceFrame
-        nighttimeClockFace.centerInSuperlayer()
-        nighttimeClockFace.path = UIBezierPath(ovalIn: nighttimeClockFace.bounds).cgPath
-        
-        daylightLayer.frame = clockFaceFrame
-        daylightLayer.centerInSuperlayer()
-    }
     
     // MARK: - Private Properties
     
-    fileprivate var nighttimeClockFace: CAShapeLayer
-    
     fileprivate var daylightLayer = DaylightLayer()
-    
-    fileprivate var modernHourMarksLabel: ModernHourMarksLayer?
-    
-    fileprivate var romanHourMarks = CALayer()
     
     fileprivate var modernHourMarksInset: CGFloat = 30.0 {
         didSet {
             layoutSublayers()
         }
     }
+
+    fileprivate var modernHourMarksLayer: ModernHourMarksLayer?
     
+    fileprivate var nighttimeClockFace: CAShapeLayer
+
+    fileprivate var nighttimeLinesLayer: HourLinesLayer?
+
+    fileprivate var romanHourMarks = CALayer()
+
     fileprivate var romanHourMarksInset: CGFloat = 30.0 {
         didSet {
             layoutSublayers()
@@ -104,6 +72,43 @@ final class BackgroundSquareLayer: CALayer {
     
     fileprivate var minimumDimension: CGFloat {
         return min(self.bounds.height, self.bounds.width)
+    }
+
+    // MARK: - Initialization
+    
+    override init() {
+        nighttimeClockFace = CAShapeLayer()
+        nighttimeClockFace.fillColor = UIColor.blue.cgColor
+        
+        daylightLayer = DaylightLayer()
+        
+        super.init()
+        
+        modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
+        addSublayer(modernHourMarksLayer!)
+        modernHourMarksLayer?.centerInSuperlayer()
+        addSublayer(nighttimeClockFace)
+        addSublayer(daylightLayer)
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - CALayer
+    
+    override func layoutSublayers() {
+        super.layoutSublayers()
+        
+        // Calculate the size of the clock layer
+        let marksInsets = modernHourMarksInset + romanHourMarksInset
+        let sublayerSideLength = min(frame.size.width - marksInsets, frame.size.width - marksInsets)
+        let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
+        nighttimeClockFace.frame = clockFaceFrame
+        nighttimeClockFace.centerInSuperlayer()
+        nighttimeClockFace.path = UIBezierPath(ovalIn: nighttimeClockFace.bounds).cgPath
+        daylightLayer.frame = clockFaceFrame
+        daylightLayer.centerInSuperlayer()
     }
     
 }
