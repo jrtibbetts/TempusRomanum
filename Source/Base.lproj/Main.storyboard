@@ -39,8 +39,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
+                                <rect key="frame" x="67.5" y="20" width="240" height="240"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
+                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
-                                <rect key="frame" x="85.5" y="20" width="204.5" height="142"/>
+                                <rect key="frame" x="85.5" y="268" width="204.5" height="142"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="zB1-cO-fiO">
                                         <rect key="frame" x="82" y="0.0" width="40" height="40"/>
@@ -135,35 +146,16 @@
                                     <constraint firstItem="rmR-Ve-gkR" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="xSG-FL-QN7"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="182" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
-                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="clockBackgroundColor">
-                                        <color key="value" red="0.0" green="0.32852089410000002" blue="0.57488495110000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tHB-PF-3mm" secondAttribute="leadingMargin" id="7e4-MF-LtS"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="20" id="CrE-HS-cVf"/>
-                            <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="bottom" id="Oq7-Xk-V5A"/>
+                            <constraint firstItem="m2s-IF-A0T" firstAttribute="top" secondItem="dim-oQ-clJ" secondAttribute="bottom" constant="8" symbolic="YES" id="DGe-ca-D5A"/>
                             <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="trailing" id="gay-et-5ry"/>
                             <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="hIN-pn-jrc"/>
+                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="kSg-pv-Fke"/>
                             <constraint firstItem="m2s-IF-A0T" firstAttribute="centerX" secondItem="tHB-PF-3mm" secondAttribute="centerXWithinMargins" id="mqS-h8-Ica"/>
-                            <constraint firstAttribute="topMargin" secondItem="m2s-IF-A0T" secondAttribute="top" id="vDL-qP-jms"/>
+                            <constraint firstItem="OKQ-Kr-609" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="20" id="r6k-dd-IWR"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
                         <viewLayoutGuide key="safeArea" id="OKQ-Kr-609"/>
