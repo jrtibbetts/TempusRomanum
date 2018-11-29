@@ -2,19 +2,26 @@
 
 import UIKit
 
+/// The layer that draws the pie slice representing daylight hours on an analog
+/// 24-hour clock.
 class DaylightLayer: ClockLayer {
 
+    /// The layer that draws lines for each daylight hour.
     fileprivate var hourLinesLayer: HourLinesLayer?
 
-    public var hoursAndEndTime: (hours: [Date], end: Date)? {
+    /// Set the daylight hour times.
+    ///
+    /// - parameter hours: The daylight hours.
+    /// - parameter sunset: The end of daylight.
+    public var hoursAndEndTime: (hours: [Date], sunset: Date)? {
         didSet {
             guard let hours = hoursAndEndTime?.hours,
-                let end = hoursAndEndTime?.end else {
+                let sunset = hoursAndEndTime?.sunset else {
                 return
             }
 
             let startAngle = hours[0].rotationAngle
-            let sunsetAngle = end.rotationAngle
+            let sunsetAngle = sunset.rotationAngle
             let daylightPath = UIBezierPath(sliceCenter: center,
                                         radius: radius,
                                         startAngle: startAngle,
@@ -29,6 +36,7 @@ class DaylightLayer: ClockLayer {
             hourLinesLayer?.strokeColor = UIColor.lightGray.cgColor
             hourLinesLayer?.frame = bounds
             addSublayer(hourLinesLayer!)
+            setNeedsDisplay()
         }
     }
 

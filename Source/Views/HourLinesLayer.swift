@@ -32,8 +32,8 @@ open class HourLinesLayer: ClockLayer {
         path.lineWidth = 1.0
         
         hours.forEach { (hour) in
-            let angle = hour.rotationAngle  // relative to midnight of that
-            // hour.
+            let angle = hour.rotationAngle  // relative to 12 am of the same
+            // day.
             path.move(to: center)
             let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
                                       y: center.y + (radius * sin(angle)))
@@ -43,21 +43,9 @@ open class HourLinesLayer: ClockLayer {
         self.path = path.cgPath
         setNeedsDisplay()
     }
-
-    /// Create an hours layer by deserializing one.
+    
     required public init?(coder aDecoder: NSCoder) {
-        guard let hours = aDecoder.decodeObject(forKey: hoursKey) as? [Date] else {
-            return nil
-        }
-
-        self.hours = hours
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
-
-    /// Serialize the hours layer.
-    override open func encode(with aCoder: NSCoder) {
-        super.encode(with: aCoder)
-        aCoder.encode(hours, forKey: hoursKey)
-    }
-
+    
 }
