@@ -38,9 +38,25 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                               formatDates: Bool = false) -> Promise<SunriseSunset> {
         return Promise<SunriseSunset> { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
-                let request = try SunriseSunsetDotOrgProvider.request(for: locations[0].coordinate, date: date, formatDates: formatDates)!
+                let request = SunriseSunsetDotOrgProvider.request(for: locations[0].coordinate, date: date, formatDates: formatDates)
                 return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
+                    let sunriseSunset = try JSONDecoder().decode(SunriseSunset.self, from: $0.data)
+                    promise.fulfill(sunriseSunset)
+                }.catch { (error) in
+                    promise.reject(error)
+            }
+        }
+    }
+
+    public func sunriseSunset(for location: CLLocationCoordinate2D,
+                              date: Date = Date(),
+                              formatDates: Bool = false) -> Promise<SunriseSunset> {
+        return Promise<SunriseSunset> { (promise) in
+            let request = SunriseSunsetDotOrgProvider.request(for: location,
+                                                              date: date,
+                                                              formatDates: formatDates)
+            URLSession.shared.dataTask(.promise, with: request).validate().done {
                     let sunriseSunset = try JSONDecoder().decode(SunriseSunset.self, from: $0.data)
                     promise.fulfill(sunriseSunset)
                 }.catch { (error) in
@@ -53,7 +69,7 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
     internal static func request(for coordinate: CLLocationCoordinate2D,
                                  date: Date,
-                                 formatDates: Bool) throws -> URLRequest? {
+                                 formatDates: Bool) -> URLRequest {
         var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false)!
         var queryItems = [URLQueryItem]()
         queryItems.append(URLQueryItem(name: "lat", value: "\(coordinate.latitude)"))
@@ -62,11 +78,7 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         queryItems.append(URLQueryItem(name: "formatted", value: "\(formatDates)"))
         components.queryItems = queryItems
 
-        if let requestUrl = components.url {
-            return URLRequest(url: requestUrl)
-        } else {
-            return nil
-        }
+        return URLRequest(url: components.url!)
     }
 
 }
