@@ -6,7 +6,29 @@ import PMKCoreLocation
 import PMKFoundation
 import Stylobate
 
+/// Retrieves `SunriseSunset` dates from the [Sunrise-Sunset.org
+/// API](https://sunrise-sunset.org/api).
 public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
+
+    /// The service's API endpoint.
+    fileprivate static let endpoint = URL(string: "https://api.sunrise-sunset.org/json")!
+
+    /// The formatter for formatting dates passed to the server.
+    fileprivate static let requestDateFormatter = DateFormatter() <~ {
+        $0.dateFormat = "yyyy-MM-dd"
+    }
+
+    /// The formatter for parsing "formatted" dates from the server.
+    fileprivate static let responseFormattedDateFormatter = DateFormatter() <~ {
+        $0.dateStyle = .medium
+    }
+
+    /// The formatter for parsing "unformatted" dates from the server.
+    fileprivate static let responseUnformattedDateFormatter = DateFormatter() <~ {
+        $0.dateFormat = "yyyy-MM-ddTkk:mm:ss+00:00"
+    }
+
+    // MARK: - SunriseSunset
 
     public func sunriseSunset() -> Promise<SunriseSunset> {
         return CLLocationManager.requestLocation().then { (locations) -> Promise<SunriseSunset> in
@@ -14,11 +36,37 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         }
     }
 
+    // MARK: - Other Public Functions
+
     public func sunriseSunset(for coordinate: CLLocationCoordinate2D,
                               date: Date = Date(),
                               formatDates: Bool = false) -> Promise<SunriseSunset> {
         return Promise<SunriseSunset> { (promise) in
-            promise.reject(NSError(domain: "SunriseSunsetDotOrgProvider", code: 1, userInfo: nil))
+            let request = SunriseSunsetDotOrgProvider.request(for: coordinate, date: date, formatDates: formatDates)
+            return URLSession.shared.dataTask(.promise, with: request).validate()
+            }.done {
+                let sunriseSunset = JSONDecoder().decode(SunriseSunset.self, from: $0.data)
+                promise.fulfill(sunriseSunset)
+            }.catch { (error) in
+                promise.reject(error)
+        }
+    }
+
+    internal static func request(for coordinate: CLLocationCoordinate2D,
+                                 date: Date,
+                                 formatDates: Bool) -> URLRequest? {
+        var components = URLComponents(url: endpoint, resolvingAgainstBaseURL: false)!
+        var queryItems = [URLQueryItem]()
+        queryItems.append(URLQueryItem(name: "lat", value: "\(coordinate.latitude)"))
+        queryItems.append(URLQueryItem(name: "lng", value: "\(coordinate.longitude)"))
+        queryItems.append(URLQueryItem(name: "date", value: requestDateFormatter.string(from: date)))
+        queryItems.append(URLQueryItem(name: "formatted", value: "\(formatDates)"))
+        components.queryItems = queryItems
+
+        if let requestUrl = components.url {
+            return URLRequest(url: requestUrl)
+        } else {
+            return nil
         }
     }
 
