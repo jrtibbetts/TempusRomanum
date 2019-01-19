@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yEL-cS-pYL">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina6_1" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -14,12 +14,17 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yEL-cS-pYL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nnp-DB-qlx">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="nnp-DB-qlx">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="24"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -36,129 +41,205 @@
             <objects>
                 <viewController id="TTA-zJ-V0f" customClass="ViewController" customModule="Tempus_Romanum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHB-PF-3mm">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
-                                <rect key="frame" x="67.5" y="20" width="240" height="240"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <accessibility key="accessibilityConfiguration">
-                                    <accessibilityTraits key="traits" notEnabled="YES"/>
-                                </accessibility>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
-                                    <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
-                                <rect key="frame" x="85.5" y="268" width="204.5" height="142"/>
+                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="AYV-kL-aEv">
+                                <rect key="frame" x="44" y="20" width="808" height="309"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="zB1-cO-fiO">
-                                        <rect key="frame" x="82" y="0.0" width="40" height="40"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="34.5" width="240" height="240"/>
+                                        <color key="backgroundColor" red="1" green="0.40000000000000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <accessibility key="accessibilityConfiguration">
+                                            <accessibilityTraits key="traits" notEnabled="YES"/>
+                                        </accessibility>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="height" multiplier="1:1" id="FEc-Q1-gHQ"/>
-                                            <constraint firstAttribute="width" constant="40" id="TcX-f6-td4"/>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="EUS-64-zQl"/>
+                                            <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="240" id="Klh-sX-1M4"/>
                                         </constraints>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunset" translatesAutoresizingMaskIntoConstraints="NO" id="rmR-Ve-gkR">
-                                        <rect key="frame" x="82" y="75" width="40" height="40"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" secondItem="rmR-Ve-gkR" secondAttribute="height" multiplier="1:1" id="9dQ-QJ-8BQ"/>
-                                        </constraints>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gus-me-V4r" userLabel="Sunset Times">
-                                        <rect key="frame" x="0.0" y="123" width="204.5" height="19"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="19"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="MI3-Ht-iOV"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(prima hora noctis)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ft-lmX" userLabel="Roman Sunset">
-                                                <rect key="frame" x="58" y="0.0" width="146.5" height="19"/>
-                                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="gdH-Ft-lmX" secondAttribute="trailing" id="2v5-qh-JVb"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="gdH-Ft-lmX" secondAttribute="bottom" id="Ctn-L7-vzx"/>
-                                            <constraint firstItem="gdH-Ft-lmX" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="GYS-M1-sAg"/>
-                                            <constraint firstItem="gdH-Ft-lmX" firstAttribute="leading" secondItem="hfr-ad-evj" secondAttribute="trailing" constant="8" symbolic="YES" id="JiW-PM-JDy"/>
-                                            <constraint firstItem="hfr-ad-evj" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="WIC-a5-XGJ"/>
-                                            <constraint firstItem="hfr-ad-evj" firstAttribute="leading" secondItem="gus-me-V4r" secondAttribute="leadingMargin" id="hSi-5i-TwO"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="hfr-ad-evj" secondAttribute="bottom" id="jLE-a5-Rmk"/>
-                                        </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
-                                        <rect key="frame" x="0.0" y="48" width="204.5" height="19"/>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="m2s-IF-A0T" userLabel="Times View">
+                                        <rect key="frame" x="248" y="83.5" width="552" height="142"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="19"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunrise" translatesAutoresizingMaskIntoConstraints="NO" id="zB1-cO-fiO">
+                                                <rect key="frame" x="256" y="0.0" width="40" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="dnc-8l-7vE"/>
+                                                    <constraint firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="height" multiplier="1:1" id="FEc-Q1-gHQ"/>
+                                                    <constraint firstAttribute="width" constant="40" id="TcX-f6-td4"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="(prima hora diei)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
-                                                <rect key="frame" x="58" y="0.0" width="146.5" height="19"/>
-                                                <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
+                                            </imageView>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Sunset" translatesAutoresizingMaskIntoConstraints="NO" id="rmR-Ve-gkR">
+                                                <rect key="frame" x="256" y="75" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="rmR-Ve-gkR" secondAttribute="height" multiplier="1:1" id="9dQ-QJ-8BQ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="gus-me-V4r" userLabel="Sunset Times">
+                                                <rect key="frame" x="0.0" y="123" width="552" height="19"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hfr-ad-evj" userLabel="Modern Sunset">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="MI3-Ht-iOV"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="(prima hora noctis)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdH-Ft-lmX" userLabel="Roman Sunset">
+                                                        <rect key="frame" x="58" y="0.0" width="494" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="gdH-Ft-lmX" secondAttribute="trailing" id="2v5-qh-JVb"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="gdH-Ft-lmX" secondAttribute="bottom" id="Ctn-L7-vzx"/>
+                                                    <constraint firstItem="gdH-Ft-lmX" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="GYS-M1-sAg"/>
+                                                    <constraint firstItem="gdH-Ft-lmX" firstAttribute="leading" secondItem="hfr-ad-evj" secondAttribute="trailing" constant="8" symbolic="YES" id="JiW-PM-JDy"/>
+                                                    <constraint firstItem="hfr-ad-evj" firstAttribute="top" secondItem="gus-me-V4r" secondAttribute="topMargin" id="WIC-a5-XGJ"/>
+                                                    <constraint firstItem="hfr-ad-evj" firstAttribute="leading" secondItem="gus-me-V4r" secondAttribute="leadingMargin" id="hSi-5i-TwO"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="hfr-ad-evj" secondAttribute="bottom" id="jLE-a5-Rmk"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="MAn-LU-vNo" userLabel="Sunrise Times">
+                                                <rect key="frame" x="0.0" y="48" width="552" height="19"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="--:--" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f5D-iC-JKC" userLabel="Modern Sunrise">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="19"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="dnc-8l-7vE"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="999" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="(prima hora diei)" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GGF-Lh-qEu" userLabel="Roman Sunrise">
+                                                        <rect key="frame" x="58" y="0.0" width="494" height="19"/>
+                                                        <fontDescription key="fontDescription" name="Palatino-BoldItalic" family="Palatino" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="GGF-Lh-qEu" secondAttribute="bottom" id="3vW-O4-vnd"/>
+                                                    <constraint firstAttribute="trailingMargin" secondItem="GGF-Lh-qEu" secondAttribute="trailing" id="9Na-XT-gAp"/>
+                                                    <constraint firstItem="f5D-iC-JKC" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="LIv-9n-Ypw"/>
+                                                    <constraint firstAttribute="bottomMargin" secondItem="f5D-iC-JKC" secondAttribute="bottom" id="LMC-GY-RLa"/>
+                                                    <constraint firstItem="GGF-Lh-qEu" firstAttribute="leading" secondItem="f5D-iC-JKC" secondAttribute="trailing" constant="8" symbolic="YES" id="SJW-fK-aAe"/>
+                                                    <constraint firstItem="f5D-iC-JKC" firstAttribute="leading" secondItem="MAn-LU-vNo" secondAttribute="leadingMargin" id="Z5T-mc-IvQ"/>
+                                                    <constraint firstItem="GGF-Lh-qEu" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="Zqj-xM-56s"/>
+                                                </constraints>
+                                                <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
+                                            </view>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="bottomMargin" secondItem="GGF-Lh-qEu" secondAttribute="bottom" id="3vW-O4-vnd"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="GGF-Lh-qEu" secondAttribute="trailing" id="9Na-XT-gAp"/>
-                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="LIv-9n-Ypw"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="f5D-iC-JKC" secondAttribute="bottom" id="LMC-GY-RLa"/>
-                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="leading" secondItem="f5D-iC-JKC" secondAttribute="trailing" constant="8" symbolic="YES" id="SJW-fK-aAe"/>
-                                            <constraint firstItem="f5D-iC-JKC" firstAttribute="leading" secondItem="MAn-LU-vNo" secondAttribute="leadingMargin" id="Z5T-mc-IvQ"/>
-                                            <constraint firstItem="GGF-Lh-qEu" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="topMargin" id="Zqj-xM-56s"/>
+                                            <constraint firstItem="MAn-LU-vNo" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="4FS-fw-ny6"/>
+                                            <constraint firstItem="zB1-cO-fiO" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="top" id="7Ac-qR-DNZ"/>
+                                            <constraint firstAttribute="trailing" secondItem="gus-me-V4r" secondAttribute="trailing" id="8MZ-nB-zMS"/>
+                                            <constraint firstItem="MAn-LU-vNo" firstAttribute="top" secondItem="zB1-cO-fiO" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzm-6s-nkS"/>
+                                            <constraint firstItem="gus-me-V4r" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="OTf-Xj-t2v"/>
+                                            <constraint firstItem="gus-me-V4r" firstAttribute="top" secondItem="rmR-Ve-gkR" secondAttribute="bottom" constant="8" symbolic="YES" id="Ul3-Ai-ZgC"/>
+                                            <constraint firstItem="rmR-Ve-gkR" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="bottom" constant="8" symbolic="YES" id="YY7-Si-IJK"/>
+                                            <constraint firstAttribute="trailing" secondItem="MAn-LU-vNo" secondAttribute="trailing" id="aRq-g3-7mb"/>
+                                            <constraint firstAttribute="bottom" secondItem="gus-me-V4r" secondAttribute="bottom" id="jhb-dl-7uJ"/>
+                                            <constraint firstItem="zB1-cO-fiO" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="lLz-wv-aai"/>
+                                            <constraint firstItem="rmR-Ve-gkR" firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="width" id="nfG-ll-NiW"/>
+                                            <constraint firstItem="gus-me-V4r" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="suj-q3-vQM"/>
+                                            <constraint firstItem="rmR-Ve-gkR" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="xSG-FL-QN7"/>
                                         </constraints>
-                                        <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="MAn-LU-vNo" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="4FS-fw-ny6"/>
-                                    <constraint firstItem="zB1-cO-fiO" firstAttribute="top" secondItem="m2s-IF-A0T" secondAttribute="top" id="7Ac-qR-DNZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="gus-me-V4r" secondAttribute="trailing" id="8MZ-nB-zMS"/>
-                                    <constraint firstItem="MAn-LU-vNo" firstAttribute="top" secondItem="zB1-cO-fiO" secondAttribute="bottom" constant="8" symbolic="YES" id="Kzm-6s-nkS"/>
-                                    <constraint firstItem="gus-me-V4r" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="OTf-Xj-t2v"/>
-                                    <constraint firstItem="gus-me-V4r" firstAttribute="top" secondItem="rmR-Ve-gkR" secondAttribute="bottom" constant="8" symbolic="YES" id="Ul3-Ai-ZgC"/>
-                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="top" secondItem="MAn-LU-vNo" secondAttribute="bottom" constant="8" symbolic="YES" id="YY7-Si-IJK"/>
-                                    <constraint firstAttribute="trailing" secondItem="MAn-LU-vNo" secondAttribute="trailing" id="aRq-g3-7mb"/>
-                                    <constraint firstAttribute="bottom" secondItem="gus-me-V4r" secondAttribute="bottom" id="jhb-dl-7uJ"/>
-                                    <constraint firstItem="zB1-cO-fiO" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="lLz-wv-aai"/>
-                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="width" secondItem="zB1-cO-fiO" secondAttribute="width" id="nfG-ll-NiW"/>
-                                    <constraint firstItem="gus-me-V4r" firstAttribute="leading" secondItem="m2s-IF-A0T" secondAttribute="leading" id="suj-q3-vQM"/>
-                                    <constraint firstItem="rmR-Ve-gkR" firstAttribute="centerX" secondItem="m2s-IF-A0T" secondAttribute="centerX" id="xSG-FL-QN7"/>
+                                    <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" secondItem="AYV-kL-aEv" secondAttribute="leading" id="4jF-Og-EmT"/>
+                                    <constraint firstAttribute="bottom" secondItem="m2s-IF-A0T" secondAttribute="bottom" id="JlF-qi-Jk1"/>
+                                    <constraint firstItem="m2s-IF-A0T" firstAttribute="top" secondItem="dim-oQ-clJ" secondAttribute="bottom" constant="30" id="QED-cN-oB9"/>
+                                    <constraint firstItem="dim-oQ-clJ" firstAttribute="centerY" secondItem="AYV-kL-aEv" secondAttribute="centerY" id="ZNL-mb-0DV"/>
+                                    <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="AYV-kL-aEv" secondAttribute="centerX" id="h3l-Wy-Mu1"/>
+                                    <constraint firstItem="m2s-IF-A0T" firstAttribute="centerY" secondItem="AYV-kL-aEv" secondAttribute="centerY" id="hd0-Q2-jRP"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="m2s-IF-A0T" secondAttribute="trailing" id="j82-Fg-iUm"/>
+                                    <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="AYV-kL-aEv" secondAttribute="top" id="jMc-AX-Mf4"/>
+                                    <constraint firstItem="m2s-IF-A0T" firstAttribute="leading" secondItem="dim-oQ-clJ" secondAttribute="trailing" constant="8" symbolic="YES" id="jdB-de-MJb"/>
+                                    <constraint firstItem="m2s-IF-A0T" firstAttribute="centerX" secondItem="AYV-kL-aEv" secondAttribute="centerX" id="yH0-bJ-YfF"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="4jF-Og-EmT"/>
+                                        <exclude reference="ZNL-mb-0DV"/>
+                                        <exclude reference="h3l-Wy-Mu1"/>
+                                        <exclude reference="jMc-AX-Mf4"/>
+                                        <exclude reference="JlF-qi-Jk1"/>
+                                        <exclude reference="QED-cN-oB9"/>
+                                        <exclude reference="hd0-Q2-jRP"/>
+                                        <exclude reference="j82-Fg-iUm"/>
+                                        <exclude reference="jdB-de-MJb"/>
+                                        <exclude reference="yH0-bJ-YfF"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="4jF-Og-EmT"/>
+                                        <include reference="ZNL-mb-0DV"/>
+                                        <include reference="hd0-Q2-jRP"/>
+                                        <include reference="j82-Fg-iUm"/>
+                                        <include reference="jdB-de-MJb"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular">
+                                    <mask key="constraints">
+                                        <include reference="h3l-Wy-Mu1"/>
+                                        <include reference="jMc-AX-Mf4"/>
+                                        <include reference="JlF-qi-Jk1"/>
+                                        <include reference="QED-cN-oB9"/>
+                                        <include reference="yH0-bJ-YfF"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tHB-PF-3mm" secondAttribute="leadingMargin" id="7e4-MF-LtS"/>
-                            <constraint firstItem="m2s-IF-A0T" firstAttribute="top" secondItem="dim-oQ-clJ" secondAttribute="bottom" constant="8" symbolic="YES" id="DGe-ca-D5A"/>
-                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="trailing" id="gay-et-5ry"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="hIN-pn-jrc"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="kSg-pv-Fke"/>
-                            <constraint firstItem="m2s-IF-A0T" firstAttribute="centerX" secondItem="tHB-PF-3mm" secondAttribute="centerXWithinMargins" id="mqS-h8-Ica"/>
-                            <constraint firstItem="OKQ-Kr-609" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="m2s-IF-A0T" secondAttribute="bottom" constant="20" id="r6k-dd-IWR"/>
+                            <constraint firstItem="OKQ-Kr-609" firstAttribute="bottom" relation="lessThanOrEqual" secondItem="AYV-kL-aEv" secondAttribute="bottom" constant="20" id="7AP-G8-cLl"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="trailing" secondItem="OKQ-Kr-609" secondAttribute="trailing" id="E0r-mF-m2N"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="Vz7-VG-raL"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="centerY" secondItem="OKQ-Kr-609" secondAttribute="centerY" id="Xpj-s4-fvh"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="leading" secondItem="OKQ-Kr-609" secondAttribute="leading" id="bst-VX-9TY"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="leading" relation="lessThanOrEqual" secondItem="OKQ-Kr-609" secondAttribute="leading" constant="20" id="ffX-1l-Yso"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="hf5-es-10Z"/>
+                            <constraint firstItem="AYV-kL-aEv" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="sS0-y4-TDG"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
                         <viewLayoutGuide key="safeArea" id="OKQ-Kr-609"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Vz7-VG-raL"/>
+                                <exclude reference="Xpj-s4-fvh"/>
+                                <exclude reference="bst-VX-9TY"/>
+                                <exclude reference="ffX-1l-Yso"/>
+                                <exclude reference="hf5-es-10Z"/>
+                                <exclude reference="sS0-y4-TDG"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="Vz7-VG-raL"/>
+                                <include reference="Xpj-s4-fvh"/>
+                                <include reference="ffX-1l-Yso"/>
+                                <include reference="sS0-y4-TDG"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular">
+                            <mask key="constraints">
+                                <include reference="bst-VX-9TY"/>
+                                <include reference="hf5-es-10Z"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="TEMPVS ROMANVM" id="Fzr-u3-w1l"/>
                     <connections>
@@ -171,7 +252,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Ip-TMr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="895.20000000000005" y="68.815592203898049"/>
+            <point key="canvasLocation" x="894.64285714285711" y="68.115942028985515"/>
         </scene>
     </scenes>
     <resources>
