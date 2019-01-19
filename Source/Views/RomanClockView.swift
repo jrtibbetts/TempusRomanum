@@ -1,6 +1,7 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
-import UIKit
+import Stylobate
+//import UIKit
 
 /// A 24-hour analog clock that displays daylight and nighttime hours with
 /// Roman-style durations, such that each daylight hour is exactly 1/12th of
@@ -20,38 +21,29 @@ import UIKit
 /// Layers marked in **bold** change when the `sunriseSunset` value changes.
 public final class RomanClockView: UIView {
 
+    private var backgroundLayer: BackgroundSquareLayer?
+
     public override func awakeFromNib() {
         super.awakeFromNib()
-        let backgroundLayer = BackgroundSquareLayer()
+        backgroundLayer?.removeFromSuperlayer()
+        backgroundLayer = BackgroundSquareLayer()
         let backgroundSideLength = min(frame.width, frame.height)
         let backgroundSize = CGSize(width: backgroundSideLength,
                                     height: backgroundSideLength)
         let backgroundOrigin = CGPoint(x: (frame.width - backgroundSideLength) / 2,
                                        y: (frame.height - backgroundSideLength) / 2.0)
         let backgroundFrame = CGRect(origin: backgroundOrigin, size: backgroundSize)
-        backgroundLayer.frame = backgroundFrame
-        layer.addSublayer(backgroundLayer)
+        backgroundLayer!.frame = backgroundFrame
+        layer.addSublayer(backgroundLayer!)
+    }
+
+    public var sunriseSunset: SunriseSunset? {
+        didSet {
+            backgroundLayer?.sunriseSunset = sunriseSunset
+        }
     }
 
 }
-
-//fileprivate extension UIEdgeInsets {
-//
-//    static func + (a: UIEdgeInsets, b: UIEdgeInsets) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: a.top + b.top,
-//                            left: a.left + b.left,
-//                            bottom: a.bottom + b.bottom,
-//                            right: a.right + b.right)
-//    }
-//
-//    static func - (a: UIEdgeInsets, b: UIEdgeInsets) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: a.top - b.top,
-//                            left: a.left - b.left,
-//                            bottom: a.bottom - b.bottom,
-//                            right: a.right - b.right)
-//    }
-//
-//}
 
 public extension CALayer {
 
@@ -72,7 +64,7 @@ public extension CALayer {
 
 }
 
-fileprivate final class BackgroundSquareLayer: CALayer {
+fileprivate final class BackgroundSquareLayer: ClockLayer {
 
     override init() {
         nighttimeClockFace = CAShapeLayer()
@@ -138,39 +130,30 @@ fileprivate final class BackgroundSquareLayer: CALayer {
         }
     }
 
-    // MARK: - Initializers
-
     public var sunriseSunset: SunriseSunset? {
         didSet {
             guard let sunriseSunset = sunriseSunset else {
                 return
             }
-            
+
             daylightLayer.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
-//            let radius = minimumDimension / 2.0
-//            let layerCenter = CGPoint(x: layer.frame.width / 2.0, y: layer.frame.height / 2.0)
-//
-//            if let sunriseSunset = sunriseSunset {
-//                daylightLayer?.removeFromSuperview()
-//                daylightLayer = DaylightLayer()
-//                daylightLayer?.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
-//                clockFace.addSublayer(daylightLayer!)
-//
-//                let nighttimePath = UIBezierPath(sliceCenter: layerCenter,
-//                                                 radius: radius,
-//                                                 startAngle: sunsetAngle,
-//                                                 endAngle: sunriseAngle,
-//                                                 clockwise: true)
-//                let nighttimeLayer = CAShapeLayer()
-//                nighttimeLayer.path = nighttimePath.cgPath
-//                nighttimeLayer.fillColor = UIColor.blue.cgColor
-//                clockFace.addSublayer(nighttimeLayer)
-//
-//                nighttimeHourLinesLayer?.removeFromSuperlayer()
-//                nighttimeHourLinesLayer?.lineWidth = 1.0
-//                nighttimeHourLinesLayer?.strokeColor = UIColor.white.cgColor
-//                nighttimeHourLinesLayer = HourLinesLayer(rect: bounds, dates: sunriseSunset.nighttimeHourTimes)
-//                clockFace.addSublayer(nighttimeHourLinesLayer!)
+            clockFace.addSublayer(daylightLayer)
+
+            let nighttimePath = UIBezierPath(sliceCenter: center,
+                                             radius: radius,
+                                             startAngle: sunriseSunset.sunset.rotationAngle,
+                                             endAngle: sunriseSunset.sunrise.rotationAngle,
+                                             clockwise: true)
+            let nighttimeLayer = CAShapeLayer()
+            nighttimeLayer.path = nighttimePath.cgPath
+            nighttimeLayer.fillColor = UIColor.blue.cgColor
+            clockFace.addSublayer(nighttimeLayer)
+
+            nighttimeHourLinesLayer.removeFromSuperlayer()
+            nighttimeHourLinesLayer.lineWidth = 1.0
+            nighttimeHourLinesLayer.strokeColor = UIColor.white.cgColor
+            nighttimeHourLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes)
+            clockFace.addSublayer(nighttimeHourLinesLayer)
         }
     }
 
