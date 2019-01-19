@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B52F2217FEDA3004754A5 /* RomanClockView.swift */; };
+		961DC6FB21D4999A00D8A857 /* MockSunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961DC6FA21D4999A00D8A857 /* MockSunriseSunsetProvider.swift */; };
 		9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF29215C521800C8EBB3 /* AppDelegate.swift */; };
 		9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF2B215C521800C8EBB3 /* ViewController.swift */; };
 		9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF2D215C521800C8EBB3 /* Main.storyboard */; };
@@ -88,6 +89,7 @@
 
 /* Begin PBXFileReference section */
 		960B52F2217FEDA3004754A5 /* RomanClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockView.swift; sourceTree = "<group>"; };
+		961DC6FA21D4999A00D8A857 /* MockSunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		9621BF26215C521800C8EBB3 /* Tempus Romanum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus Romanum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF29215C521800C8EBB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9621BF2B215C521800C8EBB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -238,6 +240,7 @@
 		965DF68621AB039700A40698 /* Sunrise & Sunset */ = {
 			isa = PBXGroup;
 			children = (
+				961DC6FA21D4999A00D8A857 /* MockSunriseSunsetProvider.swift */,
 				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
 				965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */,
 				965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */,
@@ -392,6 +395,7 @@
 				965DF67421A6740200A40698 /* HourLinesLayer.swift in Sources */,
 				965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */,
 				965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */,
+				961DC6FB21D4999A00D8A857 /* MockSunriseSunsetProvider.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
 				96DCE69F216C45C600E6A95F /* USNOSolarAndLunarData.swift in Sources */,
 				965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */,
