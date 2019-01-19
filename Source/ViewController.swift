@@ -16,7 +16,7 @@ public final class ViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    fileprivate let sunriseSunsetProvider = USNOSunriseSunsetProvider()
+    fileprivate let sunriseSunsetProvider = MockSunriseSunsetProvider()
 
     /// A `DateFormatter` for getting displaying 24-hour time for `Date`s,
     /// like `08:00` (as opposed to true military time, which doesn't use
