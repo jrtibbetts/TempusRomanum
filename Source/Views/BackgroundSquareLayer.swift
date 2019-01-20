@@ -1,22 +1,27 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
+import Stylobate
 import UIKit
 
 /// The background layer of the clock view.
 final class BackgroundSquareLayer: CALayer {
     
     // MARK: - Private Properties
-    
+
+    /// The layer that draws the daylight portion of the clock circle.
     fileprivate var daylightLayer = DaylightLayer()
-    
+
+    /// The number of points to inset the `modernHourMarksLayer`.
     fileprivate var modernHourMarksInset: CGFloat = 30.0 {
         didSet {
             layoutSublayers()
         }
     }
 
+    /// The layer that draws the modern-style hour mark lines.
     fileprivate var modernHourMarksLayer: ModernHourMarksLayer?
-    
+
+    /// The layer that draws the nighttime portion of the clock table.
     fileprivate var nighttimeClockFace: CAShapeLayer
 
     fileprivate var nighttimeLinesLayer: HourLinesLayer?
@@ -38,10 +43,14 @@ final class BackgroundSquareLayer: CALayer {
             daylightLayer.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
             
             nighttimeLinesLayer?.removeFromSuperlayer()
-            nighttimeLinesLayer?.lineWidth = 1.0
-            nighttimeLinesLayer?.strokeColor = UIColor.white.cgColor
-            nighttimeLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes)
-            nighttimeClockFace.addSublayer(nighttimeLinesLayer!)
+            nighttimeLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes) <~ {
+                $0.lineWidth = 1.0
+                $0.strokeColor = UIColor.white.cgColor
+                $0.frame = nighttimeClockFace.bounds
+                nighttimeClockFace.addSublayer($0)
+                $0.centerInSuperlayer()
+
+            }
             
             setNeedsLayout()
             layoutIfNeeded()
@@ -78,15 +87,16 @@ final class BackgroundSquareLayer: CALayer {
     
     override init() {
         nighttimeClockFace = CAShapeLayer()
+        nighttimeClockFace.allowsEdgeAntialiasing = false
         nighttimeClockFace.fillColor = UIColor.blue.cgColor
         
         daylightLayer = DaylightLayer()
+        daylightLayer.allowsEdgeAntialiasing = false
         
         super.init()
         
         modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
         addSublayer(modernHourMarksLayer!)
-        modernHourMarksLayer?.centerInSuperlayer()
         addSublayer(nighttimeClockFace)
         addSublayer(daylightLayer)
     }
@@ -99,7 +109,10 @@ final class BackgroundSquareLayer: CALayer {
     
     override func layoutSublayers() {
         super.layoutSublayers()
-        
+
+        modernHourMarksLayer?.frame = self.bounds
+        modernHourMarksLayer?.centerInSuperlayer()
+
         // Calculate the size of the clock layer
         let marksInsets = modernHourMarksInset + romanHourMarksInset
         let sublayerSideLength = min(frame.size.width - marksInsets, frame.size.width - marksInsets)

@@ -31,14 +31,18 @@ public final class RomanClockView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         backgroundLayer = BackgroundSquareLayer()
+    }
+
+    public override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let backgroundSideLength = min(frame.width, frame.height)
         let backgroundSize = CGSize(width: backgroundSideLength,
                                     height: backgroundSideLength)
-        let backgroundOrigin = CGPoint(x: (frame.width - backgroundSideLength) / 2,
-                                       y: (frame.height - backgroundSideLength) / 2.0)
-        let backgroundFrame = CGRect(origin: backgroundOrigin, size: backgroundSize)
+        let backgroundFrame = CGRect(origin: CGPoint(), size: backgroundSize)
         backgroundLayer.frame = backgroundFrame
         layer.addSublayer(backgroundLayer)
+        backgroundLayer.centerInSuperlayer()
     }
 
 }
