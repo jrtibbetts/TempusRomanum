@@ -33,7 +33,7 @@ class DaylightLayer: ClockLayer {
             hourLinesLayer?.removeFromSuperlayer()
             hourLinesLayer = HourLinesLayer(hours: hours)
             hourLinesLayer?.lineWidth = 1.0
-            hourLinesLayer?.strokeColor = UIColor.lightGray.cgColor
+            hourLinesLayer?.strokeColor = UIColor.darkGray.cgColor
             hourLinesLayer?.frame = bounds
             addSublayer(hourLinesLayer!)
             setNeedsDisplay()

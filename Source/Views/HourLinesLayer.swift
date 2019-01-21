@@ -41,7 +41,7 @@ open class HourLinesLayer: ClockLayer {
         let path = UIBezierPath()
         path.lineWidth = 1.0
 
-        hours.forEach { (hour) in
+        hours.dropFirst().forEach { (hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
             // day.
             path.move(to: center)
