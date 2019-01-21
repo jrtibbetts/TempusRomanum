@@ -10,7 +10,11 @@ open class HourLinesLayer: ClockLayer {
     // MARK: - Internal Properties
 
     /// The `Date`s of the hours to be drawn.
-    internal let hours: [Date]
+    open var hours: [Date] {
+        didSet {
+            layoutIfNeeded()
+        }
+    }
 
     /// The encoding key for the `hours` field.
     fileprivate let hoursKey = "hours"
@@ -25,12 +29,18 @@ open class HourLinesLayer: ClockLayer {
     public init(hours: [Date]) {
         self.hours = hours
         super.init()
+    }
+    
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
+    open override func layoutSublayers() {
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.
         let path = UIBezierPath()
         path.lineWidth = 1.0
-        
+
         hours.forEach { (hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
             // day.
@@ -39,13 +49,9 @@ open class HourLinesLayer: ClockLayer {
                                       y: center.y + (radius * sin(angle)))
             path.addLine(to: borderPoint)
         }
-        
+
         self.path = path.cgPath
         setNeedsDisplay()
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
 }

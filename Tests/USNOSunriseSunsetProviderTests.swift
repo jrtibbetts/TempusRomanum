@@ -62,7 +62,7 @@ class USNOSunriseSunsetProviderTests: XCTestCase {
 
     /// In order for this test to run, the app must be set up with app transport
     /// security and an exception for the navy.mil domain.
-    func testSunriseSunsetReturnsOk() {
+    func NOtestSunriseSunsetReturnsOk() {
         let exp = expectation(description: "sunriseSunset()")
 
         let tevye = USNOSunriseSunsetProvider()
