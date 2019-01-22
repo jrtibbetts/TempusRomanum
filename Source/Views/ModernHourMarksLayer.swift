@@ -10,7 +10,6 @@ open class ModernHourMarksLayer: CALayer {
 
     // MARK: - Public Properties
 
-
     private var font: CGFont? {
         didSet {
             labelLayers.forEach { (layer) in
@@ -100,6 +99,12 @@ open class ModernHourMarksLayer: CALayer {
             layer.fontSize = fontSize
             layer.foregroundColor = foregroundColor
         }
+    }
+
+    public override init(layer: Any) {
+        radius = 0.0
+        margin = 0.0
+        super.init(layer: layer)
     }
 
     required public init?(coder aDecoder: NSCoder) {
