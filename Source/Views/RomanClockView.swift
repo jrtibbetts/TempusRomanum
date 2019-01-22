@@ -31,6 +31,7 @@ public final class RomanClockView: UIView {
     public override func awakeFromNib() {
         super.awakeFromNib()
         backgroundLayer = BackgroundSquareLayer()
+        layer.addSublayer(backgroundLayer)
     }
 
     public override func layoutSubviews() {
@@ -41,7 +42,6 @@ public final class RomanClockView: UIView {
                                     height: backgroundSideLength)
         let backgroundFrame = CGRect(origin: CGPoint(), size: backgroundSize)
         backgroundLayer.frame = backgroundFrame
-        layer.addSublayer(backgroundLayer)
         backgroundLayer.centerInSuperlayer()
     }
 
