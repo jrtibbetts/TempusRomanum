@@ -26,7 +26,7 @@ open class HourLinesLayer: ClockLayer {
     /// - parameter hours: The hour times for which to draw lines. They don't
     /// need to be in chronological order, but all of them _should_ be on the
     /// same calendar date, if you don't want strange results.
-    public init(hours: [Date]) {
+    public init(hours: [Date] = []) {
         self.hours = hours
         super.init()
     }
