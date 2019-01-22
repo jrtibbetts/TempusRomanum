@@ -13,7 +13,6 @@
 		9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF2D215C521800C8EBB3 /* Main.storyboard */; };
 		9621BF31215C521A00C8EBB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF30215C521A00C8EBB3 /* Assets.xcassets */; };
 		9621BF34215C521A00C8EBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */; };
-		9621BF3F215C521A00C8EBB3 /* USNOSunriseSunsetProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF3E215C521A00C8EBB3 /* USNOSunriseSunsetProviderTests.swift */; };
 		965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */; };
 		965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66E21A66D8600A40698 /* SunriseSunset.swift */; };
 		965DF67221A6719000A40698 /* Date+Trigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67121A6719000A40698 /* Date+Trigonometry.swift */; };
@@ -98,7 +97,6 @@
 		9621BF33215C521A00C8EBB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9621BF35215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF3A215C521A00C8EBB3 /* Tempus RomanumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9621BF3E215C521A00C8EBB3 /* USNOSunriseSunsetProviderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USNOSunriseSunsetProviderTests.swift; sourceTree = "<group>"; };
 		9621BF40215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF45215C521A00C8EBB3 /* Tempus RomanumUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF4B215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 			children = (
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
 				96DCE6A0216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift */,
-				9621BF3E215C521A00C8EBB3 /* USNOSunriseSunsetProviderTests.swift */,
 				965DF67B21A84FB300A40698 /* Views */,
 			);
 			path = Tests;
@@ -419,7 +416,6 @@
 			files = (
 				96DCE6A1216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift in Sources */,
 				965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */,
-				9621BF3F215C521A00C8EBB3 /* USNOSunriseSunsetProviderTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
