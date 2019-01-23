@@ -35,6 +35,11 @@ open class HourLinesLayer: ClockLayer {
         fatalError("init(coder:) has not been implemented")
     }
 
+    public override init(layer: Any) {
+        self.hours = []
+        super.init(layer: layer)
+    }
+
     open override func layoutSublayers() {
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.

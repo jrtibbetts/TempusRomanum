@@ -27,7 +27,7 @@ final class BackgroundSquareLayer: CALayer {
 
     private var nighttimeLinesLayer: HourLinesLayer?
 
-    private var romanHourMarks = CALayer()
+    private var romanHourMarksLayer: RomanHourMarksLayer?
 
     private var romanHourMarksInset: CGFloat = 30.0 {
         didSet {
@@ -53,7 +53,9 @@ final class BackgroundSquareLayer: CALayer {
                 nighttimeClockFace.addSublayer($0)
                 $0.centerInSuperlayer()
             }
-            
+
+            romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHourTimes
+            romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHourTimes
             setNeedsLayout()
             layoutIfNeeded()
         }
@@ -97,18 +99,20 @@ final class BackgroundSquareLayer: CALayer {
         
         modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
         addSublayer(modernHourMarksLayer!)
+        romanHourMarksLayer = RomanHourMarksLayer()
+        addSublayer(romanHourMarksLayer!)
         addSublayer(nighttimeClockFace)
         addSublayer(daylightLayer)
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     override init(layer: Any) {
         super.init(layer: layer)
     }
-    
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+
     // MARK: - CALayer
     
     override func layoutSublayers() {
