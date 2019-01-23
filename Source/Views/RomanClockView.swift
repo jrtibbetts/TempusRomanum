@@ -64,30 +64,3 @@ public final class RomanClockView: UIView {
 //    }
 //
 //}
-
-public extension CALayer {
-
-    @discardableResult public func centerInSuperlayer() -> CGRect {
-        let size = bounds.size
-
-        guard let superlayerBounds = superlayer?.bounds else {
-            return frame
-        }
-
-        let origin = CGPoint(x: (superlayerBounds.width - frame.width) / 2.0,
-                             y: (superlayerBounds.height - frame.height) / 2.0)
-
-        frame = CGRect(origin: origin, size: size)
-
-        return frame
-    }
-
-}
-
-fileprivate extension CGRect {
-
-    var center: CGPoint {
-        return CGPoint(x: width / 2.0, y: height / 2.0)
-    }
-
-}
