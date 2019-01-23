@@ -124,17 +124,17 @@ open class ModernHourMarksLayer: CALayer {
                                       y: margin - labelHeight)
         noonLayer.frame = CGRect(origin: noonLayerOrigin, size: textLayerSize)
 
-        let sixPmLayerOrigin = CGPoint(x: (margin - labelWidth) / 2.0,
+        let sixAmLayerOrigin = CGPoint(x: (margin - labelWidth) / 2.0,
                                        y: (bounds.height - labelHeight) / 2.0)
-        sixPmLayer.frame = CGRect(origin: sixPmLayerOrigin, size: textLayerSize)
+        sixAmLayer.frame = CGRect(origin: sixAmLayerOrigin, size: textLayerSize)
 
         let midnightLayerOrigin = CGPoint(x: (bounds.width - labelWidth) / 2.0,
                                           y: bounds.height - margin)
         midnightLayer.frame = CGRect(origin: midnightLayerOrigin, size: textLayerSize)
 
-        let sixAmLayerOrigin = CGPoint(x: bounds.width - margin,
+        let sixPmLayerOrigin = CGPoint(x: bounds.width - margin,
                                        y: (bounds.height - labelHeight) / 2.0)
-        sixAmLayer.frame = CGRect(origin: sixAmLayerOrigin, size: textLayerSize)
+        sixPmLayer.frame = CGRect(origin: sixPmLayerOrigin, size: textLayerSize)
     }
 
 }

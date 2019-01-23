@@ -12,7 +12,7 @@ final class BackgroundSquareLayer: CALayer {
     private var daylightLayer = DaylightLayer()
 
     /// The number of points to inset the `modernHourMarksLayer`.
-    private var modernHourMarksInset: CGFloat = 30.0 {
+    private var modernHourMarksInset: CGFloat = 25.0 {
         didSet {
             layoutSublayers()
         }
@@ -29,7 +29,7 @@ final class BackgroundSquareLayer: CALayer {
 
     private var romanHourMarksLayer: RomanHourMarksLayer?
 
-    private var romanHourMarksInset: CGFloat = 30.0 {
+    private var romanHourMarksInset: CGFloat = 15.0 {
         didSet {
             layoutSublayers()
         }
@@ -42,8 +42,6 @@ final class BackgroundSquareLayer: CALayer {
             }
             
             daylightLayer.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
-            daylightLayer.borderColor = UIColor.black.cgColor
-            daylightLayer.borderWidth = 1.0
 
             nighttimeLinesLayer?.removeFromSuperlayer()
             nighttimeLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes) <~ {
@@ -131,6 +129,12 @@ final class BackgroundSquareLayer: CALayer {
         daylightLayer.frame = clockFaceFrame
         daylightLayer.centerInSuperlayer()
         daylightLayer.cornerRadius = daylightLayer.bounds.height
+
+        let romanHourMarksFrame = CGRect(x: frame.origin.x + modernHourMarksInset,
+                                         y: frame.origin.y + modernHourMarksInset,
+                                         width: frame.width - (modernHourMarksInset * 2.0),
+                                         height: frame.height - (modernHourMarksInset * 2.0))
+        romanHourMarksLayer?.frame = romanHourMarksFrame
     }
     
 }
