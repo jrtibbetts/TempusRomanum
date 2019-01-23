@@ -81,14 +81,14 @@ public final class RomanHourMarksLayer: ClockLayer {
             layer.removeFromSuperlayer()
         }
 
-        stride(from: 3, to: daylightHours.count, by: 6).forEach { (index) in
+        stride(from: 2, to: daylightHours.count, by: 6).forEach { (index) in
             let date = daylightHours[index]
             let layer = createLayer(forNumber: index, time: date)
             daylightLabelLayers.append(layer)
             addSublayer(layer)
         }
 
-        stride(from: 3, to: nighttimeHours.count, by: 6).forEach { (index) in
+        stride(from: 2, to: nighttimeHours.count, by: 6).forEach { (index) in
             let date = nighttimeHours[index]
             let layer = createLayer(forNumber: index, time: date)
             nighttimeLabelLayers.append(layer)
