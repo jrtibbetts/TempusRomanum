@@ -12,34 +12,23 @@ public final class RomanHourMarksLayer: ClockLayer {
         }
     }
 
-
-    public var font: CGFont? = CGFont("Palatino" as NSString) {
+    public var font: CGFont? {
         didSet {
-            if let font = font {
-                labelLayers.forEach { (layer) in
-                    layer.font = font
-                }
-
-                setNeedsDisplay()
-            }
+            labelLayers.forEach { $0.font = font }
+            setNeedsDisplay()
         }
     }
 
     public var fontSize: CGFloat = 10.0 {
         didSet {
-            labelLayers.forEach { (layer) in
-                layer.fontSize = fontSize
-            }
-
+            labelLayers.forEach { $0.fontSize = fontSize }
             setNeedsLayout()
         }
     }
 
     public var textColor: CGColor = UIColor.black.cgColor {
         didSet {
-            labelLayers.forEach { (layer) in
-                layer.foregroundColor = textColor
-            }
+            labelLayers.forEach { $0.foregroundColor = textColor }
 
             setNeedsDisplay()
         }
