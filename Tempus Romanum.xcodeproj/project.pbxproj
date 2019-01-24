@@ -21,7 +21,6 @@
 		965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67721A7B49A00A40698 /* ClockLayer.swift */; };
 		965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */; };
 		965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */; };
-		965DF68121AA6CD000A40698 /* USNOSunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68021AA6CD000A40698 /* USNOSunriseSunsetProvider.swift */; };
 		965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */; };
 		965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */; };
 		967547A121F6D92000A6DA63 /* RomanHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */; };
@@ -37,8 +36,6 @@
 		96DCE69B2166FEA100E6A95F /* PMKFoundation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE69C2166FEA100E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
 		96DCE69D2166FEA100E6A95F /* PMKCoreLocation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		96DCE69F216C45C600E6A95F /* USNOSolarAndLunarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE69E216C45C600E6A95F /* USNOSolarAndLunarData.swift */; };
-		96DCE6A1216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A0216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift */; };
 		96DCE6A3216C5A1A00E6A95F /* Tempus_RomanumUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */; };
 		96DCE6A7216F088600E6A95F /* PMKCoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */; };
 		96DCE6A8216F088600E6A95F /* PMKFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE6982166FEA100E6A95F /* PMKFoundation.framework */; };
@@ -113,7 +110,6 @@
 		965DF67721A7B49A00A40698 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
 		965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayer.swift; sourceTree = "<group>"; };
 		965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayerTests.swift; sourceTree = "<group>"; };
-		965DF68021AA6CD000A40698 /* USNOSunriseSunsetProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = USNOSunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgProvider.swift; sourceTree = "<group>"; };
 		967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanHourMarksLayer.swift; sourceTree = "<group>"; };
@@ -125,8 +121,6 @@
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
-		96DCE69E216C45C600E6A95F /* USNOSolarAndLunarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USNOSolarAndLunarData.swift; sourceTree = "<group>"; };
-		96DCE6A0216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = USNOSolarAndLunarDataTests.swift; sourceTree = "<group>"; };
 		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 		AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		AD5A718821B0AE2D0051820C /* BackgroundSquareLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSquareLayer.swift; sourceTree = "<group>"; };
@@ -211,7 +205,6 @@
 				967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */,
 				9621BF40215C521A00C8EBB3 /* Info.plist */,
 				967547A821F977E900A6DA63 /* Sunrise & Sunset */,
-				96DCE6A0216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift */,
 				965DF67B21A84FB300A40698 /* Views */,
 			);
 			path = Tests;
@@ -259,8 +252,6 @@
 				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
 				965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */,
 				965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */,
-				96DCE69E216C45C600E6A95F /* USNOSolarAndLunarData.swift */,
-				965DF68021AA6CD000A40698 /* USNOSunriseSunsetProvider.swift */,
 			);
 			path = "Sunrise & Sunset";
 			sourceTree = "<group>";
@@ -421,11 +412,9 @@
 				AD5A718921B0AE2D0051820C /* BackgroundSquareLayer.swift in Sources */,
 				AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
-				96DCE69F216C45C600E6A95F /* USNOSolarAndLunarData.swift in Sources */,
 				965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */,
 				960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */,
 				9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */,
-				965DF68121AA6CD000A40698 /* USNOSunriseSunsetProvider.swift in Sources */,
 				965DF67221A6719000A40698 /* Date+Trigonometry.swift in Sources */,
 				965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
@@ -441,7 +430,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */,
-				96DCE6A1216C517F00E6A95F /* USNOSolarAndLunarDataTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
 				965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */,
 			);
