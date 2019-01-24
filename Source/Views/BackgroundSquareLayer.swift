@@ -93,7 +93,7 @@ final class BackgroundSquareLayer: CALayer {
         romanHourMarksLayer = RomanHourMarksLayer()
         addSublayer(romanHourMarksLayer!)
 
-        elapsedTimeLayer.fillColor = UIColor.black.withAlphaComponent(0.25).cgColor
+        elapsedTimeLayer.fillColor = UIColor(named: "Elapsed Time")?.cgColor
         addSublayer(elapsedTimeLayer)
         elapsedTimeLayer.frame = clockFaceFrame
         elapsedTimeLayer.centerInSuperlayer()
