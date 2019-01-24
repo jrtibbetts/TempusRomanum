@@ -16,7 +16,7 @@ public final class ViewController: UIViewController {
 
     // MARK: - Private Properties
 
-    fileprivate let sunriseSunsetProvider = MockSunriseSunsetProvider()
+    fileprivate let sunriseSunsetProvider = SunriseSunsetDotOrgProvider()
 
     fileprivate var timeFormatter: DateFormatter!
     

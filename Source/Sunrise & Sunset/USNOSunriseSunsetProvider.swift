@@ -35,7 +35,7 @@ public final class USNOSunriseSunsetProvider: NSObject, SunriseSunsetProvider {
     fileprivate func solarData() -> Promise<USNOSolarAndLunarData> {
         return Promise<USNOSolarAndLunarData> { (promise) in
             CLLocationManager.requestLocation().then { (locations) -> Promise<(data: Data, response: URLResponse)> in
-                let request = try USNOSunriseSunsetProvider.request(for: locations[0].coordinate)!
+                let request = try type(of: self).request(for: locations[0].coordinate)!
                 return URLSession.shared.dataTask(.promise, with: request).validate()
                 }.done {
                     let solarAndLunarData = try JSONDecoder().decode(USNOSolarAndLunarData.self, from: $0.data)
