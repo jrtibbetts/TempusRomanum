@@ -17,15 +17,15 @@ open class DaylightLayer: ClockLayer {
         didSet {
             guard let hours = hoursAndEndTime?.hours,
                 let sunset = hoursAndEndTime?.sunset,
-                let startAngle = hours.first?.rotationAngle else {
-                return
+                let sunriseAngle = hours.first?.rotationAngle else {
+                    return
             }
 
             let sunsetAngle = sunset.rotationAngle
             let daylightPath = UIBezierPath(sliceCenter: center,
-                                        radius: radius,
-                                        startAngle: startAngle,
-                                        endAngle: sunsetAngle)
+                                            radius: radius,
+                                            startAngle: sunriseAngle,
+                                            endAngle: sunsetAngle)
 
             path = daylightPath.cgPath
             fillColor = UIColor.yellow.cgColor
