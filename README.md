@@ -6,7 +6,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 # TempusRomanum
-An 📱 and ⌚️ clock that tells time the [Roman way](https://en.wikipedia.org/wiki/Roman_timekeeping): sunrise is considered 6 am, sunset is 6 pm, and the 12 daylight and 12 nighttime hours are divided evenly between them. It was inspired by the [XKCD comic comic "6/6 Time"]((https://xkcd.com/2050/), which goes
+An 📱 and ⌚️ clock that tells time the [Roman way](https://en.wikipedia.org/wiki/Roman_timekeeping): sunrise is considered the first hour of daylight (*prima hora diei*), sunset is the first hour of nighttime (*prima hora noctis*), and the 12 daylight and 12 nighttime hours are divided evenly between those points. It was inspired by the [XKCD comic comic "6/6 Time"]((https://xkcd.com/2050/), which goes
 
 ![6/6 Time](https://imgs.xkcd.com/comics/6_6_time.png)
 
