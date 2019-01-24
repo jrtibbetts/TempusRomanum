@@ -37,6 +37,8 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         }
     }
 
+    // MARK: - Public Functions
+    
     /// Get a `Promise` with sunrise & sunset information for a specific date.
     ///
     /// - parameter coordinate: The latitude & longitude.
@@ -47,50 +49,63 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                               date: Date = Date()) -> Promise<SunriseSunset> {
         return Promise<SunriseSunset> { (promise) in
             // Construct the request.
-            guard let url = try type(of: self).url(for: coordinate) else {
+            guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
                 promise.reject(ResponseData.Status.INVALID_REQUEST)
                 return
             }
 
-            let request = URLRequest(url: url)
-
             // Call the server.
             URLSession.shared.dataTask(.promise, with: request).validate().done {
                 let responseData = try self.jsonDecoder.decode(ResponseData.self, from: $0.data)
-
-                if responseData.status == .OK,
-                    var sunrise = self.dateFormatter.date(from: responseData.results.sunrise),
-                    var sunset = self.dateFormatter.date(from: responseData.results.sunset) {
-
-                    // Returned dates are in UMT. Adjust the times for the
-                    // user's time zone.
-                    let offset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT())
-                    sunrise = sunrise.addingTimeInterval(offset)
-                    sunset = sunset.addingTimeInterval(offset)
-
-                    // Fulfill the promise!
-                    let sunriseSunset = SunriseSunset(sunrise: sunrise, sunset: sunset)
-                    promise.fulfill(sunriseSunset)
-                } else {
-                    promise.reject(responseData.status)
-                }
+                self.handle(response: responseData, promise: promise)
                 }.catch {
                     promise.reject($0)
             }
         }
     }
 
-    // MARK: - Utility Functions
+    // MARK: - Private Functions
 
-    static func url(for coordinate: CLLocationCoordinate2D,
-                    date: Date = Date()) throws -> URL? {
+    func handle(response responseData: ResponseData, promise: Resolver<SunriseSunset>) {
+        if responseData.status == .OK,
+            var sunrise = self.dateFormatter.date(from: responseData.results.sunrise),
+            var sunset = self.dateFormatter.date(from: responseData.results.sunset) {
+
+            // Returned dates are in UMT. Adjust the times for the
+            // user's time zone.
+            let offset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT())
+            sunrise = sunrise.addingTimeInterval(offset)
+            sunset = sunset.addingTimeInterval(offset)
+
+            // Fulfill the promise!
+            let sunriseSunset = SunriseSunset(sunrise: sunrise, sunset: sunset)
+            promise.fulfill(sunriseSunset)
+        } else {
+            promise.reject(responseData.status)
+        }
+    }
+
+    // MARK: - Static Utility Functions
+
+    /// Construct a URL request for getting astronomical data from
+    /// `sunrise-sunset.org`.
+    ///
+    /// - parameter coordinate: The latitude & longitude.
+    /// - parameter date: The date to use for calculating sunrise and sunset
+    ///             times.
+    static func urlRequest(for coordinate: CLLocationCoordinate2D,
+                           date: Date) -> URLRequest? {
         let urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@"
         let coordinateStrings = coordinate.strings
         let urlString = String(format: urlPattern,
                                coordinateStrings.latitude,
                                coordinateStrings.longitude)
 
-        return URL(string: urlString)
+        if let url = URL(string: urlString) {
+            return URLRequest(url: url)
+        } else {
+            return nil
+        }
     }
 
     // MARK: - JSON Types
