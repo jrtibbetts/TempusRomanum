@@ -58,7 +58,6 @@ final class BackgroundSquareLayer: CALayer {
             romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHourTimes
 
             setNeedsLayout()
-            layoutIfNeeded()
         }
     }
     
