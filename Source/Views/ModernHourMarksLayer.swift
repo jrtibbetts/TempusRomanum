@@ -21,7 +21,7 @@ open class ModernHourMarksLayer: CALayer {
     }
 
     open var fontSize: CGFloat {
-        return margin / 3.5
+        return max(margin / 3.5, 9)
     }
 
     open var foregroundColor: CGColor? {
@@ -78,7 +78,7 @@ open class ModernHourMarksLayer: CALayer {
         self.margin = margin
         super.init()
 
-        midnightLayer.string = "12 am"
+        midnightLayer.string = "midnight"
         midnightLayer.alignmentMode = .center
         addSublayer(midnightLayer)
 
@@ -86,7 +86,7 @@ open class ModernHourMarksLayer: CALayer {
         sixAmLayer.alignmentMode = .right
         addSublayer(sixAmLayer)
 
-        noonLayer.string = "12 pm"
+        noonLayer.string = "noon"
         noonLayer.alignmentMode = .center
         addSublayer(noonLayer)
 
