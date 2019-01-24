@@ -49,9 +49,9 @@ open class HourLinesLayer: ClockLayer {
         hours.dropFirst().forEach { (hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
             // day.
-            path.move(to: center)
-            let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
-                                      y: center.y + (radius * sin(angle)))
+            path.move(to: boundsCenter)
+            let borderPoint = CGPoint(x: boundsCenter.x + (radius * cos(angle)),
+                                      y: boundsCenter.y + (radius * sin(angle)))
             path.addLine(to: borderPoint)
         }
 

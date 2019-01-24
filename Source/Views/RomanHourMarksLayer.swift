@@ -95,8 +95,8 @@ public final class RomanHourMarksLayer: ClockLayer {
         layer.frame = CGRect(origin: CGPoint(), size: labelSize)
 
         let angle = time.rotationAngle
-        let borderPoint = CGPoint(x: center.x + (radius * cos(angle)),
-                                  y: center.y + (radius * sin(angle)))
+        let borderPoint = CGPoint(x: boundsCenter.x + (radius * cos(angle)),
+                                  y: boundsCenter.y + (radius * sin(angle)))
         layer.center(at: borderPoint)
 
         return layer

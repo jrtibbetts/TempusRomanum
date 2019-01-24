@@ -28,6 +28,8 @@
 		967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */; };
 		967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */; };
 		967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */; };
+		967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */; };
+		967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -117,6 +119,8 @@
 		967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+GeometryTests.swift"; sourceTree = "<group>"; };
 		967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Formatting.swift"; sourceTree = "<group>"; };
 		967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+FormattingTests.swift"; sourceTree = "<group>"; };
+		967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetTests.swift; sourceTree = "<group>"; };
+		967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayerTests.swift; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -239,6 +243,7 @@
 		965DF67B21A84FB300A40698 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
 				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
 			);
 			path = Views;
@@ -260,6 +265,7 @@
 			isa = PBXGroup;
 			children = (
 				967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */,
+				967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */,
 			);
 			path = "Sunrise & Sunset";
 			sourceTree = "<group>";
@@ -429,7 +435,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */,
 				967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */,
+				967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
 				965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */,
 			);

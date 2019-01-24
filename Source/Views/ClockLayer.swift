@@ -7,7 +7,7 @@ import UIKit
 open class ClockLayer: CAShapeLayer {
 
     /// Get the exact center of the layer's `bounds`.
-    open var center: CGPoint {
+    open var boundsCenter: CGPoint {
         return CGPoint(x: bounds.width / 2.0, y: bounds.height / 2.0)
     }
 

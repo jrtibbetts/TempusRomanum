@@ -22,7 +22,7 @@ open class DaylightLayer: ClockLayer {
             }
 
             let sunsetAngle = sunset.rotationAngle
-            let daylightPath = UIBezierPath(sliceCenter: center,
+            let daylightPath = UIBezierPath(sliceCenter: boundsCenter,
                                             radius: radius,
                                             startAngle: sunriseAngle,
                                             endAngle: sunsetAngle)
