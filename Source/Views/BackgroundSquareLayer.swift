@@ -93,7 +93,7 @@ final class BackgroundSquareLayer: CALayer {
         romanHourMarksLayer = RomanHourMarksLayer()
         addSublayer(romanHourMarksLayer!)
 
-        elapsedTimeLayer.fillColor = UIColor.black.withAlphaComponent(0.2).cgColor
+        elapsedTimeLayer.fillColor = UIColor.black.withAlphaComponent(0.4).cgColor
         addSublayer(elapsedTimeLayer)
         elapsedTimeLayer.frame = clockFaceFrame
         elapsedTimeLayer.centerInSuperlayer()
@@ -139,7 +139,7 @@ final class BackgroundSquareLayer: CALayer {
         // Update the elapsed time.
         let elapsedTimePath = UIBezierPath(sliceCenter: frame.center,
                                            radius: clockFaceFrame.width / 2.0,
-                                           startAngle: 1.5 * CGFloat.pi,
+                                           startAngle: 0.5 * CGFloat.pi,
                                            endAngle: Date().rotationAngle)
         elapsedTimeLayer.path = elapsedTimePath.cgPath
     }
