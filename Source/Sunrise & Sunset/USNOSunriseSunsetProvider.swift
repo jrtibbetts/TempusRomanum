@@ -84,9 +84,12 @@ public final class USNOSunriseSunsetProvider: NSObject, SunriseSunsetProvider {
 
         // format the date, latitude, longitude, and time zone for the URL
         let dateString = dateFormatter.string(from: date)
-        let latString = String(format: "%.2f", coordinate.latitude)
-        let lonString = String(format: "%.2f", coordinate.longitude)
-        let urlString = String(format: urlPattern, dateString, latString, lonString, Int(timeZoneOffset))
+        let coordinateStrings = coordinate.strings
+        let urlString = String(format: urlPattern,
+                               dateString,
+                               coordinateStrings.latitude,
+                               coordinateStrings.longitude,
+                               Int(timeZoneOffset))
 
         return URL(string: urlString)
     }
