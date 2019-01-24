@@ -26,7 +26,7 @@ public final class RomanHourMarksLayer: ClockLayer {
         }
     }
 
-    public var textColor: CGColor = UIColor.black.cgColor {
+    public var textColor: CGColor? = UIColor(named: "Text")?.cgColor {
         didSet {
             labelLayers.forEach { $0.foregroundColor = textColor }
 

@@ -28,7 +28,7 @@ open class DaylightLayer: ClockLayer {
                                             endAngle: sunsetAngle)
 
             path = daylightPath.cgPath
-            fillColor = UIColor.yellow.cgColor
+            fillColor = UIColor(named: "Daylight")?.cgColor
 
             if hourLinesLayer == nil {
                 hourLinesLayer = HourLinesLayer(hours: hours)
@@ -38,7 +38,7 @@ open class DaylightLayer: ClockLayer {
             }
 
             hourLinesLayer!.lineWidth = 1.0
-            hourLinesLayer!.strokeColor = UIColor.darkGray.cgColor
+            hourLinesLayer!.strokeColor = UIColor(named: "Hour Marks")?.cgColor
             hourLinesLayer!.frame = bounds
             setNeedsDisplay()
         }

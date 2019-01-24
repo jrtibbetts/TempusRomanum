@@ -48,7 +48,7 @@ final class BackgroundSquareLayer: CALayer {
             nighttimeLinesLayer?.removeFromSuperlayer()
             nighttimeLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes) <~ {
                 $0.lineWidth = 1.0
-                $0.strokeColor = UIColor.white.cgColor
+                $0.strokeColor = UIColor(named: "Hour Marks")?.cgColor
                 $0.frame = nighttimeClockFace.bounds
                 nighttimeClockFace.addSublayer($0)
                 $0.centerInSuperlayer()
@@ -81,7 +81,7 @@ final class BackgroundSquareLayer: CALayer {
     
     override init() {
         nighttimeClockFace.allowsEdgeAntialiasing = false
-        nighttimeClockFace.fillColor = UIColor.blue.cgColor
+        nighttimeClockFace.fillColor = UIColor(named: "Nighttime")?.cgColor
 
         super.init()
 
@@ -93,7 +93,7 @@ final class BackgroundSquareLayer: CALayer {
         romanHourMarksLayer = RomanHourMarksLayer()
         addSublayer(romanHourMarksLayer!)
 
-        elapsedTimeLayer.fillColor = UIColor.black.withAlphaComponent(0.4).cgColor
+        elapsedTimeLayer.fillColor = UIColor.black.withAlphaComponent(0.25).cgColor
         addSublayer(elapsedTimeLayer)
         elapsedTimeLayer.frame = clockFaceFrame
         elapsedTimeLayer.centerInSuperlayer()
@@ -124,7 +124,6 @@ final class BackgroundSquareLayer: CALayer {
         nighttimeClockFace.path = UIBezierPath(ovalIn: nighttimeClockFace.bounds).cgPath
         daylightLayer.frame = clockFaceFrame
         daylightLayer.centerInSuperlayer()
-//        daylightLayer.cornerRadius = daylightLayer.bounds.height
 
         let romanHourMarksFrame = CGRect(x: frame.origin.x + modernHourMarksInset,
                                          y: frame.origin.y + modernHourMarksInset,
@@ -132,7 +131,7 @@ final class BackgroundSquareLayer: CALayer {
                                          height: frame.height - (modernHourMarksInset * 2.0))
         romanHourMarksLayer?.frame = romanHourMarksFrame
 
-        daylightLayer.borderColor = UIColor.black.cgColor
+        daylightLayer.borderColor = UIColor(named: "Text")?.cgColor
         daylightLayer.borderWidth = 2.0
         daylightLayer.cornerRadius = sublayerSideLength / 2.0
 
