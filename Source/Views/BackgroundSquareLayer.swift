@@ -11,7 +11,7 @@ final class BackgroundSquareLayer: CALayer {
     /// The layer that draws the daylight portion of the clock circle.
     private var daylightLayer = DaylightLayer()
 
-    private var elapsedTimeLayer = CAShapeLayer()
+    private var elapsedTimeLayer = ElapsedTimeLayer()
 
     /// The number of points to inset the `modernHourMarksLayer`.
     private var modernHourMarksInset: CGFloat = 25.0 {
@@ -42,7 +42,6 @@ final class BackgroundSquareLayer: CALayer {
             
             daylightLayer.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
 
-            nighttimeClockLayer.removeFromSuperlayer()
             nighttimeClockLayer.sunriseSunset = sunriseSunset
 
             romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHourTimes
@@ -82,8 +81,6 @@ final class BackgroundSquareLayer: CALayer {
 
         elapsedTimeLayer.fillColor = UIColor(named: "Elapsed Time")?.cgColor
         addSublayer(elapsedTimeLayer)
-        elapsedTimeLayer.frame = clockFaceFrame
-        elapsedTimeLayer.centerInSuperlayer()
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -106,10 +103,11 @@ final class BackgroundSquareLayer: CALayer {
         let marksInsets = modernHourMarksInset + romanHourMarksInset
         let sublayerSideLength = min(frame.size.width - marksInsets * 2, frame.size.width - marksInsets * 2)
         let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
-        nighttimeClockLayer.frame = clockFaceFrame
-        nighttimeClockLayer.centerInSuperlayer()
-        daylightLayer.frame = clockFaceFrame
-        daylightLayer.centerInSuperlayer()
+
+        [nighttimeClockLayer, daylightLayer, elapsedTimeLayer].forEach { (layer) in
+            layer.frame = clockFaceFrame
+            layer.centerInSuperlayer()
+        }
 
         let romanHourMarksFrame = CGRect(x: frame.origin.x + modernHourMarksInset,
                                          y: frame.origin.y + modernHourMarksInset,
@@ -121,12 +119,7 @@ final class BackgroundSquareLayer: CALayer {
         daylightLayer.borderWidth = 2.0
         daylightLayer.cornerRadius = sublayerSideLength / 2.0
 
-        // Update the elapsed time.
-        let elapsedTimePath = UIBezierPath(sliceCenter: frame.center,
-                                           radius: clockFaceFrame.width / 2.0,
-                                           startAngle: 0.5 * CGFloat.pi,
-                                           endAngle: Date().rotationAngle)
-        elapsedTimeLayer.path = elapsedTimePath.cgPath
+        elapsedTimeLayer.update()
     }
     
 }
