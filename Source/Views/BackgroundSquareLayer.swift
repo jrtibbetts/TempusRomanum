@@ -24,10 +24,7 @@ final class BackgroundSquareLayer: CALayer {
     private var modernHourMarksLayer: ModernHourMarksLayer?
 
     /// The layer that draws the nighttime portion of the clock table.
-    private var nighttimeClockFace = CAShapeLayer()
-
-
-    private var nighttimeLinesLayer: HourLinesLayer?
+    private var nighttimeClockLayer = NighttimeClockLayer()
 
     private var romanHourMarksLayer: RomanHourMarksLayer?
 
@@ -45,14 +42,8 @@ final class BackgroundSquareLayer: CALayer {
             
             daylightLayer.hoursAndEndTime = (sunriseSunset.daylightHourTimes, sunriseSunset.sunset)
 
-            nighttimeLinesLayer?.removeFromSuperlayer()
-            nighttimeLinesLayer = HourLinesLayer(hours: sunriseSunset.nighttimeHourTimes) <~ {
-                $0.lineWidth = 1.0
-                $0.strokeColor = UIColor(named: "Hour Marks")?.cgColor
-                $0.frame = nighttimeClockFace.bounds
-                nighttimeClockFace.addSublayer($0)
-                $0.centerInSuperlayer()
-            }
+            nighttimeClockLayer.removeFromSuperlayer()
+            nighttimeClockLayer.sunriseSunset = sunriseSunset
 
             romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHourTimes
             romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHourTimes
@@ -79,12 +70,9 @@ final class BackgroundSquareLayer: CALayer {
     // MARK: - Initialization
     
     override init() {
-        nighttimeClockFace.allowsEdgeAntialiasing = false
-        nighttimeClockFace.fillColor = UIColor(named: "Nighttime")?.cgColor
-
         super.init()
 
-        addSublayer(nighttimeClockFace)
+        addSublayer(nighttimeClockLayer)
         addSublayer(daylightLayer)
 
         modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
@@ -118,9 +106,8 @@ final class BackgroundSquareLayer: CALayer {
         let marksInsets = modernHourMarksInset + romanHourMarksInset
         let sublayerSideLength = min(frame.size.width - marksInsets * 2, frame.size.width - marksInsets * 2)
         let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
-        nighttimeClockFace.frame = clockFaceFrame
-        nighttimeClockFace.centerInSuperlayer()
-        nighttimeClockFace.path = UIBezierPath(ovalIn: nighttimeClockFace.bounds).cgPath
+        nighttimeClockLayer.frame = clockFaceFrame
+        nighttimeClockLayer.centerInSuperlayer()
         daylightLayer.frame = clockFaceFrame
         daylightLayer.centerInSuperlayer()
 
