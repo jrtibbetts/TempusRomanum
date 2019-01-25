@@ -21,29 +21,4 @@ class ElapsedTimeLayerTests: XCTestCase {
         XCTAssertEqual(layer.previousEndAngle, noonToday.rotationAngle)
     }
 
-    func testDateLessThanOneMinuteAfterMidnightDoesNothing() {
-        let layer = ElapsedTimeLayer()
-        XCTAssertEqual(layer.previousEndAngle, midnightToday.rotationAngle)
-        let midnightPlus30 = midnightToday.addingTimeInterval(45.0)
-        layer.update(date: midnightPlus30)
-        XCTAssertEqual(layer.previousEndAngle, midnightToday.rotationAngle)
-    }
-
-    func NOtestDateTwoMinutesAfterMidnightUpdates() {
-        let layer = ElapsedTimeLayer()
-        XCTAssertEqual(layer.previousEndAngle, midnightToday.rotationAngle)
-        let midnightPlus2Minutes = midnightToday.addingTimeInterval(120.0)
-        layer.update(date: midnightPlus2Minutes)
-        XCTAssertEqual(layer.previousEndAngle, midnightPlus2Minutes.rotationAngle)
-    }
-
-    func NOtestCrossingMidnightResetsPreviousEndAngle() {
-        let layer = ElapsedTimeLayer()
-        let midnightMinus1Minute = midnightToday.addingTimeInterval(-60.0)
-        layer.update(date: midnightMinus1Minute)
-        let midnightPlus2Minutes = midnightToday.addingTimeInterval(120.0)
-        layer.update(date: midnightPlus2Minutes)
-        XCTAssertEqual(layer.previousEndAngle, ElapsedTimeLayer.midnightAngle)
-    }
-
 }
