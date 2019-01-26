@@ -9,9 +9,9 @@ class NighttimeClockLayer: ClockLayer {
     
     var sunriseSunset: SunriseSunset? {
         didSet {
-            if let hours = sunriseSunset?.nighttimeHourTimes {
-                hourLinesLayer.hours = hours
-                setNeedsDisplay()
+            if let nighttimeHours = sunriseSunset?.nighttimeHourTimes {
+                hourLinesLayer.hours = nighttimeHours
+                setNeedsLayout()
             }
         }
     }
@@ -28,7 +28,7 @@ class NighttimeClockLayer: ClockLayer {
         fillColor = UIColor(named: "Nighttime")?.cgColor
 
         hourLinesLayer.strokeColor = UIColor(named: "Hour Marks")?.cgColor
-        hourLinesLayer.lineWidth = 10.0
+        hourLinesLayer.lineWidth = 1.0
         addSublayer(hourLinesLayer)
     }
     
@@ -51,7 +51,7 @@ class NighttimeClockLayer: ClockLayer {
         super.layoutSublayers()
 
         hourLinesLayer.frame = bounds
-        hourLinesLayer.zPosition = 1000
+        hourLinesLayer.layoutSublayers()
 
         path = UIBezierPath(ovalIn: bounds).cgPath
         setNeedsDisplay()
