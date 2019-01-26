@@ -44,12 +44,13 @@ open class HourLinesLayer: ClockLayer {
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.
         let path = UIBezierPath()
-        path.lineWidth = 1.0
+        path.lineWidth = lineWidth
 
         hours.dropFirst().forEach { (hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
             // day.
-            path.move(to: boundsCenter)
+            path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(angle)),
+                                  y: boundsCenter.y + (radius * 0.2 * sin(angle))))
             let borderPoint = CGPoint(x: boundsCenter.x + (radius * cos(angle)),
                                       y: boundsCenter.y + (radius * sin(angle)))
             path.addLine(to: borderPoint)

@@ -25,7 +25,7 @@ final class BackgroundSquareLayer: CALayer {
 
     /// The layer that draws the nighttime portion of the clock table.
     private var nighttimeClockLayer = NighttimeClockLayer()
-
+    
     private var romanHourMarksLayer: RomanHourMarksLayer?
 
     private var romanHourMarksInset: CGFloat = 15.0 {
