@@ -10,15 +10,7 @@ class ElapsedTimeLayerTests: XCTestCase {
 
     func testEmptyInitializerOk() {
         let layer = ElapsedTimeLayer()
-        XCTAssertEqual(layer.previousEndAngle, ElapsedTimeLayer.midnightAngle)
         XCTAssertEqual(layer.fillColor, fillColor)
-    }
-
-    func NOtestNoonAngleOk() {
-        let noonToday = midnightToday.addingTimeInterval(12 * 60 * 60)
-        let layer = ElapsedTimeLayer()
-        layer.update(date: noonToday)
-        XCTAssertEqual(layer.previousEndAngle, noonToday.rotationAngle)
     }
 
 }
