@@ -2,18 +2,22 @@
 
 import Foundation
 
+public protocol SunriseSunset {
+
+    /// Sunrise. It's assumed that it's for the same day as the `sunset`; if
+    /// not, then that's a problem that this struct doesn't address.
+    var sunrise: Date { get }
+
+    /// Sunset. It's assumed that it's for the same day as the `sunrise`; if
+    /// not, then that's a problem that this struct doesn't address.
+    var sunset: Date { get }
+
+}
+
 /// Encapsulates `Date`s for a day's sunrise and sunset, and has numerous
 /// handy properties for calculating things like number of minutes of
 /// nighttime.
-public struct SunriseSunset: Codable {
-
-    /// Sunrise. It's assumed that it's for the same date as the `sunset`; if
-    /// not, then that's a problem that this struct doesn't address.
-    public let sunrise: Date
-
-    /// Sunset. It's assumed that it's for the same date as the `sunrise`; if
-    /// not, then that's a problem that this struct doesn't address.
-    public let sunset: Date
+public extension SunriseSunset {
 
     // MARK: - Computed Properties
 
@@ -45,13 +49,6 @@ public struct SunriseSunset: Codable {
     /// An array of `Date`s of the nighttime hours.
     public var nighttimeHourTimes: [Date] {
         return (0..<12).map { sunset.addingTimeInterval(nighttimeHourDuration * 60 * Double($0)) }
-    }
-    
-    // MARK: - Initializers
-    
-    public init(sunrise: Date, sunset: Date) {
-        self.sunrise = sunrise
-        self.sunset = sunset
     }
 
 }
