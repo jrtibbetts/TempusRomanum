@@ -15,27 +15,11 @@ class DaylightLayer: ClockSubfaceLayer {
         }
     }
 
-    override init() {
-        super.init()
-        fillColor = UIColor(named: "Daylight")?.cgColor
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(layer: Any) {
-        super.init(layer: layer)
-    }
-
     override func updatePath() {
         guard let sunriseSunset = sunriseSunset else { return }
-
-        path = UIBezierPath(sliceCenter: boundsCenter,
-                            radius: radius,
-                            startAngle: sunriseSunset.sunrise.rotationAngle,
-                            endAngle: sunriseSunset.sunset.rotationAngle).cgPath
-        setNeedsDisplay()
+        fillColor = UIColor(named: "Daylight")?.cgColor
+        updatePath(from: sunriseSunset.sunrise.rotationAngle,
+                   to: sunriseSunset.sunset.rotationAngle)
     }
 
 }

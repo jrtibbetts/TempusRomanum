@@ -52,9 +52,17 @@ class ClockSubfaceLayer: ClockLayer {
     // MARK: - Other Functions
 
     /// Recalculate the Bézier path. This implementation does nothing, so
-    /// subclasses should override it with their own implementations and not
-    /// bother calling `super.updatePath()`.
+    /// subclasses should override it with their own implementation, call
+    /// `updateDate(from:to:)`, and not bother calling `super.updatePath()`.
     func updatePath() {
+    }
+
+    func updatePath(from startAngle: CGFloat, to endAngle: CGFloat) {
+        path = UIBezierPath(sliceCenter: boundsCenter,
+                            radius: radius,
+                            startAngle: startAngle,
+                            endAngle: endAngle).cgPath
+        setNeedsDisplay()
     }
 
 }

@@ -14,29 +14,13 @@ class NighttimeClockLayer: ClockSubfaceLayer {
         }
     }
 
-    override init() {
-        super.init()
-        fillColor = UIColor(named: "Nighttime")?.cgColor
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(layer: Any) {
-        super.init(layer: layer)
-    }
-
     // MARK: - Other Functions
 
     override func updatePath() {
         guard let sunriseSunset = sunriseSunset else { return }
-
-        path = UIBezierPath(sliceCenter: boundsCenter,
-                            radius: radius,
-                            startAngle: sunriseSunset.sunset.rotationAngle,
-                            endAngle: sunriseSunset.sunrise.rotationAngle).cgPath
-        setNeedsDisplay()
+        fillColor = UIColor(named: "Nighttime")?.cgColor
+        updatePath(from: sunriseSunset.sunset.rotationAngle,
+                   to: sunriseSunset.sunrise.rotationAngle)
     }
 
 }
