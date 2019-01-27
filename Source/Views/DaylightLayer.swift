@@ -4,44 +4,38 @@ import UIKit
 
 /// The layer that draws the pie slice representing daylight hours on an analog
 /// 24-hour clock.
-open class DaylightLayer: ClockLayer {
+class DaylightLayer: ClockSubfaceLayer {
 
-    /// The layer that draws lines for each daylight hour.
-    private var hourLinesLayer: HourLinesLayer?
-
-    /// Set the daylight hour times.
-    ///
-    /// - parameter hours: The daylight hours.
-    /// - parameter sunset: The end of daylight.
-    open var hoursAndEndTime: (hours: [Date], sunset: Date)? {
+    override var sunriseSunset: SunriseSunset? {
         didSet {
-            guard let hours = hoursAndEndTime?.hours,
-                let sunset = hoursAndEndTime?.sunset,
-                let sunriseAngle = hours.first?.rotationAngle else {
-                    return
+            if let hours = sunriseSunset?.daylightHourTimes {
+                hourLinesLayer.hours = hours
+                setNeedsLayout()
             }
-
-            let sunsetAngle = sunset.rotationAngle
-            let daylightPath = UIBezierPath(sliceCenter: boundsCenter,
-                                            radius: radius,
-                                            startAngle: sunriseAngle,
-                                            endAngle: sunsetAngle)
-
-            path = daylightPath.cgPath
-            fillColor = UIColor(named: "Daylight")?.cgColor
-
-            if hourLinesLayer == nil {
-                hourLinesLayer = HourLinesLayer(hours: hours)
-                addSublayer(hourLinesLayer!)
-            } else {
-                hourLinesLayer?.hours = hours
-            }
-
-            hourLinesLayer!.lineWidth = 1.0
-            hourLinesLayer!.strokeColor = UIColor(named: "Hour Marks")?.cgColor
-            hourLinesLayer!.frame = bounds
-            setNeedsDisplay()
         }
+    }
+
+    override init() {
+        super.init()
+        fillColor = UIColor(named: "Daylight")?.cgColor
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(layer: Any) {
+        super.init(layer: layer)
+    }
+
+    override func updatePath() {
+        guard let sunriseSunset = sunriseSunset else { return }
+
+        path = UIBezierPath(sliceCenter: boundsCenter,
+                            radius: radius,
+                            startAngle: sunriseSunset.sunrise.rotationAngle,
+                            endAngle: sunriseSunset.sunset.rotationAngle).cgPath
+        setNeedsDisplay()
     }
 
 }

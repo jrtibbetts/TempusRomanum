@@ -10,7 +10,7 @@ open class HourLinesLayer: ClockLayer {
     // MARK: - Internal Properties
 
     /// The `Date`s of the hours to be drawn.
-    open var hours: [Date] {
+    open var hours: [Date] = [] {
         didSet {
             layoutIfNeeded()
         }
@@ -32,7 +32,7 @@ open class HourLinesLayer: ClockLayer {
     }
     
     required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
 
     public override init(layer: Any) {

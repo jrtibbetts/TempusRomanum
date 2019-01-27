@@ -3,29 +3,58 @@
 import Stylobate
 import UIKit
 
-class NighttimeClockLayer: ClockLayer {
-    
-    // MARK: - Public Properties
-    
-    var sunriseSunset: SunriseSunset? {
+class NighttimeClockLayer: ClockSubfaceLayer {
+
+    override var sunriseSunset: SunriseSunset? {
         didSet {
-            if let nighttimeHours = sunriseSunset?.nighttimeHourTimes {
-                hourLinesLayer.hours = nighttimeHours
+            if let hours = sunriseSunset?.nighttimeHourTimes {
+                hourLinesLayer.hours = hours
                 setNeedsLayout()
             }
         }
     }
 
-    // MARK: - Private Properties
+    override init() {
+        super.init()
+        fillColor = UIColor(named: "Nighttime")?.cgColor
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+
+    override init(layer: Any) {
+        super.init(layer: layer)
+    }
+
+    // MARK: - Other Functions
+
+    override func updatePath() {
+        guard let sunriseSunset = sunriseSunset else { return }
+
+        path = UIBezierPath(sliceCenter: boundsCenter,
+                            radius: radius,
+                            startAngle: sunriseSunset.sunset.rotationAngle,
+                            endAngle: sunriseSunset.sunrise.rotationAngle).cgPath
+        setNeedsDisplay()
+    }
+
+}
+
+class ClockSubfaceLayer: ClockLayer {
     
-    private var hourLinesLayer = HourLinesLayer()
+    // MARK: - Public Properties
+
+    /// The layer that draws lines for each hour in this subface.
+    var hourLinesLayer = HourLinesLayer()
+
+    /// The astronomical information.
+    var sunriseSunset: SunriseSunset?
 
     // MARK: - Initialization
     
     override init() {
         super.init()
-        
-        fillColor = UIColor(named: "Nighttime")?.cgColor
 
         hourLinesLayer.strokeColor = UIColor(named: "Hour Marks")?.cgColor
         hourLinesLayer.lineWidth = 1.0
@@ -33,7 +62,7 @@ class NighttimeClockLayer: ClockLayer {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     override init(layer: Any) {
@@ -53,8 +82,12 @@ class NighttimeClockLayer: ClockLayer {
         hourLinesLayer.frame = bounds
         hourLinesLayer.layoutSublayers()
 
-        path = UIBezierPath(ovalIn: bounds).cgPath
-        setNeedsDisplay()
+        updatePath()
+    }
+
+    // MARK: - Other Functions
+
+    func updatePath() {
     }
 
 }
