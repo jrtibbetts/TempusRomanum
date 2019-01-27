@@ -20,7 +20,7 @@ import UIKit
 /// Layers marked in **bold** change when the `sunriseSunset` value changes.
 public final class RomanClockView: UIView {
 
-    fileprivate var backgroundLayer: BackgroundSquareLayer!
+    fileprivate var backgroundLayer: RomanClockLayer!
     
     public var sunriseSunset: SunriseSunset? {
         didSet {
@@ -30,7 +30,7 @@ public final class RomanClockView: UIView {
     
     public override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundLayer = BackgroundSquareLayer()
+        backgroundLayer = RomanClockLayer()
         layer.addSublayer(backgroundLayer)
     }
 
@@ -46,21 +46,3 @@ public final class RomanClockView: UIView {
     }
 
 }
-
-//fileprivate extension UIEdgeInsets {
-//
-//    static func + (a: UIEdgeInsets, b: UIEdgeInsets) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: a.top + b.top,
-//                            left: a.left + b.left,
-//                            bottom: a.bottom + b.bottom,
-//                            right: a.right + b.right)
-//    }
-//
-//    static func - (a: UIEdgeInsets, b: UIEdgeInsets) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: a.top - b.top,
-//                            left: a.left - b.left,
-//                            bottom: a.bottom - b.bottom,
-//                            right: a.right - b.right)
-//    }
-//
-//}

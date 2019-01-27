@@ -45,7 +45,7 @@
 		96DCE6A9216F088600E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
 		96DCE6AA216F088600E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */; };
-		AD5A718921B0AE2D0051820C /* BackgroundSquareLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A718821B0AE2D0051820C /* BackgroundSquareLayer.swift */; };
+		AD5A718921B0AE2D0051820C /* RomanClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */; };
 		ADB8735221FA658600F2FE54 /* NighttimeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */; };
 /* End PBXBuildFile section */
 
@@ -123,7 +123,7 @@
 		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
 		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 		AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSunriseSunsetProvider.swift; sourceTree = "<group>"; };
-		AD5A718821B0AE2D0051820C /* BackgroundSquareLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundSquareLayer.swift; sourceTree = "<group>"; };
+		AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockLayer.swift; sourceTree = "<group>"; };
 		ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NighttimeLayer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -215,7 +215,6 @@
 		965DF67021A6713D00A40698 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				AD5A718821B0AE2D0051820C /* BackgroundSquareLayer.swift */,
 				967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */,
 				965DF67721A7B49A00A40698 /* ClockLayer.swift */,
 				965DF67121A6719000A40698 /* Date+Trigonometry.swift */,
@@ -224,6 +223,7 @@
 				965DF67321A6740200A40698 /* HourLinesLayer.swift */,
 				965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */,
 				ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */,
+				AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */,
 				960B52F2217FEDA3004754A5 /* RomanClockView.swift */,
 				967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */,
 				965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */,
@@ -376,7 +376,7 @@
 				965DF67421A6740200A40698 /* HourLinesLayer.swift in Sources */,
 				965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */,
 				965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */,
-				AD5A718921B0AE2D0051820C /* BackgroundSquareLayer.swift in Sources */,
+				AD5A718921B0AE2D0051820C /* RomanClockLayer.swift in Sources */,
 				AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
 				965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */,
