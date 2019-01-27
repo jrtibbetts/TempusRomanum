@@ -12,22 +12,39 @@ import Stylobate
 /// @see https://sunrise-sunset.org/api
 public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
+    class SunriseSunsetDotOrgJSONDecoder: JSONDecoder {
+
+        /// The formatter for date strings returned by `sunrise-sunset.org`.
+        /// These are in the `.medium` time style, like `"7:27:02 AM"` and
+        /// `"12:16:28 PM"`.
+        let dateFormatter = DateFormatter() <~ {
+            $0.timeStyle = .medium
+        }
+
+        init(offset: TimeInterval = TimeInterval(TimeZone.current.secondsFromGMT())) {
+            super.init()
+            keyDecodingStrategy = .convertFromSnakeCase
+            dateDecodingStrategy = .custom { (decoder) -> Date in
+                let container = try decoder.singleValueContainer()
+                let dateString = try container.decode(String.self)
+                let date = self.dateFormatter.date(from: dateString)
+
+                if var date = date {
+                    date.addTimeInterval(offset)
+
+                    return date
+                } else {
+                    throw DecodingError.dataCorruptedError(in: container,
+                                                           debugDescription: "Date values must be formatted like \"7:27:02 AM\". No other format is accepted.")
+                }
+            }
+        }
+    }
+
     // MARK: - Private Properties
 
-    /// The formatter for date strings returned by `sunrise-sunset.org`. These
-    /// are in the `.medium` time style, like `"7:27:02 AM"` and
-    /// `"12:16:28 PM"`.
-    private let dateFormatter = DateFormatter() <~ {
-        $0.timeStyle = .medium
-    }
-
     /// The JSON decoder, which converts snake_case keys to CamelCase ones.
-    private let jsonDecoder = JSONDecoder() <~ {
-        // At the moment, all snake-case properties of ResponseData.Results are
-        // commented out, but if they're ever uncommented, it'll be handy to
-        // have already set this.
-        $0.keyDecodingStrategy = .convertFromSnakeCase
-    }
+    private let jsonDecoder = SunriseSunsetDotOrgJSONDecoder()
 
     // MARK: - SunriseSunsetProvider
 
@@ -55,8 +72,8 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
             }
 
             // Call the server.
-            URLSession.shared.dataTask(.promise, with: request).validate().done {
-                let responseData = try self.jsonDecoder.decode(ResponseData.self, from: $0.data)
+            URLSession.shared.dataTask(.promise, with: request).validate().done { (response) in
+                let responseData = try self.jsonDecoder.decode(ResponseData.self, from: response.data)
                 self.handle(response: responseData, promise: promise)
                 }.catch {
                     promise.reject($0)
@@ -67,19 +84,8 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
     // MARK: - Private Functions
 
     func handle(response responseData: ResponseData, promise: Resolver<SunriseSunset>) {
-        if responseData.status == .OK,
-            var sunrise = self.dateFormatter.date(from: responseData.results.sunrise),
-            var sunset = self.dateFormatter.date(from: responseData.results.sunset) {
-
-            // Returned dates are in UMT. Adjust the times for the
-            // user's time zone.
-            let offset = TimeInterval(TimeZone.autoupdatingCurrent.secondsFromGMT())
-            sunrise = sunrise.addingTimeInterval(offset)
-            sunset = sunset.addingTimeInterval(offset)
-
-            // Fulfill the promise!
-            let sunriseSunset = SunriseSunset(sunrise: sunrise, sunset: sunset)
-            promise.fulfill(sunriseSunset)
+        if responseData.status == .OK {
+            promise.fulfill(responseData.results)
         } else {
             promise.reject(responseData.status)
         }
@@ -116,7 +122,7 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
         /// The sunrise and sunset times. This will be empty if `status` is not
         /// `"OK"`.
-        var results: Results
+        var results: SunriseSunsetResults
 
         /// The return code of the server call.
         var status: Status
@@ -131,20 +137,21 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         }
 
         /// The various astronomical times for the given date and location. ALL
-        /// times are specified as UTC.
-        struct Results: Codable {
-            var sunrise: String
-            var sunset: String
-            /*
-             var solar_noon: String
-             var day_length: String
-             var civil_twilight_begin: String
-             var civil_twilight_end: String
-             var nautical_twilight_begin: String
-             var nautical_twilight_end: String
-             var astronomical_twilight_begin: String
-             var astronomical_twilight_end: String
-             */
+        /// times are specified as UTC. See
+        /// http://www.digital-photo-secrets.com/tip/2832/the-differences-between-civil-nautical-and-astronomical-twilight/
+        /// for a discussion about the differences between civil, nautical,
+        /// and astronomical times.
+        class SunriseSunsetResults: Codable, SunriseSunset {
+            var astronomicalTwilightBegin: Date
+            var astronomicalTwilightEnd: Date
+            var civilTwilightBegin: Date
+            var civilTwilightEnd: Date
+//            var dayLength: Double
+            var nauticalTwilightBegin: Date
+            var nauticalTwilightEnd: Date
+            var solarNoon: Date
+            var sunrise: Date
+            var sunset: Date
         }
     }
 
