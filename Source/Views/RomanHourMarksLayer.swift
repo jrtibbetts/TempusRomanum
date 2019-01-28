@@ -54,9 +54,6 @@ public final class RomanHourMarksLayer: ClockLayer {
 
     private var nighttimeLabelLayers: [CATextLayer] = []
 
-    private let romanNumerals = [ "I", "II", "III", "IV", "V", "VI",
-                                  "VII", "VIII", "IX", "X", "XI", "XII" ]
-
     // MARK: - CALayer
 
     public override func layoutSublayers() {
@@ -70,14 +67,14 @@ public final class RomanHourMarksLayer: ClockLayer {
             layer.removeFromSuperlayer()
         }
 
-        stride(from: 2, to: daylightHours.count, by: 6).forEach { (index) in
+        daylightHours.enumerated().forEach { (index, date) in
             let date = daylightHours[index]
             let layer = createLayer(forNumber: index, time: date)
             daylightLabelLayers.append(layer)
             addSublayer(layer)
         }
 
-        stride(from: 2, to: nighttimeHours.count, by: 6).forEach { (index) in
+        nighttimeHours.enumerated().forEach { (index, date) in
             let date = nighttimeHours[index]
             let layer = createLayer(forNumber: index, time: date)
             nighttimeLabelLayers.append(layer)
@@ -90,7 +87,7 @@ public final class RomanHourMarksLayer: ClockLayer {
         layer.alignmentMode = .center
         layer.fontSize = fontSize
         layer.font = font
-        layer.string = romanNumerals[number]
+        layer.string = RomanNumeral.allCases[number].rawValue
         layer.foregroundColor = textColor
         layer.frame = CGRect(origin: CGPoint(), size: labelSize)
 
