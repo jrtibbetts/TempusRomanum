@@ -17,11 +17,6 @@ class ClockSubfaceLayer: ClockLayer {
 
     // MARK: - Initialization
 
-    convenience init(sunriseSunset: SunriseSunset) {
-        self.init()
-        self.sunriseSunset = sunriseSunset
-    }
-
     override init() {
         super.init()
 
