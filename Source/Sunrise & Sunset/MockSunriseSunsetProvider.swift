@@ -3,14 +3,19 @@
 import PromiseKit
 import UIKit
 
+struct SimpleSunriseSunset: SunriseSunset {
+    var sunrise: Date
+    var sunset: Date
+}
+
 open class MockSunriseSunsetProvider: SunriseSunsetProvider {
-    
+
     public func sunriseSunset() -> Promise<SunriseSunset> {
         return Promise<SunriseSunset> { (promise) in
             let startOfToday = Calendar.current.startOfDay(for: Date())
             let sunrise = startOfToday.addingTimeInterval(5.3 * 60.0 * 60.0)
             let sunset = startOfToday.addingTimeInterval(19.12 * 60.0 * 60.0)
-            promise.fulfill(SunriseSunset(sunrise: sunrise, sunset: sunset))
+            promise.fulfill(SimpleSunriseSunset(sunrise: sunrise, sunset: sunset))
         }
     }
     
