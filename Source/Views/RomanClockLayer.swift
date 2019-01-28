@@ -5,13 +5,18 @@ import UIKit
 
 /// The background layer of the clock view.
 final class RomanClockLayer: CALayer {
-    
+
+    // MARK: - Public Properties
+
+    /// The overlay that shows a shaded area for the time that's elapsed since
+    /// midnight. It's `public` so that its `update()` function can be called
+    /// from outside of the `RomanClockLayer`.
+    public var elapsedTimeLayer = ElapsedTimeLayer()
+
     // MARK: - Private Properties
 
     /// The layer that draws the daylight portion of the clock circle.
     private var daylightLayer = DaylightLayer()
-
-    private var elapsedTimeLayer = ElapsedTimeLayer()
 
     /// The number of points to inset the `modernHourMarksLayer`.
     private var modernHourMarksInset: CGFloat = 25.0 {
@@ -26,14 +31,14 @@ final class RomanClockLayer: CALayer {
     /// The layer that draws the nighttime portion of the clock table.
     private var nighttimeClockLayer = NighttimeClockLayer()
 
-    private var romanHourMarksLayer: RomanHourMarksLayer?
-
     private var romanHourMarksInset: CGFloat = 15.0 {
         didSet {
             layoutSublayers()
         }
     }
-    
+
+    private var romanHourMarksLayer: RomanHourMarksLayer?
+
     public var sunriseSunset: SunriseSunset? {
         didSet {
             guard let sunriseSunset = sunriseSunset else {
@@ -118,8 +123,6 @@ final class RomanClockLayer: CALayer {
         daylightLayer.borderColor = UIColor(named: "Text")?.cgColor
         daylightLayer.borderWidth = 2.0
         daylightLayer.cornerRadius = sublayerSideLength / 2.0
-
-        elapsedTimeLayer.update()
     }
     
 }

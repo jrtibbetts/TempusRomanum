@@ -6,32 +6,36 @@ import UIKit
 /// Roman-style durations, such that each daylight hour is exactly 1/12th of
 /// the time between sunrise and sunset, and each nighttime hour is exactly
 /// 1/12th of the time between sunset and sunrise the next day.
-///
-/// The view is composed of the following layers, from rearmost to foremost:
-///  1. The background clock layer, which is the largest possible square that
-///     can be centered in the view;
-///  2. The clock face, colored with the nighttime color;
-///  3. **The daylight pie slice**;
-///  4. **The daylight hour lines**;
-///  5. **The nighttime hour lines**;
-///  6. The modern hour marks; and
-///  7. **The Roman hour marks**.
-///
-/// Layers marked in **bold** change when the `sunriseSunset` value changes.
 public final class RomanClockView: UIView {
 
-    fileprivate var backgroundLayer: RomanClockLayer!
-    
+    // MARK: - Public Properties
+
     public var sunriseSunset: SunriseSunset? {
         didSet {
-            backgroundLayer.sunriseSunset = sunriseSunset
+            romanClockLayer.sunriseSunset = sunriseSunset
+
+            if sunriseSunset != nil {
+                update()
+            }
         }
     }
-    
+
+    // MARK: - Private Properties
+
+    private var elapsedTimeTimer = Timer(timeInterval: 60.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+
+    var romanClockLayer: RomanClockLayer!
+
+    // MARK: - UIView
+
     public override func awakeFromNib() {
         super.awakeFromNib()
-        backgroundLayer = RomanClockLayer()
-        layer.addSublayer(backgroundLayer)
+        romanClockLayer = RomanClockLayer()
+        layer.addSublayer(romanClockLayer)
+    }
+
+    public override func didMoveToSuperview() {
+        print("Moved to superview \(String(describing: superview))")
     }
 
     public override func layoutSubviews() {
@@ -41,8 +45,14 @@ public final class RomanClockView: UIView {
         let backgroundSize = CGSize(width: backgroundSideLength,
                                     height: backgroundSideLength)
         let backgroundFrame = CGRect(origin: CGPoint(), size: backgroundSize)
-        backgroundLayer.frame = backgroundFrame
-        backgroundLayer.centerInSuperlayer()
+        romanClockLayer.frame = backgroundFrame
+        romanClockLayer.centerInSuperlayer()
+    }
+
+    // MARK: - Other Functions
+
+    @objc public func update() {
+        romanClockLayer.elapsedTimeLayer.update()
     }
 
 }

@@ -26,6 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      systemAttachmentLifetime = "keepNever"
       codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
@@ -39,6 +40,9 @@
                ReferencedContainer = "container:Tempus Romanum.xcodeproj">
             </BuildableReference>
             <SkippedTests>
+               <Test
+                  Identifier = "TevyeTests">
+               </Test>
                <Test
                   Identifier = "TevyeTests/testSunriseSunsetReturnsOk()">
                </Test>
