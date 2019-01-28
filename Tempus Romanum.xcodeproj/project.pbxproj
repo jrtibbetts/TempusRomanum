@@ -34,6 +34,7 @@
 		96AFE43121FDF4E100F767E2 /* ClockSubfaceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */; };
 		96AFE43521FEB4D700F767E2 /* RomanNumerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */; };
 		96AFE43721FEBCD100F767E2 /* RomanNumeralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */; };
+		96AFE43921FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -121,6 +122,7 @@
 		96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSubfaceLayer.swift; sourceTree = "<group>"; };
 		96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumerals.swift; sourceTree = "<group>"; };
 		96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralTests.swift; sourceTree = "<group>"; };
+		96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgTimes.swift; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */,
 				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
 				965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */,
+				96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */,
 				965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */,
 			);
 			path = "Sunrise & Sunset";
@@ -398,6 +401,7 @@
 				965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */,
 				967547A321F7F6FC00A6DA63 /* CALayer+Geometry.swift in Sources */,
 				ADB8735221FA658600F2FE54 /* NighttimeLayer.swift in Sources */,
+				96AFE43921FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift in Sources */,
 				96AFE43521FEB4D700F767E2 /* RomanNumerals.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

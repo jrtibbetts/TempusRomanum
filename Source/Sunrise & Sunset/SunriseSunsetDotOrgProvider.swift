@@ -122,7 +122,7 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
         /// The sunrise and sunset times. This will be empty if `status` is not
         /// `"OK"`.
-        var results: SunriseSunsetResults
+        var results: SunriseSunsetDotOrgTimes
 
         /// The return code of the server call.
         var status: Status
@@ -134,24 +134,6 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
             case INVALID_REQUEST
             case INVALID_DATE
             case UNKNOWN_ERROR
-        }
-
-        /// The various astronomical times for the given date and location. ALL
-        /// times are specified as UTC. See
-        /// http://www.digital-photo-secrets.com/tip/2832/the-differences-between-civil-nautical-and-astronomical-twilight/
-        /// for a discussion about the differences between civil, nautical,
-        /// and astronomical times.
-        class SunriseSunsetResults: Codable, SunriseSunset {
-            var astronomicalTwilightBegin: Date
-            var astronomicalTwilightEnd: Date
-            var civilTwilightBegin: Date
-            var civilTwilightEnd: Date
-//            var dayLength: Double
-            var nauticalTwilightBegin: Date
-            var nauticalTwilightEnd: Date
-            var solarNoon: Date
-            var sunrise: Date
-            var sunset: Date
         }
     }
 
