@@ -31,7 +31,6 @@
 		967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */; };
 		967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */; };
 		967547B121FAB62900A6DA63 /* ElapsedTimeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547B021FAB62800A6DA63 /* ElapsedTimeLayer.swift */; };
-		967547B321FAC0AE00A6DA63 /* ElapsedTimeLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547B221FAC0AE00A6DA63 /* ElapsedTimeLayerTests.swift */; };
 		96AFE43121FDF4E100F767E2 /* ClockSubfaceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -117,7 +116,6 @@
 		967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetTests.swift; sourceTree = "<group>"; };
 		967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayerTests.swift; sourceTree = "<group>"; };
 		967547B021FAB62800A6DA63 /* ElapsedTimeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeLayer.swift; sourceTree = "<group>"; };
-		967547B221FAC0AE00A6DA63 /* ElapsedTimeLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeLayerTests.swift; sourceTree = "<group>"; };
 		96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSubfaceLayer.swift; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 			isa = PBXGroup;
 			children = (
 				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
-				967547B221FAC0AE00A6DA63 /* ElapsedTimeLayerTests.swift */,
 				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
 			);
 			path = Views;
@@ -403,7 +400,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */,
-				967547B321FAC0AE00A6DA63 /* ElapsedTimeLayerTests.swift in Sources */,
 				967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */,
 				967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
