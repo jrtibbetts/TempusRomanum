@@ -2,6 +2,7 @@
 
 import Foundation
 
+/// An enumeration of the Roman numerals `I` through `XII`.
 public enum RomanNumeral: String, CaseIterable {
 
     case I
@@ -18,36 +19,38 @@ public enum RomanNumeral: String, CaseIterable {
     case XII
 
     var ordinal: String {
-        switch self {
-        case .I:
-            return "prima"
-        case .II:
-            return "secunda"
-        case .III:
-            return "tertia"
-        case .IV:
-            return "quarta"
-        case .V:
-            return "quinta"
-        case .VI:
-            return "sexta"
-        case .VII:
-            return "septima"
-        case .VIII:
-            return "octava"
-        case .IX:
-            return "nona"
-        case .X:
-            return "decima"
-        case .XI:
-            return "undecima"
-        case .XII:
-            return "duodecima"
-        }
+        let index = type(of: self).allCases.firstIndex(of: self)!
+
+        return type(of: self).ordinals[index]
     }
 
     public static var allCases: AllCases {
         return [.I, .II, .III, .IV, .V, .VI, .VII, .VIII, .IX, .X, .XI, .XII]
+    }
+
+    private static var ordinals: [String] = ["prima",   "secunda",  "tertia",
+                                             "quarta",  "quinta",   "sexta",
+                                             "septima", "octava",   "nona",
+                                             "decima",  "undecima", "duodecima"]
+
+    /// Get the time, expressed as the ordinal hour value and, if half-past the
+    /// hour or later, the phrase `et dimidia`. The Romans did not have the
+    /// same notion of minutes that we do today.
+    public static func timeString(from date: Date) -> String {
+        let calendar = Calendar.current
+        let desiredComponents: [Calendar.Component] = [.hour, .minute, .timeZone]
+        let components = calendar.dateComponents(Set<Calendar.Component>(desiredComponents), from: date)
+
+        var hour = components.hour!
+        let minute = components.minute!
+        hour = (hour - 1) % 12  // convert 24-hour time to 12-hour time
+        var string = "\(allCases[hour].ordinal) hora"
+
+        if minute >= 30 {
+            string.append(" et dimidia")
+        }
+
+        return string
     }
     
 }
