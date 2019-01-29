@@ -36,6 +36,7 @@
 		96AFE43721FEBCD100F767E2 /* RomanNumeralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */; };
 		96AFE43921FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */; };
 		96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */; };
+		96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -125,6 +126,7 @@
 		96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralTests.swift; sourceTree = "<group>"; };
 		96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgTimes.swift; sourceTree = "<group>"; };
 		96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgTimesTests.swift; sourceTree = "<group>"; };
+		96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TrigonometryTests.swift"; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 			children = (
 				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
 				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
+				96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */,
 				96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
+				96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */,
 				965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

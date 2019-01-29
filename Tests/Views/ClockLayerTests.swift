@@ -24,4 +24,20 @@ class ClockLayerTests: XCTestCase {
         XCTAssertEqual(layer.diameter, 120.0)
     }
 
+    func testBorderPointAt2πOk() {
+        let layer = ClockLayer()
+        layer.frame = CGRect(x: 0.0, y: 0.0, width: 120.0, height: 120.0)
+        let borderPointAt2π = layer.borderPoint(at: (2.0 * CGFloat.pi))
+        XCTAssertEqual(borderPointAt2π.x, 120.0, accuracy: 0.001)
+        XCTAssertEqual(borderPointAt2π.y, 60.0, accuracy: 0.001)
+    }
+
+    func testBorderPointAtπOk() {
+        let layer = ClockLayer()
+        layer.frame = CGRect(x: 0.0, y: 0.0, width: 120.0, height: 120.0)
+        let borderPointAtπ = layer.borderPoint(at: CGFloat.pi)
+        XCTAssertEqual(borderPointAtπ.x, 0.0, accuracy: 0.001)
+        XCTAssertEqual(borderPointAtπ.y, 60.0, accuracy: 0.001)
+    }
+
 }
