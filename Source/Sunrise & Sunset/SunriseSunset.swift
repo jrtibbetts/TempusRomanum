@@ -4,6 +4,18 @@ import Foundation
 
 public protocol SunriseSunset {
 
+    var astronomicalDawn: Date? { get }
+
+    var astronomicalDusk: Date? { get }
+
+    var civilDawn: Date? { get }
+
+    var civilDusk: Date? { get }
+
+    var nauticalDawn: Date? { get }
+
+    var nauticalDusk: Date? { get }
+
     /// Sunrise. It's assumed that it's for the same day as the `sunset`; if
     /// not, then that's a problem that this struct doesn't address.
     var sunrise: Date { get }
