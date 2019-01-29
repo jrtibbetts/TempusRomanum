@@ -20,7 +20,11 @@ public extension UIBezierPath {
                             startAngle: CGFloat,
                             endAngle: CGFloat,
                             clockwise: Bool = true) {
-        self.init(arcCenter: sliceCenter, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: clockwise)
+        self.init(arcCenter: sliceCenter,
+                  radius: radius,
+                  startAngle: startAngle,
+                  endAngle: endAngle,
+                  clockwise: clockwise)
         addLine(to: sliceCenter)
         close()
     }

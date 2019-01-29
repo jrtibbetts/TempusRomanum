@@ -22,7 +22,11 @@ public final class RomanClockView: UIView {
 
     // MARK: - Private Properties
 
-    private var elapsedTimeTimer = Timer(timeInterval: 60.0, target: self, selector: #selector(update), userInfo: nil, repeats: true)
+    private var elapsedTimeTimer = Timer(timeInterval: 60.0,
+                                         target: self,
+                                         selector: #selector(update),
+                                         userInfo: nil,
+                                         repeats: true)
 
     var romanClockLayer: RomanClockLayer!
 

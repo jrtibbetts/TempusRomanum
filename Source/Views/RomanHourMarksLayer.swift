@@ -90,11 +90,7 @@ public final class RomanHourMarksLayer: ClockLayer {
         layer.string = RomanNumeral.allCases[number].rawValue
         layer.foregroundColor = textColor
         layer.frame = CGRect(origin: CGPoint(), size: labelSize)
-
-        let angle = time.rotationAngle
-        let borderPoint = CGPoint(x: boundsCenter.x + (radius * cos(angle)),
-                                  y: boundsCenter.y + (radius * sin(angle)))
-        layer.center(at: borderPoint)
+        layer.center(at: borderPoint(at: time.rotationAngle))
 
         return layer
     }

@@ -51,9 +51,7 @@ open class HourLinesLayer: ClockLayer {
             // day.
             path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(angle)),
                                   y: boundsCenter.y + (radius * 0.2 * sin(angle))))
-            let borderPoint = CGPoint(x: boundsCenter.x + (radius * cos(angle)),
-                                      y: boundsCenter.y + (radius * sin(angle)))
-            path.addLine(to: borderPoint)
+            path.addLine(to: borderPoint(at: angle))
         }
 
         self.path = path.cgPath

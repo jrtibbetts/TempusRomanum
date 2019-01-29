@@ -35,7 +35,9 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                     return date
                 } else {
                     throw DecodingError.dataCorruptedError(in: container,
-                                                           debugDescription: "Date values must be formatted like \"7:27:02 AM\". No other format is accepted.")
+                                                           debugDescription: """
+Date values must be formatted like \"7:27:02 AM\". No other format is accepted.
+""")
                 }
             }
         }
@@ -67,13 +69,14 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         return Promise<SunriseSunset> { (promise) in
             // Construct the request.
             guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
-                promise.reject(ResponseData.Status.INVALID_REQUEST)
+                promise.reject(ResponseData.Status.invalidRequest)
                 return
             }
 
             // Call the server.
             URLSession.shared.dataTask(.promise, with: request).validate().done { (response) in
-                let responseData = try self.jsonDecoder.decode(ResponseData.self, from: response.data)
+                let responseData = try self.jsonDecoder.decode(ResponseData.self,
+                                                               from: response.data)
                 self.handle(response: responseData, promise: promise)
                 }.catch {
                     promise.reject($0)
@@ -131,9 +134,16 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         /// be used as `Error`s (yes, including `OK`).
         enum Status: String, Error, Codable {
             case OK
-            case INVALID_REQUEST
-            case INVALID_DATE
-            case UNKNOWN_ERROR
+            case invalidRequest
+            case invalidDate
+            case unknownError
+
+            private enum CodingKeys: String, CodingKey {
+                case OK
+                case invalidRequest = "INVALID_REQUEST"
+                case invalidDate = "INVALID_DATE"
+                case unknownError = "UNKNOWN_ERROR"
+            }
         }
     }
 
