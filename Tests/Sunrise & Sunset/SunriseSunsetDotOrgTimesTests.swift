@@ -54,9 +54,9 @@ class SunriseSunsetDotOrgTimesTests: XCTestCase {
         assert(times.nauticalDusk, times.nauticalTwilightEnd)
     }
 
-    func assert(_ aliasedDate: Date?, _ parsedDate: Date) {
+    func assert(_ aliasedDate: Date, _ parsedDate: Date) {
         XCTAssertNotNil(aliasedDate)
-        XCTAssertEqual(aliasedDate!, parsedDate)
+        XCTAssertEqual(aliasedDate, parsedDate)
     }
 
 }

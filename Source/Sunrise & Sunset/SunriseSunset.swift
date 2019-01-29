@@ -4,18 +4,6 @@ import Foundation
 
 public protocol SunriseSunset {
 
-    var astronomicalDawn: Date? { get }
-
-    var astronomicalDusk: Date? { get }
-
-    var civilDawn: Date? { get }
-
-    var civilDusk: Date? { get }
-
-    var nauticalDawn: Date? { get }
-
-    var nauticalDusk: Date? { get }
-
     /// Sunrise. It's assumed that it's for the same day as the `sunset`; if
     /// not, then that's a problem that this struct doesn't address.
     var sunrise: Date { get }
@@ -23,6 +11,30 @@ public protocol SunriseSunset {
     /// Sunset. It's assumed that it's for the same day as the `sunrise`; if
     /// not, then that's a problem that this struct doesn't address.
     var sunset: Date { get }
+
+}
+
+public protocol SolarAndLunarTimes: SunriseSunset {
+
+    /// The last instance when the sky shows no sunlight whatsoever. The sun
+    /// sun is 18° below the horizon.
+    var astronomicalDawn: Date { get }
+
+    /// The first instance when the sky shows no sunlight whatsoever. The sun
+    /// sun is 18° below the horizon.
+    var astronomicalDusk: Date { get }
+
+    /// The first instance when the rising sun hits 6° below the horizon.
+    var civilDawn: Date { get }
+
+    /// The first instance when the setting sun hits 6° below the horizon.
+    var civilDusk: Date { get }
+
+    /// The first instance when the rising sun hits 12° below the horizon.
+    var nauticalDawn: Date { get }
+
+    /// The first instance when the setting sun hits 12° below the horizon.
+    var nauticalDusk: Date { get }
 
 }
 

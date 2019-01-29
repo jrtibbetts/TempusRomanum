@@ -7,40 +7,38 @@ import Foundation
 /// http://www.digital-photo-secrets.com/tip/2832/the-differences-between-civil-nautical-and-astronomical-twilight/
 /// for a discussion about the differences between civil, nautical,
 /// and astronomical times.
-class SunriseSunsetDotOrgTimes: Codable, SunriseSunset {
+struct SunriseSunsetDotOrgTimes: Codable, SolarAndLunarTimes {
     
     var astronomicalTwilightBegin: Date
     var astronomicalTwilightEnd: Date
     var civilTwilightBegin: Date
     var civilTwilightEnd: Date
-    //            var dayLength: Double
     var nauticalTwilightBegin: Date
     var nauticalTwilightEnd: Date
-    var solarNoon: Date
     var sunrise: Date
     var sunset: Date
 
-    var astronomicalDawn: Date? {
+    var astronomicalDawn: Date {
         return astronomicalTwilightBegin
     }
 
-    var astronomicalDusk: Date? {
+    var astronomicalDusk: Date {
         return astronomicalTwilightEnd
     }
 
-    var civilDawn: Date? {
+    var civilDawn: Date {
         return civilTwilightBegin
     }
 
-    var civilDusk: Date? {
+    var civilDusk: Date {
         return civilTwilightEnd
     }
 
-    var nauticalDawn: Date? {
+    var nauticalDawn: Date {
         return nauticalTwilightBegin
     }
 
-    var nauticalDusk: Date? {
+    var nauticalDusk: Date {
         return nauticalTwilightEnd
     }
 

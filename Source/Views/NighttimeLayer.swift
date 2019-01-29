@@ -27,47 +27,35 @@ class NighttimeClockLayer: ClockSubfaceLayer {
             layer.removeFromSuperlayer()
         }
 
-        guard let times = sunriseSunset,
-            let civilDawn = times.civilDawn?.rotationAngle,
-            let civilDusk = times.civilDusk?.rotationAngle,
-            let nauticalDawn = times.nauticalDawn?.rotationAngle,
-            let nauticalDusk = times.nauticalDusk?.rotationAngle,
-            let astronomicalDawn = times.astronomicalDawn?.rotationAngle,
-            let astronomicalDusk = times.astronomicalDusk?.rotationAngle else {
-                return
-        }
-
-        let civilColor = UIColor(named: "Civil Dawn and Dusk")!.cgColor
-        let civilDawnLayer = gradientLayer(from: civilDawn, to: times.sunrise.rotationAngle, color: civilColor)
-        let civilDuskLayer = gradientLayer(from: times.sunset.rotationAngle, to: civilDusk, color: civilColor)
-        gradientLayers.append(contentsOf: [civilDawnLayer, civilDuskLayer])
-
-        let nauticalColor = UIColor(named: "Nautical Dawn and Dusk")!.cgColor
-        let nauticalDawnLayer = gradientLayer(from: nauticalDawn, to: civilDawn, color: nauticalColor)
-        let nauticalDuskLayer = gradientLayer(from: civilDusk, to: nauticalDusk, color: nauticalColor)
-        gradientLayers.append(contentsOf: [nauticalDawnLayer, nauticalDuskLayer])
-
-        let astronomicalColor = UIColor(named: "Astronomical Dawn and Dusk")!.cgColor
-        let astronomicalDawnLayer = gradientLayer(from: astronomicalDawn, to: nauticalDawn, color: astronomicalColor)
-        let astronomicalDuskLayer = gradientLayer(from: nauticalDusk, to: astronomicalDusk, color: astronomicalColor)
-        gradientLayers.append(contentsOf: [astronomicalDawnLayer, astronomicalDuskLayer])
-
-        gradientLayers.forEach { (gradientLayer) in
-            addSublayer(gradientLayer)
+        if let solarAndLunarTimes = sunriseSunset as? SolarAndLunarTimes {
+            addSolarAndLunarLayers(for: solarAndLunarTimes)
         }
     }
 
     // MARK: - Other Functions
 
     override func updatePath() {
-        guard let sunriseSunset = sunriseSunset else { return }
         fillColor = UIColor(named: "Nighttime")!.cgColor
 
         // Use the astronomical times, if any, to calculate the angles;
         // otherwise, use the regular sunrise and sunset.
-        let startAngle = (sunriseSunset.astronomicalDusk ?? sunriseSunset.sunset).rotationAngle
-        let endAngle = (sunriseSunset.astronomicalDawn ?? sunriseSunset.sunrise).rotationAngle
-        updatePath(from: startAngle, to: endAngle)
+        let startAngle: CGFloat
+        let endAngle: CGFloat
+
+        if let extendedTimes = sunriseSunset as? SolarAndLunarTimes {
+            startAngle = extendedTimes.astronomicalDusk.rotationAngle
+            endAngle = extendedTimes.astronomicalDawn.rotationAngle
+            updatePath(from: startAngle, to: endAngle)
+        } else if let sunriseSunset = sunriseSunset {
+            startAngle = sunriseSunset.sunset.rotationAngle
+            endAngle = sunriseSunset.sunrise.rotationAngle
+            updatePath(from: startAngle, to: endAngle)
+        }
+
+    }
+
+    func gradientLayer(from startDate: Date, to endDate: Date, color: CGColor) -> CALayer {
+        return gradientLayer(from: startDate.rotationAngle, to: endDate.rotationAngle, color: color)
     }
 
     func gradientLayer(from: CGFloat, to: CGFloat, color: CGColor) -> CALayer {
@@ -76,6 +64,36 @@ class NighttimeClockLayer: ClockSubfaceLayer {
         layer.path = UIBezierPath(sliceCenter: boundsCenter, radius: radius, startAngle: from, endAngle: to).cgPath
 
         return layer
+    }
+
+    private func addDawnAndDuskLayers(dawnStart: Date, dawnEnd: Date,
+                                      duskStart: Date, duskEnd: Date,
+                                      color: CGColor) {
+        addSublayer(gradientLayer(from: dawnStart, to: dawnEnd, color: color))
+        addSublayer(gradientLayer(from: duskStart, to: duskEnd, color: color))
+    }
+
+    private func addSolarAndLunarLayers(for times: SolarAndLunarTimes) {
+        let civilColor = UIColor(named: "Civil Dawn and Dusk")!.cgColor
+        addDawnAndDuskLayers(dawnStart: times.civilDawn,
+                             dawnEnd: times.sunrise,
+                             duskStart: times.sunset,
+                             duskEnd: times.civilDusk,
+                             color: civilColor)
+
+        let nauticalColor = UIColor(named: "Nautical Dawn and Dusk")!.cgColor
+        addDawnAndDuskLayers(dawnStart: times.nauticalDawn,
+                             dawnEnd: times.civilDawn,
+                             duskStart: times.civilDusk,
+                             duskEnd: times.nauticalDusk,
+                             color: nauticalColor)
+
+        let astronomicalColor = UIColor(named: "Astronomical Dawn and Dusk")!.cgColor
+        addDawnAndDuskLayers(dawnStart: times.astronomicalDawn,
+                             dawnEnd: times.nauticalDawn,
+                             duskStart: times.nauticalDusk,
+                             duskEnd: times.astronomicalDusk,
+                             color: astronomicalColor)
     }
 
 }
