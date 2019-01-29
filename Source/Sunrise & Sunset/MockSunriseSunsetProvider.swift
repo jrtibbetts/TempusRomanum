@@ -21,18 +21,9 @@ struct SimpleSunriseSunset: SunriseSunset {
 
     var sunset: Date
 
-    init(sunrise: Date, sunset: Date,
-         astronomicalDawn: Date? = nil, astronomicalDusk: Date? = nil,
-         civilDawn: Date? = nil,        civilDusk: Date? = nil,
-         nauticalDawn: Date? = nil,     nauticalDusk: Date? = nil) {
+    init(sunrise: Date, sunset: Date) {
         self.sunrise = sunrise
         self.sunset = sunset
-        self.astronomicalDawn = astronomicalDawn
-        self.astronomicalDusk = astronomicalDusk
-        self.civilDawn = civilDawn
-        self.civilDusk = civilDusk
-        self.nauticalDawn = nauticalDawn
-        self.nauticalDusk = nauticalDusk
     }
 
 }

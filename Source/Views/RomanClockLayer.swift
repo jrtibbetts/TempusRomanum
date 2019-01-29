@@ -103,7 +103,6 @@ final class RomanClockLayer: CALayer {
         super.layoutSublayers()
 
         modernHourMarksLayer?.frame = self.bounds
-        modernHourMarksLayer?.centerInSuperlayer()
 
         // Calculate the size of the clock layer
         let marksInsets = modernHourMarksInset + romanHourMarksInset
@@ -112,14 +111,17 @@ final class RomanClockLayer: CALayer {
 
         [nighttimeClockLayer, daylightLayer, elapsedTimeLayer].forEach { (layer) in
             layer.frame = clockFaceFrame
-            layer.centerInSuperlayer()
         }
 
-        let romanHourMarksFrame = CGRect(x: frame.origin.x + modernHourMarksInset,
-                                         y: frame.origin.y + modernHourMarksInset,
+        let romanHourMarksFrame = CGRect(x: 0.0,
+                                         y: 0.0,
                                          width: frame.width - (modernHourMarksInset * 2.0),
                                          height: frame.height - (modernHourMarksInset * 2.0))
         romanHourMarksLayer?.frame = romanHourMarksFrame
+
+        [modernHourMarksLayer, nighttimeClockLayer, daylightLayer, elapsedTimeLayer, romanHourMarksLayer].forEach { (layer) in
+            layer?.centerInSuperlayer()
+        }
 
         daylightLayer.borderColor = UIColor(named: "Text")?.cgColor
         daylightLayer.borderWidth = 2.0
