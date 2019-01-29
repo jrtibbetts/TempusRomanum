@@ -79,8 +79,9 @@ final class RomanClockLayer: CALayer {
         addSublayer(nighttimeClockLayer)
         addSublayer(daylightLayer)
 
+        modernHourMarksInset = 0.0
         modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
-        addSublayer(modernHourMarksLayer!)
+//        addSublayer(modernHourMarksLayer!)
         romanHourMarksLayer = RomanHourMarksLayer()
         addSublayer(romanHourMarksLayer!)
 
