@@ -8,6 +8,7 @@ import Foundation
 /// for a discussion about the differences between civil, nautical,
 /// and astronomical times.
 class SunriseSunsetDotOrgTimes: Codable, SunriseSunset {
+    
     var astronomicalTwilightBegin: Date
     var astronomicalTwilightEnd: Date
     var civilTwilightBegin: Date
@@ -18,4 +19,29 @@ class SunriseSunsetDotOrgTimes: Codable, SunriseSunset {
     var solarNoon: Date
     var sunrise: Date
     var sunset: Date
+
+    var astronomicalDawn: Date? {
+        return astronomicalTwilightBegin
+    }
+
+    var astronomicalDusk: Date? {
+        return astronomicalTwilightEnd
+    }
+
+    var civilDawn: Date? {
+        return civilTwilightBegin
+    }
+
+    var civilDusk: Date? {
+        return civilTwilightEnd
+    }
+
+    var nauticalDawn: Date? {
+        return nauticalTwilightBegin
+    }
+
+    var nauticalDusk: Date? {
+        return nauticalTwilightEnd
+    }
+
 }
