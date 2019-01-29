@@ -102,30 +102,33 @@ final class RomanClockLayer: CALayer {
     override func layoutSublayers() {
         super.layoutSublayers()
 
-        modernHourMarksLayer?.frame = self.bounds
+        layoutMarksLayers()
 
         // Calculate the size of the clock layer
         let marksInsets = modernHourMarksInset + romanHourMarksInset
-        let sublayerSideLength = min(frame.size.width - marksInsets * 2, frame.size.width - marksInsets * 2)
+        let sublayerSideLength = frame.size.width - (marksInsets * 2)
         let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
 
         [nighttimeClockLayer, daylightLayer, elapsedTimeLayer].forEach { (layer) in
             layer.frame = clockFaceFrame
+            layer.centerInSuperlayer()
         }
+
+        daylightLayer.borderColor = UIColor(named: "Text")?.cgColor
+        daylightLayer.borderWidth = 1.0
+        daylightLayer.cornerRadius = sublayerSideLength / 2.0
+    }
+
+    private func layoutMarksLayers() {
+        modernHourMarksLayer?.frame = self.bounds
+        modernHourMarksLayer?.centerInSuperlayer()
 
         let romanHourMarksFrame = CGRect(x: 0.0,
                                          y: 0.0,
                                          width: frame.width - (modernHourMarksInset * 2.0),
                                          height: frame.height - (modernHourMarksInset * 2.0))
         romanHourMarksLayer?.frame = romanHourMarksFrame
-
-        [modernHourMarksLayer, nighttimeClockLayer, daylightLayer, elapsedTimeLayer, romanHourMarksLayer].forEach { (layer) in
-            layer?.centerInSuperlayer()
-        }
-
-        daylightLayer.borderColor = UIColor(named: "Text")?.cgColor
-        daylightLayer.borderWidth = 2.0
-        daylightLayer.cornerRadius = sublayerSideLength / 2.0
+        romanHourMarksLayer?.centerInSuperlayer()
     }
     
 }
