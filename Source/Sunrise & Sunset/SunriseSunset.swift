@@ -56,8 +56,8 @@ public extension SunriseSunset {
     }
 
     /// An array of `Date`s of the daylight hours.
-    public var daylightHourTimes: [Date] {
-        return (0..<12).map { sunrise.addingTimeInterval(daylightHourDuration * 60 * Double($0)) }
+    public var daylightHours: [Date] {
+        return hours(for: sunrise, hourDuration: daylightHourDuration)
     }
 
     /// The duration, in minutes, of nighttime.
@@ -71,8 +71,12 @@ public extension SunriseSunset {
     }
 
     /// An array of `Date`s of the nighttime hours.
-    public var nighttimeHourTimes: [Date] {
-        return (0..<12).map { sunset.addingTimeInterval(nighttimeHourDuration * 60 * Double($0)) }
+    public var nighttimeHours: [Date] {
+        return hours(for: sunset, hourDuration: nighttimeHourDuration)
+    }
+
+    private func hours(for startDate: Date, hourDuration: TimeInterval) -> [Date] {
+        return (0..<12).map { startDate.addingTimeInterval(hourDuration * 60 * Double($0)) }
     }
 
 }

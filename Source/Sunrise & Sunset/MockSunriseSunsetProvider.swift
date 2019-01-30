@@ -5,18 +5,6 @@ import UIKit
 
 struct SimpleSunriseSunset: SunriseSunset {
 
-    var astronomicalDawn: Date?
-
-    var astronomicalDusk: Date?
-
-    var civilDawn: Date?
-
-    var civilDusk: Date?
-
-    var nauticalDawn: Date?
-
-    var nauticalDusk: Date?
-
     var sunrise: Date
 
     var sunset: Date

@@ -49,8 +49,8 @@ final class RomanClockLayer: CALayer {
 
             nighttimeClockLayer.sunriseSunset = sunriseSunset
 
-            romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHourTimes
-            romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHourTimes
+            romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHours
+            romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHours
 
             setNeedsLayout()
         }

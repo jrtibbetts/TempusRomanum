@@ -7,7 +7,7 @@ class NighttimeClockLayer: ClockSubfaceLayer {
 
     override var sunriseSunset: SunriseSunset? {
         didSet {
-            if let hours = sunriseSunset?.nighttimeHourTimes {
+            if let hours = sunriseSunset?.nighttimeHours {
                 hourLinesLayer.hours = hours
                 setNeedsLayout()
             }

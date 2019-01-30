@@ -24,6 +24,13 @@ class SunriseSunsetTests: XCTestCase {
         XCTAssertEqual(sunriseSunset.daylightHourDuration, 680 / 12)
     }
 
+    func testDaylightHoursOk() {
+        let sunriseSunset = SimpleSunriseSunset(sunrise: date(7, 13),
+                                                sunset: date(18, 33))
+        XCTAssertEqual(sunriseSunset.daylightHours.count, 12)
+        XCTAssertEqual(sunriseSunset.sunrise, sunriseSunset.daylightHours[0])
+    }
+
     func testNighttimeMinutesOk() {
         let sunriseSunset = SimpleSunriseSunset(sunrise: date(7, 13),
                                                 sunset: date(18, 33))
@@ -34,6 +41,13 @@ class SunriseSunsetTests: XCTestCase {
         let sunriseSunset = SimpleSunriseSunset(sunrise: date(7, 13),
                                                 sunset: date(18, 33))
         XCTAssertEqual(sunriseSunset.nighttimeHourDuration, (760) / 12)
+    }
+
+    func testNighttimeHoursOk() {
+        let sunriseSunset = SimpleSunriseSunset(sunrise: date(7, 13),
+                                                sunset: date(18, 33))
+        XCTAssertEqual(sunriseSunset.nighttimeHours.count, 12)
+        XCTAssertEqual(sunriseSunset.sunset, sunriseSunset.nighttimeHours[0])
     }
 
 }

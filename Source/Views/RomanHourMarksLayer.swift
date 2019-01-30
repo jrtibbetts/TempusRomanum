@@ -26,59 +26,48 @@ public final class RomanHourMarksLayer: ClockLayer {
         }
     }
 
-    public var textColor: CGColor? = UIColor(named: "Text")?.cgColor {
-        didSet {
-            labelLayers.forEach { $0.foregroundColor = textColor }
-
-            setNeedsDisplay()
-        }
-    }
-
     public var nighttimeHours: [Date] = [] {
         didSet {
             setNeedsLayout()
         }
     }
 
+    public var textColor: CGColor? = UIColor(named: "Text")?.cgColor {
+        didSet {
+            labelLayers.forEach { $0.foregroundColor = textColor }
+            setNeedsDisplay()
+        }
+    }
+
     // MARK: - Private Properties
 
-    private var daylightLabelLayers: [CATextLayer] = []
-
-    private var labelLayers: [CATextLayer] {
-        return daylightLabelLayers + nighttimeLabelLayers
-    }
+    private var labelLayers = [CATextLayer]()
 
     private var labelSize: CGSize {
         return CGSize(width: fontSize * 2.5, height: fontSize * 1.2)
     }
-
-    private var nighttimeLabelLayers: [CATextLayer] = []
 
     // MARK: - CALayer
 
     public override func layoutSublayers() {
         super.layoutSublayers()
 
-        guard !frame.size.equalTo(CGSize(width: 0.0, height: 0.0)) else {
-            return
-        }
-
-        labelLayers.forEach { (layer) in
-            layer.removeFromSuperlayer()
+        labelLayers.forEach { (sublayer) in
+            sublayer.removeFromSuperlayer()
         }
 
         daylightHours.enumerated().forEach { (index, date) in
-            let date = daylightHours[index]
-            let layer = createLayer(forNumber: index, time: date)
-            daylightLabelLayers.append(layer)
-            addSublayer(layer)
+            let layer = createLayer(forNumber: index, time: daylightHours[index])
+            labelLayers.append(layer)
         }
 
         nighttimeHours.enumerated().forEach { (index, date) in
-            let date = nighttimeHours[index]
-            let layer = createLayer(forNumber: index, time: date)
-            nighttimeLabelLayers.append(layer)
-            addSublayer(layer)
+            let layer = createLayer(forNumber: index, time: nighttimeHours[index])
+            labelLayers.append(layer)
+        }
+
+        labelLayers.forEach { (sublayer) in
+            addSublayer(sublayer)
         }
     }
 

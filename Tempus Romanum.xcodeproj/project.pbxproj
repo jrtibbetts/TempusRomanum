@@ -271,8 +271,8 @@
 			isa = PBXGroup;
 			children = (
 				967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */,
-				967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */,
 				96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */,
+				967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */,
 			);
 			path = "Sunrise & Sunset";
 			sourceTree = "<group>";
