@@ -4,13 +4,13 @@ import Foundation
 
 public extension UserDefaults {
 
-    public var use12HourClock: Bool {
+    public var use24HourClock: Bool {
         get {
-            return bool(forKey: "use12HourClock")
+            return bool(forKey: "use24HourClock")
         }
 
         set {
-            set(newValue, forKey: "use12HourClock")
+            set(newValue, forKey: "use24HourClock")
         }
     }
 

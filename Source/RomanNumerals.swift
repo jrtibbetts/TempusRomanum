@@ -36,7 +36,7 @@ public enum RomanNumeral: String, CaseIterable {
     /// Get the time, expressed as the ordinal hour value and, if half-past the
     /// hour or later, the phrase `et dimidia`. The Romans did not have the
     /// same notion of minutes that we do today.
-    public static func timeString(from date: Date) -> String {
+    public static func timeString(from date: Date, sunriseSunset: SunriseSunset) -> String {
         let calendar = Calendar.current
         let desiredComponents: [Calendar.Component] = [.hour, .minute, .timeZone]
         let components = calendar.dateComponents(Set<Calendar.Component>(desiredComponents), from: date)

@@ -79,4 +79,36 @@ public extension SunriseSunset {
         return (0..<12).map { startDate.addingTimeInterval(hourDuration * 60 * Double($0)) }
     }
 
+    func string(forDate time: Date = Date()) -> String {
+        let dayHalf: String
+        let dayHalfStart: Date
+        let hourDuration: TimeInterval
+
+        if (daylightHours[0] < time && time < daylightHours[11]) {
+            dayHalf = "diei"
+            dayHalfStart = daylightHours[0]
+            hourDuration = daylightMinutes
+        } else {
+            dayHalf = "noctis"
+            dayHalfStart = nighttimeHours[0]
+            hourDuration = nighttimeMinutes
+        }
+
+        let intervalSinceDayHalfStart = time.timeIntervalSince(dayHalfStart)
+        let hour = Int(intervalSinceDayHalfStart / hourDuration) / 3600
+        let minutes = Int(intervalSinceDayHalfStart) % Int(hourDuration)
+
+        if let hourString = RomanNumeral(rawValue: "\(hour)")?.ordinal {
+            var string = "\(hourString) \(dayHalf)"
+
+            if minutes > Int(hourDuration) / 2 {
+                string.append(" et dimidia")
+            }
+
+            return string
+        } else {
+            return ""
+        }
+    }
+
 }

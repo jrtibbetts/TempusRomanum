@@ -22,20 +22,22 @@ public final class ViewController: UIViewController {
     /// it can be set to another `UserDefaults` instance, such as for testing.
     var settings: UserDefaults = .standard
 
-    fileprivate let sunriseSunsetProvider = SunriseSunsetDotOrgProvider()
+    private var sunriseSunset: SunriseSunset?
 
-    fileprivate var timeFormatter: DateFormatter {
-        return settings.use12HourClock ? twelveHourTimeFormatter : twentyFourHourTimeFormatter
+    private let sunriseSunsetProvider = SunriseSunsetDotOrgProvider()
+
+    private var timeFormatter: DateFormatter {
+        return settings.use24HourClock ? twelveHourTimeFormatter : twentyFourHourTimeFormatter
     }
     
     /// A `DateFormatter` for getting displaying 24-hour time for `Date`s,
     /// like `08:00` (as opposed to true military time, which doesn't use
     /// colons, like `0800`). The date information of the date is not displayed.
-    fileprivate let twentyFourHourTimeFormatter = DateFormatter() <~ {
+    private let twentyFourHourTimeFormatter = DateFormatter() <~ {
         $0.dateFormat = "HH:mm"
     }
     
-    fileprivate let twelveHourTimeFormatter = DateFormatter() <~ {
+    private let twelveHourTimeFormatter = DateFormatter() <~ {
         $0.dateFormat = "hh:mm a"
     }
 
@@ -52,9 +54,11 @@ public final class ViewController: UIViewController {
 
         sunriseSunsetProvider.sunriseSunset().done { [weak self] (sunriseSunset) in
             guard let self = self else { return }
+            self.sunriseSunset = sunriseSunset
             self.modernSunriseLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunrise)
             self.modernSunsetLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunset)
             self.clockView?.sunriseSunset = sunriseSunset
+            self.updateTime()
             }.catch { (error) in
                 self.presentAlert(for: error, title: "Error")
         }
@@ -65,11 +69,11 @@ public final class ViewController: UIViewController {
     @objc private func updateTime() {
         let now = Date()
         modernTimeLabel.text = timeFormatter.string(from: now)
-        romanTimeLabel.text = RomanNumeral.timeString(from: now)
+        romanTimeLabel.text = sunriseSunset?.string(forDate: now)
     }
 
     @IBAction private func toggleTimeFormat() {
-        settings.use12HourClock = !settings.use12HourClock
+        settings.use24HourClock = !settings.use24HourClock
         updateTime()
     }
 
