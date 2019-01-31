@@ -38,10 +38,6 @@ public final class RomanClockView: UIView {
         layer.addSublayer(romanClockLayer)
     }
 
-    public override func didMoveToSuperview() {
-        print("Moved to superview \(String(describing: superview))")
-    }
-
     public override func layoutSubviews() {
         super.layoutSubviews()
         

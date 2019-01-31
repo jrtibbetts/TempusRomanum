@@ -43,7 +43,7 @@ public enum RomanNumeral: String, CaseIterable {
 
         var hour = components.hour!
         let minute = components.minute!
-        hour = (hour - 1) % 12  // convert 24-hour time to 12-hour time
+        hour = (hour + 6) % 12  // convert 24-hour time to 12-hour time
         var string = "\(allCases[hour].ordinal) hora"
 
         if minute >= 30 {

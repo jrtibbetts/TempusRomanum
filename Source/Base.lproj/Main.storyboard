@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yEL-cS-pYL">
-    <device id="retina4_0" orientation="portrait">
+    <device id="retina4_0" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -16,7 +16,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yEL-cS-pYL" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" translucent="NO" id="nnp-DB-qlx">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="32"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -43,11 +43,11 @@
             <objects>
                 <viewController id="TTA-zJ-V0f" customClass="ViewController" customModule="Tempus_Romanum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHB-PF-3mm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="288"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-cR-ctb" userLabel="Root Stack View">
-                                <rect key="frame" x="40" y="20" width="240" height="240"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-cR-ctb" userLabel="Root Stack View">
+                                <rect key="frame" x="34" y="24" width="500" height="240"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
@@ -59,6 +59,32 @@
                                             <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
                                         </constraints>
                                     </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-fI-w8P" userLabel="Current Times">
+                                        <rect key="frame" x="260" y="95.5" width="240" height="49"/>
+                                        <subviews>
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="12:43 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDp-6l-tc7" userLabel="Current Time (Modern)">
+                                                <rect key="frame" x="0.0" y="0.0" width="73" height="20.5"/>
+                                                <gestureRecognizers/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="awH-x7-Hw5"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                                <connections>
+                                                    <outletCollection property="gestureRecognizers" destination="Sgd-Ts-Dg6" appends="YES" id="f7a-de-Jz3"/>
+                                                </connections>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" text="secunda hora noctis et dimidia" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz8-5R-blT" userLabel="Current Time (Roman)">
+                                                <rect key="frame" x="0.0" y="28.5" width="234" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <variation key="heightClass=compact" alignment="top" axis="vertical"/>
+                                        <variation key="heightClass=regular" alignment="firstBaseline" axis="horizontal"/>
+                                    </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-9v-aeU" userLabel="Times View">
                                         <rect key="frame" x="250" y="28" width="254" height="184"/>
                                         <subviews>
@@ -147,6 +173,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="aHV-fI-w8P" firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="width" id="QJF-aU-kTD"/>
                                     <constraint firstItem="dbX-9v-aeU" firstAttribute="width" secondItem="S1g-cR-ctb" secondAttribute="width" id="msn-MX-se2"/>
                                 </constraints>
                                 <variation key="default">
@@ -195,9 +222,16 @@
                         <outlet property="clockView" destination="dim-oQ-clJ" id="qkE-r9-F59"/>
                         <outlet property="modernSunriseLabel" destination="f5D-iC-JKC" id="avG-OW-WbW"/>
                         <outlet property="modernSunsetLabel" destination="hfr-ad-evj" id="PXC-rc-PBh"/>
+                        <outlet property="modernTimeLabel" destination="nDp-6l-tc7" id="dDJ-m0-1TW"/>
+                        <outlet property="romanTimeLabel" destination="Tz8-5R-blT" id="fQh-K6-9nx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Ip-TMr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Sgd-Ts-Dg6">
+                    <connections>
+                        <action selector="toggleTimeFormat" destination="TTA-zJ-V0f" id="UPX-wL-gkW"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="894.20289855072474" y="67.633928571428569"/>
         </scene>

@@ -37,6 +37,7 @@
 		96AFE43921FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */; };
 		96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */; };
 		96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */; };
+		96AFE43F2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */; };
 		96DCE694216474F300E6A95F /* Stylobate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; };
 		96DCE695216474F300E6A95F /* Stylobate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE692216474F300E6A95F /* Stylobate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		96DCE696216474F300E6A95F /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96DCE693216474F300E6A95F /* PromiseKit.framework */; };
@@ -127,6 +128,7 @@
 		96AFE43821FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgTimes.swift; sourceTree = "<group>"; };
 		96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgTimesTests.swift; sourceTree = "<group>"; };
 		96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+TrigonometryTests.swift"; sourceTree = "<group>"; };
+		96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TempusRomanum.swift"; sourceTree = "<group>"; };
 		96DCE692216474F300E6A95F /* Stylobate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stylobate.framework; path = Carthage/Build/iOS/Stylobate.framework; sourceTree = "<group>"; };
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
@@ -196,9 +198,10 @@
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				965DF68621AB039700A40698 /* Sunrise & Sunset */,
-				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 				965DF67021A6713D00A40698 /* Views */,
 				96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */,
+				96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */,
+				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				AD5A718921B0AE2D0051820C /* RomanClockLayer.swift in Sources */,
 				AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
+				96AFE43F2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift in Sources */,
 				965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */,
 				960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */,
 				967547B121FAB62900A6DA63 /* ElapsedTimeLayer.swift in Sources */,
