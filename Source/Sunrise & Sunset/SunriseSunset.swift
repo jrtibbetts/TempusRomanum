@@ -46,7 +46,7 @@ public extension SunriseSunset {
     // MARK: - Computed Properties
 
     /// The duration, in minutes, of daylight.
-    public var daylightMinutes: TimeInterval {
+    private var daylightMinutes: TimeInterval {
         return sunset.timeIntervalSince(sunrise) / 60.0
     }
 
@@ -61,7 +61,7 @@ public extension SunriseSunset {
     }
 
     /// The duration, in minutes, of nighttime.
-    public var nighttimeMinutes: TimeInterval {
+    private var nighttimeMinutes: TimeInterval {
         return (24 * 60.0) - daylightMinutes
     }
 
@@ -79,36 +79,77 @@ public extension SunriseSunset {
         return (0..<12).map { startDate.addingTimeInterval(hourDuration * 60 * Double($0)) }
     }
 
-    func string(forDate time: Date = Date()) -> String {
-        let dayHalf: String
-        let dayHalfStart: Date
-        let hourDuration: TimeInterval
+    /// Get the Roman time equivalent for a particular date and time.
+    ///
+    /// - parameter time: The modern time to look up.
+    ///
+    /// - returns: A `RomanNumeral` constant, plus `true` if it's a daylight
+    ///            hour.
+    public func romanHour(forDate time: Date = Date()) -> RomanTime? {
+        let hourIndex: Int
+        let isDaylightHour: Bool
+        let isHalfPast: Bool
 
-        if (daylightHours[0] < time && time < daylightHours[11]) {
-            dayHalf = "diei"
-            dayHalfStart = daylightHours[0]
-            hourDuration = daylightMinutes
+        if let index = daylightHours.index(ofTime: time) {
+            hourIndex = index
+            isDaylightHour = true
+            isHalfPast = time > daylightHours[hourIndex] + (daylightHourDuration * 60.0 / 2.0)
+        } else if let index = nighttimeHours.index(ofTime: time) {
+            hourIndex = index
+            isDaylightHour = false
+            isHalfPast = time > nighttimeHours[hourIndex] + (nighttimeHourDuration * 60.0 / 2.0)
         } else {
-            dayHalf = "noctis"
-            dayHalfStart = nighttimeHours[0]
-            hourDuration = nighttimeMinutes
+            return nil
         }
 
-        let intervalSinceDayHalfStart = time.timeIntervalSince(dayHalfStart)
-        let hour = Int(intervalSinceDayHalfStart / hourDuration) / 3600
-        let minutes = Int(intervalSinceDayHalfStart) % Int(hourDuration)
+        return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
+                         isDaylightHour: isDaylightHour,
+                         isHalfPast: isHalfPast)
+    }
 
-        if let hourString = RomanNumeral(rawValue: "\(hour)")?.ordinal {
-            var string = "\(hourString) \(dayHalf)"
+}
 
-            if minutes > Int(hourDuration) / 2 {
-                string.append(" et dimidia")
-            }
+fileprivate extension Array where Element == Date {
 
-            return string
+    func index(ofTime time: Date = Date()) -> Int? {
+        if let (foundIndex, _) = self.dropLast().enumerated().first(where: { (index, date) in
+            return date.rotationAngle <= time.rotationAngle && time.rotationAngle < self[index + 1].rotationAngle
+        }) {
+            return foundIndex
         } else {
-            return ""
+            return nil
         }
+    }
+
+}
+
+public struct RomanTime {
+
+    public var romanNumeral: RomanNumeral
+    public var isDaylightHour: Bool
+    public var isHalfPast: Bool
+
+    public init(_ romanNumeral: RomanNumeral,
+                isDaylightHour: Bool = true,
+                isHalfPast: Bool = false) {
+        self.romanNumeral = romanNumeral
+        self.isDaylightHour = isDaylightHour
+        self.isHalfPast = isHalfPast
+    }
+
+    /// Get the time, expressed as the ordinal hour value and, if half-past the
+    /// hour or later, the phrase `et dimidia`. The Romans did not have the
+    /// same notion of minutes that we do today.
+    public var string: String {
+        let hourString = romanNumeral.ordinal
+        let dayHalf = isDaylightHour ? "diei" : "noctis"
+        var string = "\(hourString) hora \(dayHalf)"
+
+        if isHalfPast {
+            string.append(" et dimidia")
+        }
+
+        return string
     }
 
 }

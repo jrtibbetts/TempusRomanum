@@ -21,7 +21,7 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
             $0.timeStyle = .medium
         }
 
-        init(offset: TimeInterval = TimeInterval(TimeZone.current.secondsFromGMT())) {
+        init(targetDate: Date = Date()) {
             super.init()
             keyDecodingStrategy = .convertFromSnakeCase
             dateDecodingStrategy = .custom { (decoder) -> Date in
@@ -29,10 +29,13 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                 let dateString = try container.decode(String.self)
                 let date = self.dateFormatter.date(from: dateString)
 
-                if var date = date {
-                    date.addTimeInterval(offset)
-
-                    return date
+                if let date = date {
+                    let referenceMidnight = Calendar.current.startOfDay(for: date)
+                    let referenceInterval = date.timeIntervalSince(referenceMidnight)
+                    let timeZoneOffset = TimeInterval(TimeZone.current.secondsFromGMT())
+                    let targetMidnight = Calendar.current.startOfDay(for: targetDate)
+                    return targetMidnight.addingTimeInterval(referenceInterval)
+                        .addingTimeInterval(timeZoneOffset)
                 } else {
                     throw DecodingError.dataCorruptedError(in: container,
                                                            debugDescription: """

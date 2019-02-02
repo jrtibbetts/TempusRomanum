@@ -24,33 +24,17 @@ public enum RomanNumeral: String, CaseIterable {
         return type(of: self).ordinals[index]
     }
 
-    public static var allCases: AllCases {
-        return [.I, .II, .III, .IV, .V, .VI, .VII, .VIII, .IX, .X, .XI, .XII]
+    static func romanNumeral(for number: Int) -> RomanNumeral? {
+        if (1 <= number && number <= allCases.count) {
+            return allCases[number - 1]
+        } else {
+            return nil
+        }
     }
 
     private static var ordinals: [String] = ["prima",   "secunda",  "tertia",
                                              "quarta",  "quinta",   "sexta",
                                              "septima", "octava",   "nona",
                                              "decima",  "undecima", "duodecima"]
-
-    /// Get the time, expressed as the ordinal hour value and, if half-past the
-    /// hour or later, the phrase `et dimidia`. The Romans did not have the
-    /// same notion of minutes that we do today.
-    public static func timeString(from date: Date, sunriseSunset: SunriseSunset) -> String {
-        let calendar = Calendar.current
-        let desiredComponents: [Calendar.Component] = [.hour, .minute, .timeZone]
-        let components = calendar.dateComponents(Set<Calendar.Component>(desiredComponents), from: date)
-
-        var hour = components.hour!
-        let minute = components.minute!
-        hour = (hour + 6) % 12  // convert 24-hour time to 12-hour time
-        var string = "\(allCases[hour].ordinal) hora"
-
-        if minute >= 30 {
-            string.append(" et dimidia")
-        }
-
-        return string
-    }
     
 }

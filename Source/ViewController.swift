@@ -69,7 +69,7 @@ public final class ViewController: UIViewController {
     @objc private func updateTime() {
         let now = Date()
         modernTimeLabel.text = timeFormatter.string(from: now)
-        romanTimeLabel.text = sunriseSunset?.string(forDate: now)
+        romanTimeLabel.text = sunriseSunset?.romanHour(forDate: now)?.string
     }
 
     @IBAction private func toggleTimeFormat() {
