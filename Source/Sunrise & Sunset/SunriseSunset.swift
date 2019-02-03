@@ -45,38 +45,68 @@ public extension SunriseSunset {
 
     // MARK: - Computed Properties
 
-    /// The duration, in minutes, of daylight.
-    private var daylightMinutes: TimeInterval {
-        return sunset.timeIntervalSince(sunrise) / 60.0
+    /// The duration, in seconds, of daylight.
+    private var secondsOfDaylight: TimeInterval {
+        return sunset.timeIntervalSince(sunrise)
     }
 
     /// The number of minutes in each daylight hour.
-    public var daylightHourDuration: TimeInterval {
-        return daylightMinutes / 12.0
+    private var daylightHourDurationInSeconds: TimeInterval {
+        return secondsOfDaylight / 12.0
     }
 
     /// An array of `Date`s of the daylight hours.
     public var daylightHours: [Date] {
-        return hours(for: sunrise, hourDuration: daylightHourDuration)
+        return (0..<12).map { sunrise.addingTimeInterval(daylightHourDurationInSeconds * Double($0)) }
     }
 
-    /// The duration, in minutes, of nighttime.
-    private var nighttimeMinutes: TimeInterval {
-        return (24 * 60.0) - daylightMinutes
+    /// The duration, in seconds, of nighttime.
+    private var secondsOfNighttime: TimeInterval {
+        return (24.0 * 60.0 * 60.0) - secondsOfDaylight
     }
 
     /// The number of minutes in each nighttime hour.
-    public var nighttimeHourDuration: TimeInterval {
-        return nighttimeMinutes / 12.0
+    private var nighttimeHourDurationInSeconds: TimeInterval {
+        return secondsOfNighttime / 12.0
     }
 
-    /// An array of `Date`s of the nighttime hours.
+    /// An array of `Date`s of the nighttime hours. Calculating these isn't
+    /// as trivial as calculating the daytime hours, because advancing from
+    /// sun*set* to sun*rise* crosses a date boundary at midnight. Therefore,
+    /// this array will consist of the nightime hours from midnight till
+    /// sunrise, then from sunset to midnight the next day, e.g.
+    ///
+    ///   1.  6 a.m.
+    ///   2.  7 a.m.
+    ///   3.  8 a.m.
+    ///   4.  9 a.m.
+    ///   5. 10 a.m.
+    ///   6. 11 a.m.
+    ///   7.  6 p.m.
+    ///   8.  7 p.m.
+    ///   9.  8 p.m.
+    ///  10.  9 p.m.
+    ///  11. 10 p.m.
+    ///  12. 11 p.m.
+    ///
+    /// The sunrise hours, obviously, occupy that gap between nighttime hours
+    /// 6 & 7 (starting at index 1, not 0).
     public var nighttimeHours: [Date] {
-        return hours(for: sunset, hourDuration: nighttimeHourDuration)
-    }
+        var amHours = [Date]()
+        var targetHour = sunrise
+        let midnight = Calendar.current.startOfDay(for: sunrise)
 
-    private func hours(for startDate: Date, hourDuration: TimeInterval) -> [Date] {
-        return (0..<12).map { startDate.addingTimeInterval(hourDuration * 60 * Double($0)) }
+        while (targetHour > midnight) {
+            let hour = targetHour.addingTimeInterval(-nighttimeHourDurationInSeconds)
+            amHours.append(hour)
+            targetHour = hour
+        }
+
+        amHours = amHours.sorted()
+
+        let pmHours = (0..<(12 - amHours.count)).map { sunset.addingTimeInterval(nighttimeHourDurationInSeconds * Double($0)) }
+
+        return pmHours + amHours
     }
 
     /// Get the Roman time equivalent for a particular date and time.
@@ -90,14 +120,18 @@ public extension SunriseSunset {
         let isDaylightHour: Bool
         let isHalfPast: Bool
 
-        if let index = daylightHours.index(ofTime: time) {
+        if let index = daylightHours.index(ofTime: time,
+                                           hourDurationInSeconds: daylightHourDurationInSeconds) {
             hourIndex = index
             isDaylightHour = true
-            isHalfPast = time > daylightHours[hourIndex] + (daylightHourDuration * 60.0 / 2.0)
-        } else if let index = nighttimeHours.index(ofTime: time) {
+            isHalfPast = (daylightHours.nearestIndex(toTime: time,
+                                                     hourDurationInSeconds: daylightHourDurationInSeconds)! > hourIndex)
+        } else if let index = nighttimeHours.index(ofTime: time,
+                                                   hourDurationInSeconds: nighttimeHourDurationInSeconds) {
             hourIndex = index
             isDaylightHour = false
-            isHalfPast = time > nighttimeHours[hourIndex] + (nighttimeHourDuration * 60.0 / 2.0)
+            isHalfPast = (nighttimeHours.nearestIndex(toTime: time,
+                                                      hourDurationInSeconds: nighttimeHourDurationInSeconds)! > hourIndex)
         } else {
             return nil
         }
@@ -109,13 +143,46 @@ public extension SunriseSunset {
 
 }
 
-fileprivate extension Array where Element == Date {
+public extension Array where Element == Date {
 
-    func index(ofTime time: Date = Date()) -> Int? {
-        if let (foundIndex, _) = self.dropLast().enumerated().first(where: { (index, date) in
-            return date.rotationAngle <= time.rotationAngle && time.rotationAngle < self[index + 1].rotationAngle
-        }) {
+    // MARK: - Public Functions
+
+    public func index(ofTime time: Date,
+                      hourDurationInSeconds: TimeInterval) -> Int? {
+        if (self.isEmpty) {
+            return nil
+        }
+        // Append a fake extra time at the end to establish an upper bound for
+        // real final element. This makes it far easier to calculate whether
+        // the time falls during the last real element.
+        let embiggenedArray = self + [self.last!.addingTimeInterval(hourDurationInSeconds)]
+
+        if let (foundIndex, _) = embiggenedArray.enumerated()
+            .dropLast()
+            .first(where: { (index, date) in
+                return embiggenedArray[index] <= time && time < embiggenedArray[index].addingTimeInterval(hourDurationInSeconds)
+            }) {
             return foundIndex
+        } else {
+            return nil
+        }
+    }
+
+    public func nearestIndex(toTime time: Date,
+                      hourDurationInSeconds: TimeInterval) -> Int? {
+        if let nearestPriorIndex = index(ofTime: time, hourDurationInSeconds: hourDurationInSeconds) {
+            if nearestPriorIndex == self.count - 1 {
+                return nearestPriorIndex
+            } else {
+                let lowerBound = self[nearestPriorIndex]
+                let upperBound = self[nearestPriorIndex + 1]
+
+                if time.timeIntervalSince(lowerBound) < upperBound.timeIntervalSince(time) {
+                    return nearestPriorIndex
+                } else {
+                    return nearestPriorIndex + 1
+                }
+            }
         } else {
             return nil
         }
