@@ -1,5 +1,6 @@
 //  Copyright © 2019 Poikile Creations. All rights reserved.
 
+import Stylobate
 import UIKit
 
 /// Base class for the daytime and nighttime clock subfaces. I'm sure that
@@ -10,33 +11,23 @@ class ClockSubfaceLayer: ClockLayer {
     // MARK: - Public Properties
 
     /// The layer that draws lines for each hour in this subface.
-    var hourLinesLayer = HourLinesLayer()
+    var hourLinesLayer = HourLinesLayer() <~ {
+        $0.strokeColor = UIColor(named: "Hour Marks")?.cgColor
+        $0.lineWidth = 1.0
+    }
 
     /// The astronomical information.
     var sunriseSunset: SunriseSunset?
 
-    // MARK: - Initialization
-
-    override init() {
-        super.init()
-
-        hourLinesLayer.strokeColor = UIColor(named: "Hour Marks")?.cgColor
-        hourLinesLayer.lineWidth = 1.0
-        addSublayer(hourLinesLayer)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    override init(layer: Any) {
-        super.init(layer: layer)    // This prevents crashes when rotating.
-    }
 
     // MARK: - CALayer
 
     override func layoutSublayers() {
         super.layoutSublayers()
+
+        if hourLinesLayer.superlayer == nil {
+            addSublayer(hourLinesLayer)
+        }
 
         hourLinesLayer.frame = bounds
         hourLinesLayer.layoutSublayers()

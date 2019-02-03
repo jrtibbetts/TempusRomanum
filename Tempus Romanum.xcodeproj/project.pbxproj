@@ -35,6 +35,7 @@
 		968F1656220553360029B2C6 /* RomanTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1655220553360029B2C6 /* RomanTimeTests.swift */; };
 		968F1658220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1657220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift */; };
 		968F165A220735030029B2C6 /* UIBezierPath+PieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */; };
+		968F165C220736F40029B2C6 /* RomanClockViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F165B220736F40029B2C6 /* RomanClockViewTests.swift */; };
 		96AFE43121FDF4E100F767E2 /* ClockSubfaceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */; };
 		96AFE43521FEB4D700F767E2 /* RomanNumerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */; };
 		96AFE43721FEBCD100F767E2 /* RomanNumeralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */; };
@@ -130,6 +131,7 @@
 		968F1655220553360029B2C6 /* RomanTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanTimeTests.swift; sourceTree = "<group>"; };
 		968F1657220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TempusRomanumTests.swift"; sourceTree = "<group>"; };
 		968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+PieTests.swift"; sourceTree = "<group>"; };
+		968F165B220736F40029B2C6 /* RomanClockViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockViewTests.swift; sourceTree = "<group>"; };
 		96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSubfaceLayer.swift; sourceTree = "<group>"; };
 		96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumerals.swift; sourceTree = "<group>"; };
 		96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralTests.swift; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 				96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */,
 				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
 				968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */,
+				968F165B220736F40029B2C6 /* RomanClockViewTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -440,6 +443,7 @@
 				968F165A220735030029B2C6 /* UIBezierPath+PieTests.swift in Sources */,
 				967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */,
 				96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */,
+				968F165C220736F40029B2C6 /* RomanClockViewTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
 				968F1656220553360029B2C6 /* RomanTimeTests.swift in Sources */,
 				96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */,
