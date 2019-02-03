@@ -33,6 +33,8 @@
 		967547B121FAB62900A6DA63 /* ElapsedTimeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547B021FAB62800A6DA63 /* ElapsedTimeLayer.swift */; };
 		968F1654220553100029B2C6 /* RomanTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1653220553100029B2C6 /* RomanTime.swift */; };
 		968F1656220553360029B2C6 /* RomanTimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1655220553360029B2C6 /* RomanTimeTests.swift */; };
+		968F1658220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1657220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift */; };
+		968F165A220735030029B2C6 /* UIBezierPath+PieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */; };
 		96AFE43121FDF4E100F767E2 /* ClockSubfaceLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */; };
 		96AFE43521FEB4D700F767E2 /* RomanNumerals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */; };
 		96AFE43721FEBCD100F767E2 /* RomanNumeralTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */; };
@@ -126,6 +128,8 @@
 		967547B021FAB62800A6DA63 /* ElapsedTimeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeLayer.swift; sourceTree = "<group>"; };
 		968F1653220553100029B2C6 /* RomanTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanTime.swift; sourceTree = "<group>"; };
 		968F1655220553360029B2C6 /* RomanTimeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanTimeTests.swift; sourceTree = "<group>"; };
+		968F1657220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+TempusRomanumTests.swift"; sourceTree = "<group>"; };
+		968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+PieTests.swift"; sourceTree = "<group>"; };
 		96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockSubfaceLayer.swift; sourceTree = "<group>"; };
 		96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumerals.swift; sourceTree = "<group>"; };
 		96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanNumeralTests.swift; sourceTree = "<group>"; };
@@ -218,6 +222,7 @@
 				967547A821F977E900A6DA63 /* Sunrise & Sunset */,
 				965DF67B21A84FB300A40698 /* Views */,
 				96AFE43621FEBCD100F767E2 /* RomanNumeralTests.swift */,
+				968F1657220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -255,8 +260,9 @@
 			isa = PBXGroup;
 			children = (
 				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
-				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
 				96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */,
+				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
+				968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,7 +435,9 @@
 			files = (
 				96AFE43721FEBCD100F767E2 /* RomanNumeralTests.swift in Sources */,
 				967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */,
+				968F1658220732710029B2C6 /* UserDefaults+TempusRomanumTests.swift in Sources */,
 				967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */,
+				968F165A220735030029B2C6 /* UIBezierPath+PieTests.swift in Sources */,
 				967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */,
 				96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */,
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,

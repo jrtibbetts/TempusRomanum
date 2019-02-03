@@ -59,7 +59,7 @@
                                             <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-fI-w8P" userLabel="Current Times">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-fI-w8P" userLabel="Current Times">
                                         <rect key="frame" x="260" y="95.5" width="240" height="49"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="12:43 pm" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDp-6l-tc7" userLabel="Current Time (Modern)">
@@ -75,15 +75,15 @@
                                                     <outletCollection property="gestureRecognizers" destination="Sgd-Ts-Dg6" appends="YES" id="f7a-de-Jz3"/>
                                                 </connections>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" text="secunda hora noctis et dimidia" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz8-5R-blT" userLabel="Current Time (Roman)">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" text="secunda hora noctis et dimidia" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz8-5R-blT" userLabel="Current Time (Roman)">
                                                 <rect key="frame" x="0.0" y="28.5" width="234" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <variation key="heightClass=compact" alignment="top" axis="vertical"/>
-                                        <variation key="heightClass=regular" alignment="firstBaseline" axis="horizontal"/>
+                                        <variation key="heightClass=compact" alignment="top"/>
+                                        <variation key="heightClass=regular" alignment="center"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-9v-aeU" userLabel="Times View">
                                         <rect key="frame" x="250" y="28" width="254" height="184"/>
