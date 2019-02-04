@@ -79,9 +79,10 @@ final class RomanClockLayer: CALayer {
         addSublayer(nighttimeClockLayer)
         addSublayer(daylightLayer)
 
-        modernHourMarksInset = 0.0
-        modernHourMarksLayer = ModernHourMarksLayer(radius: minimumDimension, margin: modernHourMarksInset)
-//        addSublayer(modernHourMarksLayer!)
+        modernHourMarksInset = 5.0
+        modernHourMarksLayer = ModernHourMarksLayer()
+        modernHourMarksLayer!.margin = modernHourMarksInset
+        addSublayer(modernHourMarksLayer!)
         romanHourMarksLayer = RomanHourMarksLayer()
         addSublayer(romanHourMarksLayer!)
 
@@ -120,15 +121,15 @@ final class RomanClockLayer: CALayer {
     }
 
     private func layoutMarksLayers() {
-        modernHourMarksLayer?.frame = self.bounds
-        modernHourMarksLayer?.centerInSuperlayer()
-
-        let romanHourMarksFrame = CGRect(x: 0.0,
-                                         y: 0.0,
-                                         width: frame.width - (modernHourMarksInset * 2.0),
-                                         height: frame.height - (modernHourMarksInset * 2.0))
-        romanHourMarksLayer?.frame = romanHourMarksFrame
+        romanHourMarksLayer?.frame = self.bounds
         romanHourMarksLayer?.centerInSuperlayer()
+
+        let modernHourMarksFrame = CGRect(x: 0.0,
+                                          y: 0.0,
+                                          width: frame.width - (romanHourMarksInset * 2.0),
+                                          height: frame.height - (romanHourMarksInset * 2.0))
+        modernHourMarksLayer?.frame = modernHourMarksFrame
+        modernHourMarksLayer?.centerInSuperlayer()
     }
     
 }

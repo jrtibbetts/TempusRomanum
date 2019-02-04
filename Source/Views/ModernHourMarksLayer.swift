@@ -6,135 +6,77 @@ import UIKit
 
 /// A layer that draws the midnight, 3 am, 6 am, 9 am, noon, 3 pm, 6 pm, and
 /// 9 pm labels on a round, analog 24-hour clock.
-open class ModernHourMarksLayer: CALayer {
+open class ModernHourMarksLayer: ClockLayer {
 
     // MARK: - Public Properties
 
-    private var font: CGFont? {
+    open override var frame: CGRect {
         didSet {
-            labelLayers.forEach { (layer) in
-                layer.font = font
-            }
-
-            setNeedsDisplay()
+            updateMarks()
         }
-    }
-
-    open var fontSize: CGFloat {
-        return max(margin / 3.5, 9)
     }
 
     open var foregroundColor: CGColor? {
         didSet {
-            labelLayers.forEach { (layer) in
-                layer.foregroundColor = foregroundColor
-            }
-
+            strokeColor = foregroundColor
             setNeedsDisplay()
         }
     }
 
     /// The width of the band _outside_ the circle, where the marks will be
     /// drawn.
-    open var margin: CGFloat {
+    open var margin: CGFloat = 0.0 {
         didSet {
-            setNeedsLayout()
+            updateMarks()
         }
     }
 
-    /// The radius of the clock face around which the marks will be drawn.
-    open var radius: CGFloat {
-        didSet {
-            setNeedsLayout()
+    private func updateMarks() {
+        fillColor = UIColor.clear.cgColor
+        strokeColor = UIColor.black.cgColor
+
+        let ringFrame = CGRect(x: bounds.origin.x + margin,
+                               y: bounds.origin.y + margin,
+                               width: bounds.width - (margin * 2.0),
+                               height: bounds.height - (margin * 2.0))
+        let path = UIBezierPath() // UIBezierPath(ovalIn: ringFrame)
+        lineWidth = 1.0
+
+        // Noon
+        stride(from: 0.0, to: 360.0, by: 15.0).forEach { (angle) in
+            addLine(fromBorderAt: (CGFloat.pi * 2.0 * angle / 360.0), length: -margin, toPath: path)
         }
+
+        self.path = path.cgPath
+        setNeedsDisplay()
     }
 
-    // MARK: - Private Properties
-
-    private var labelLayers: [CATextLayer] {
-        return [midnightLayer, noonLayer, sixAmLayer, sixPmLayer]
+    private func addLine(fromBorderAt angle: CGFloat,
+                         length: CGFloat,
+                         toPath path: UIBezierPath) {
+        path.move(to: borderPoint(at: angle))
+        path.addLine(to: CGPoint(x: boundsCenter.x + ((radius + length) * cos(angle)),
+                                 y: boundsCenter.y + ((radius + length) * sin(angle))))
     }
 
-    private var midnightLayer = CATextLayer()
+}
 
-    private var noonLayer = CATextLayer()
+private extension CGRect {
 
-    private var sixAmLayer = CATextLayer()
-
-    private var sixPmLayer = CATextLayer()
-
-    // MARK: - Initialization
-
-    /// Create a layer for a circle of a given radius, with a specified margin
-    /// margin (_beyond_ the radius) for the mark labels.
-    ///
-    /// - parameter radius: The radius of the clock-face circle around which
-    ///             the marks will be drawn. It cannot be less than 0, but this
-    ///             class does not enforce that.
-    /// - parameter margin: The margin _outside_ the radius in which the marks
-    ///             will be drawn.
-    public init(radius: CGFloat, margin: CGFloat = 30.0) {
-        self.radius = radius
-        self.margin = margin
-        super.init()
-
-        midnightLayer.string = "midnight"
-        midnightLayer.alignmentMode = .center
-        addSublayer(midnightLayer)
-
-        sixAmLayer.string = "6 am"
-        sixAmLayer.alignmentMode = .right
-        addSublayer(sixAmLayer)
-
-        noonLayer.string = "noon"
-        noonLayer.alignmentMode = .center
-        addSublayer(noonLayer)
-
-        sixPmLayer.string = "6 pm"
-        sixPmLayer.alignmentMode = .left
-        addSublayer(sixPmLayer)
-
-        labelLayers.forEach { (layer) in
-            layer.font = font ?? UIFont.systemFont(ofSize: fontSize)
-            layer.fontSize = fontSize
-            layer.foregroundColor = foregroundColor
-        }
+    var topCenter: CGPoint {
+        return CGPoint(x: midX, y: 0.0)
     }
 
-    public override init(layer: Any) {
-        radius = 0.0
-        margin = 0.0
-        super.init(layer: layer)
+    var rightCenter: CGPoint {
+        return CGPoint(x: width, y: midY)
     }
 
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    var bottomCenter: CGPoint {
+        return CGPoint(x: midX, y: height)
     }
 
-    // MARK: - CALayer
-
-    open override func layoutSublayers() {
-        super.layoutSublayers()
-
-        let labelWidth = margin * 0.9
-        let labelHeight = margin * 0.4
-        let textLayerSize = CGSize(width: labelWidth, height: labelHeight)
-
-        let noonLayerOrigin = CGPoint(x: (bounds.width - labelWidth) / 2.0,
-                                      y: margin - labelHeight)
-        noonLayer.frame = CGRect(origin: noonLayerOrigin, size: textLayerSize)
-
-        let sixAmLayerOrigin = CGPoint(x: (margin - labelWidth) / 2.0,
-                                       y: (bounds.height - labelHeight) / 2.0)
-        sixAmLayer.frame = CGRect(origin: sixAmLayerOrigin, size: textLayerSize)
-
-        let midnightLayerOrigin = CGPoint(x: (bounds.width - labelWidth) / 2.0,
-                                          y: bounds.height - margin)
-        midnightLayer.frame = CGRect(origin: midnightLayerOrigin, size: textLayerSize)
-
-        let sixPmLayerOrigin = CGPoint(x: bounds.width - margin,
-                                       y: (bounds.height - labelHeight) / 2.0)
-        sixPmLayer.frame = CGRect(origin: sixPmLayerOrigin, size: textLayerSize)
+    var leftCenter: CGPoint {
+        return CGPoint(x: 0, y: midY)
     }
 
 }
