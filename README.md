@@ -3,6 +3,7 @@
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![CodeCov](https://img.shields.io/codecov/c/github/jrtibbetts/TempusRomanum.svg)
 [![Codebeat](https://codebeat.co/badges/9db4672f-1ffc-4981-a7d0-3bb71e97cd62)](https://codebeat.co/projects/github-com-jrtibbetts-tempusromanum-master)
+[![Maintainability](https://api.codeclimate.com/v1/badges/00de94524667de08f2fe/maintainability)](https://codeclimate.com/github/jrtibbetts/TempusRomanum/maintainability)
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 # TempusRomanum
