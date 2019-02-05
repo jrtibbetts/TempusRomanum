@@ -3,12 +3,12 @@
 import UIKit
 
 /// The overlay that shades the time that's elapsed today since midnight.
-class ElapsedTimeLayer: ClockLayer {
+public class ElapsedTimeLayer: ClockLayer {
 
     // MARK: - Properties
 
     /// The lowest point on the circle.
-    let midnightAngle = 0.5 * CGFloat.pi
+    private let midnightAngle = 0.5 * CGFloat.pi
 
     // MARK: - Functions
 
@@ -16,7 +16,7 @@ class ElapsedTimeLayer: ClockLayer {
     ///
     /// - parameter date: The end time of the shaded area. By default, this is
     ///                   the exact time when this function was called.
-    func update(date: Date = Date()) {
+    public func update(date: Date = Date()) {
         fillColor = UIColor(named: "Elapsed Time")?.cgColor
         let endAngle = date.rotationAngle
 
