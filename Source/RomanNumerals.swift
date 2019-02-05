@@ -23,10 +23,10 @@ public enum RomanNumeral: String, CaseIterable {
     /// modify the singular nominative form of the feminine noun *hora*
     /// ("hour"), it must also be the feminine singular nominative form.
     var ordinal: String {
-        let ordinals = ["prima",   "secunda",  "tertia",
-                        "quarta",  "quinta",   "sexta",
-                        "septima", "octava",   "nona",
-                        "decima",  "undecima", "duodecima"]
+        let ordinals = ["prima", "secunda", "tertia",
+                        "quarta", "quinta", "sexta",
+                        "septima", "octava", "nona",
+                        "decima", "undecima", "duodecima"]
         let index = type(of: self).allCases.firstIndex(of: self)!
 
         return ordinals[index]
@@ -38,7 +38,7 @@ public enum RomanNumeral: String, CaseIterable {
     ///                     If it's less than `0` or greater than `12`, then
     ///                     `nil` is returned.
     static func romanNumeral(for number: Int) -> RomanNumeral? {
-        if (1 <= number && number <= allCases.count) {
+        if 1 <= number && number <= allCases.count {
             return allCases[number - 1]
         } else {
             return nil

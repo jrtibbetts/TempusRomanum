@@ -48,7 +48,7 @@ public final class ViewController: UIViewController {
 
         updateTime()
 
-        _ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { (timer) in
+        _ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
             self.updateTime()
         }
 

@@ -56,18 +56,10 @@ public final class RomanHourMarksLayer: ClockLayer {
             sublayer.removeFromSuperlayer()
         }
 
-        daylightHours.enumerated().forEach { (index, date) in
-            let layer = createLayer(forNumber: index, time: daylightHours[index])
+        (daylightHours + nighttimeHours).enumerated().forEach { (index, date) in
+            let layer = createLayer(forNumber: index % 12, time: date)
             labelLayers.append(layer)
-        }
-
-        nighttimeHours.enumerated().forEach { (index, date) in
-            let layer = createLayer(forNumber: index, time: nighttimeHours[index])
-            labelLayers.append(layer)
-        }
-
-        labelLayers.forEach { (sublayer) in
-            addSublayer(sublayer)
+            addSublayer(layer)
         }
     }
 

@@ -8,7 +8,7 @@ import Foundation
 /// for a discussion about the differences between civil, nautical,
 /// and astronomical times.
 struct SunriseSunsetDotOrgTimes: Codable, SolarAndLunarTimes {
-    
+
     var astronomicalTwilightBegin: Date
     var astronomicalTwilightEnd: Date
     var civilTwilightBegin: Date

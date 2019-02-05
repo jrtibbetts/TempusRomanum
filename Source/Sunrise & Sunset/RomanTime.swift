@@ -30,6 +30,5 @@ public struct RomanTime {
 
         return string
     }
-    
-}
 
+}

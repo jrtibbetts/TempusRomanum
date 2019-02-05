@@ -69,7 +69,7 @@ Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+0
         return Promise<SunriseSunset> { (promise) in
             // Construct the request.
             guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
-                promise.reject(ResponseData.Status.invalidRequest)
+                promise.reject(ResponseStatus.invalidRequest)
                 return
             }
 
@@ -86,7 +86,7 @@ Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+0
 
     // MARK: - Private Functions
 
-    func handle(response responseData: ResponseData, promise: Resolver<SunriseSunset>) {
+    private func handle(response responseData: ResponseData, promise: Resolver<SunriseSunset>) {
         if responseData.status == .OK {
             promise.fulfill(responseData.results)
         } else {
@@ -122,29 +122,29 @@ Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+0
 
     /// The response JSON that's returned from
     /// https://api.sunrise-sunset.org/json.
-    struct ResponseData: Codable {
+    private struct ResponseData: Codable {
 
         /// The sunrise and sunset times. This will be empty if `status` is not
         /// `"OK"`.
         var results: SunriseSunsetDotOrgTimes
 
         /// The return code of the server call.
-        var status: Status
+        var status: ResponseStatus
+    }
 
-        /// The status codes that can be returned by the server. They can all
-        /// be used as `Error`s (yes, including `OK`).
-        enum Status: String, Error, Codable {
+    /// The status codes that can be returned by the server. They can all
+    /// be used as `Error`s (yes, including `OK`).
+    private enum ResponseStatus: String, Error, Codable {
+        case OK
+        case invalidRequest
+        case invalidDate
+        case unknownError
+
+        private enum CodingKeys: String, CodingKey {
             case OK
-            case invalidRequest
-            case invalidDate
-            case unknownError
-
-            private enum CodingKeys: String, CodingKey {
-                case OK
-                case invalidRequest = "INVALID_REQUEST"
-                case invalidDate = "INVALID_DATE"
-                case unknownError = "UNKNOWN_ERROR"
-            }
+            case invalidRequest = "INVALID_REQUEST"
+            case invalidDate = "INVALID_DATE"
+            case unknownError = "UNKNOWN_ERROR"
         }
     }
 
