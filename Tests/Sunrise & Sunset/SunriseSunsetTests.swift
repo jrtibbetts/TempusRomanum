@@ -57,55 +57,7 @@ class SunriseSunsetTests: XCTestCase {
         XCTAssertNil(dates.index(ofTime: baseDate, hourDurationInSeconds: 1000))
     }
 
-    // MARK: - Array<Date>.nearestIndex()
-
-    func testNearestIndexForLowerBoundOk() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: -100, since: baseDate),
-                     Date(timeInterval: 1000, since: baseDate)]
-        XCTAssertEqual(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 1000), 0)
-    }
-
-    func testNearestIndexForLastElementOk() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: -100, since: baseDate),
-                     Date(timeInterval: 1000, since: baseDate)]
-        XCTAssertEqual(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 1000), 0)
-    }
-
-    func testNearestIndexForUpperBoundOk() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: -1000, since: baseDate),
-                     Date(timeInterval: 100, since: baseDate)]
-        XCTAssertEqual(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 1100), 1)
-    }
-
-    func testNearestIndexExactlyHalfwayReturnsUpperBound() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: -1000, since: baseDate),
-                     Date(timeInterval: 1000, since: baseDate)]
-        XCTAssertEqual(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 2000), 1)
-    }
-
-    func testNearestIndexOfTimePastEndReturnsNil() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: -5000, since: baseDate),
-                     Date(timeInterval: -4000, since: baseDate),
-                     Date(timeInterval: -3000, since: baseDate),
-                     Date(timeInterval: -2000, since: baseDate),
-                     Date(timeInterval: -1000, since: baseDate)]
-        XCTAssertNil(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 1000))
-    }
-
-    func testNearestIndexOfTimeBeforeBeginningReturnsNil() {
-        let baseDate = Date()
-        let dates = [Date(timeInterval: 1000, since: baseDate),
-                     Date(timeInterval: 2000, since: baseDate),
-                     Date(timeInterval: 3000, since: baseDate),
-                     Date(timeInterval: 4000, since: baseDate),
-                     Date(timeInterval: 5000, since: baseDate)]
-        XCTAssertNil(dates.nearestIndex(toTime: baseDate, hourDurationInSeconds: 1000))
-    }
+    // MARK: - string
 
     func testTimeStringForTwentyMinutesAfterMidnight() {
         assert(timeString: "septima hora noctis", hour: 0, minute: 20)
@@ -124,7 +76,7 @@ class SunriseSunsetTests: XCTestCase {
     }
 
     func testTimeStringForTwentyThreeHundredAndFive() {
-        assert(timeString: "sexta hora noctis et dimidia", hour: 23, minute: 5)
+        assert(timeString: "sexta hora noctis", hour: 23, minute: 5)
     }
 
     func testTimeStringForTwoOClockPM() {

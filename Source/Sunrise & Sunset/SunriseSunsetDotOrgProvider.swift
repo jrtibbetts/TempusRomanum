@@ -17,11 +17,9 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         /// The formatter for date strings returned by `sunrise-sunset.org`.
         /// These are in the `.medium` time style, like `"7:27:02 AM"` and
         /// `"12:16:28 PM"`.
-        let dateFormatter = DateFormatter() <~ {
-            $0.timeStyle = .medium
-        }
+        let dateFormatter = ISO8601DateFormatter()
 
-        init(targetDate: Date = Date()) {
+        override init() {
             super.init()
             keyDecodingStrategy = .convertFromSnakeCase
             dateDecodingStrategy = .custom { (decoder) -> Date in
@@ -30,16 +28,11 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                 let date = self.dateFormatter.date(from: dateString)
 
                 if let date = date {
-                    let referenceMidnight = Calendar.current.startOfDay(for: date)
-                    let referenceInterval = date.timeIntervalSince(referenceMidnight)
-                    let timeZoneOffset = TimeInterval(TimeZone.current.secondsFromGMT())
-                    let targetMidnight = Calendar.current.startOfDay(for: targetDate)
-                    return targetMidnight.addingTimeInterval(referenceInterval)
-                        .addingTimeInterval(timeZoneOffset)
+                    return date
                 } else {
                     throw DecodingError.dataCorruptedError(in: container,
                                                            debugDescription: """
-Date values must be formatted like \"7:27:02 AM\". No other format is accepted.
+Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+00:00". The format that was passed in, "\(dateString)", is not formatted correctly."
 """)
                 }
             }
@@ -50,6 +43,10 @@ Date values must be formatted like \"7:27:02 AM\". No other format is accepted.
 
     /// The JSON decoder, which converts snake_case keys to CamelCase ones.
     private let jsonDecoder = SunriseSunsetDotOrgJSONDecoder()
+
+    private static let queryDateFormatter = ISO8601DateFormatter() <~ {
+        $0.formatOptions = .withFullDate
+    }
 
     // MARK: - SunriseSunsetProvider
 
@@ -107,11 +104,12 @@ Date values must be formatted like \"7:27:02 AM\". No other format is accepted.
     ///             times.
     static func urlRequest(for coordinate: CLLocationCoordinate2D,
                            date: Date) -> URLRequest? {
-        let urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@"
+        let urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@&date=%@&formatted=0"
         let coordinateStrings = coordinate.strings
         let urlString = String(format: urlPattern,
                                coordinateStrings.latitude,
-                               coordinateStrings.longitude)
+                               coordinateStrings.longitude,
+                               queryDateFormatter.string(from: date))
 
         if let url = URL(string: urlString) {
             return URLRequest(url: url)

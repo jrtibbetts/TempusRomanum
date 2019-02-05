@@ -55,7 +55,7 @@ final class RomanClockLayer: CALayer {
             setNeedsLayout()
         }
     }
-    
+
     private var clockFaceFrame: CGRect {
         // We want a circle, so determine the largest circle that will fit in
         // the bounds, minus a margin for the numerals.
@@ -72,7 +72,7 @@ final class RomanClockLayer: CALayer {
     }
 
     // MARK: - Initialization
-    
+
     override init() {
         super.init()
 

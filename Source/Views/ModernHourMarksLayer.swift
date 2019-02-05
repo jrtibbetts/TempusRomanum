@@ -34,11 +34,6 @@ open class ModernHourMarksLayer: ClockLayer {
     private func updateMarks() {
         fillColor = UIColor.clear.cgColor
         strokeColor = UIColor.black.cgColor
-
-        let ringFrame = CGRect(x: bounds.origin.x + margin,
-                               y: bounds.origin.y + margin,
-                               width: bounds.width - (margin * 2.0),
-                               height: bounds.height - (margin * 2.0))
         let path = UIBezierPath() // UIBezierPath(ovalIn: ringFrame)
         lineWidth = 1.0
 

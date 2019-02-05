@@ -27,5 +27,5 @@ open class MockSunriseSunsetProvider: SunriseSunsetProvider {
             promise.fulfill(SimpleSunriseSunset(sunrise: sunrise, sunset: sunset))
         }
     }
-    
+
 }

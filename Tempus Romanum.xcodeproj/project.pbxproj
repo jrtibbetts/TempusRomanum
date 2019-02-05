@@ -20,7 +20,6 @@
 		965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67521A72E3600A40698 /* DaylightLayer.swift */; };
 		965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67721A7B49A00A40698 /* ClockLayer.swift */; };
 		965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */; };
-		965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */; };
 		965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */; };
 		965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */; };
 		967547A121F6D92000A6DA63 /* RomanHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */; };
@@ -108,7 +107,6 @@
 		9621BF35215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9621BF3A215C521A00C8EBB3 /* Tempus RomanumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tempus RomanumTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF40215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9621BF4B215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Pie.swift"; sourceTree = "<group>"; };
 		965DF66E21A66D8600A40698 /* SunriseSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunset.swift; sourceTree = "<group>"; };
 		965DF67121A6719000A40698 /* Date+Trigonometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Trigonometry.swift"; sourceTree = "<group>"; };
@@ -116,7 +114,6 @@
 		965DF67521A72E3600A40698 /* DaylightLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylightLayer.swift; sourceTree = "<group>"; };
 		965DF67721A7B49A00A40698 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
 		965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayer.swift; sourceTree = "<group>"; };
-		965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayerTests.swift; sourceTree = "<group>"; };
 		965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgProvider.swift; sourceTree = "<group>"; };
 		967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanHourMarksLayer.swift; sourceTree = "<group>"; };
@@ -143,7 +140,6 @@
 		96DCE693216474F300E6A95F /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PromiseKit.framework; path = Carthage/Build/iOS/PromiseKit.framework; sourceTree = "<group>"; };
 		96DCE6982166FEA100E6A95F /* PMKFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKFoundation.framework; path = Carthage/Build/iOS/PMKFoundation.framework; sourceTree = "<group>"; };
 		96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PMKCoreLocation.framework; path = Carthage/Build/iOS/PMKCoreLocation.framework; sourceTree = "<group>"; };
-		96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus_RomanumUITests.swift; sourceTree = "<group>"; };
 		AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockLayer.swift; sourceTree = "<group>"; };
 		ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NighttimeLayer.swift; sourceTree = "<group>"; };
@@ -180,7 +176,6 @@
 			children = (
 				9621BF28215C521800C8EBB3 /* Source */,
 				9621BF3D215C521A00C8EBB3 /* Tests */,
-				9621BF48215C521A00C8EBB3 /* UI Tests */,
 				96DCE6992166FEA100E6A95F /* PMKCoreLocation.framework */,
 				96DCE6982166FEA100E6A95F /* PMKFoundation.framework */,
 				96DCE693216474F300E6A95F /* PromiseKit.framework */,
@@ -229,15 +224,6 @@
 			path = Tests;
 			sourceTree = "<group>";
 		};
-		9621BF48215C521A00C8EBB3 /* UI Tests */ = {
-			isa = PBXGroup;
-			children = (
-				9621BF4B215C521A00C8EBB3 /* Info.plist */,
-				96DCE6A2216C5A1A00E6A95F /* Tempus_RomanumUITests.swift */,
-			);
-			path = "UI Tests";
-			sourceTree = "<group>";
-		};
 		965DF67021A6713D00A40698 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -263,7 +249,6 @@
 			children = (
 				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
 				96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */,
-				965DF67C21A84FD900A40698 /* ModernHourMarksLayerTests.swift */,
 				968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */,
 				968F165B220736F40029B2C6 /* RomanClockViewTests.swift */,
 			);
@@ -447,7 +432,6 @@
 				967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */,
 				968F1656220553360029B2C6 /* RomanTimeTests.swift in Sources */,
 				96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */,
-				965DF67D21A84FD900A40698 /* ModernHourMarksLayerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

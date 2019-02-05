@@ -96,7 +96,7 @@ public extension SunriseSunset {
         var targetHour = sunrise
         let midnight = Calendar.current.startOfDay(for: sunrise)
 
-        while (targetHour > midnight) {
+        while targetHour > midnight {
             let hour = targetHour.addingTimeInterval(-nighttimeHourDurationInSeconds)
             amHours.append(hour)
             targetHour = hour
@@ -104,7 +104,9 @@ public extension SunriseSunset {
 
         amHours = amHours.sorted()
 
-        let pmHours = (0..<(12 - amHours.count)).map { sunset.addingTimeInterval(nighttimeHourDurationInSeconds * Double($0)) }
+        let pmHours = (0..<(12 - amHours.count)).map {
+            sunset.addingTimeInterval(nighttimeHourDurationInSeconds * Double($0))
+        }
 
         return pmHours + amHours
     }
@@ -119,19 +121,19 @@ public extension SunriseSunset {
         let hourIndex: Int
         let isDaylightHour: Bool
         let isHalfPast: Bool
+        let daylightHour = daylightHourDurationInSeconds
+        let nighttimeHour = nighttimeHourDurationInSeconds
 
         if let index = daylightHours.index(ofTime: time,
-                                           hourDurationInSeconds: daylightHourDurationInSeconds) {
+                                           hourDurationInSeconds: daylightHour) {
             hourIndex = index
             isDaylightHour = true
-            isHalfPast = (daylightHours.nearestIndex(toTime: time,
-                                                     hourDurationInSeconds: daylightHourDurationInSeconds)! > hourIndex)
+            isHalfPast = time.timeIntervalSince(daylightHours[hourIndex]) >= (daylightHourDurationInSeconds / 2.0)
         } else if let index = nighttimeHours.index(ofTime: time,
-                                                   hourDurationInSeconds: nighttimeHourDurationInSeconds) {
+                                                   hourDurationInSeconds: nighttimeHour) {
             hourIndex = index
             isDaylightHour = false
-            isHalfPast = (nighttimeHours.nearestIndex(toTime: time,
-                                                      hourDurationInSeconds: nighttimeHourDurationInSeconds)! > hourIndex)
+            isHalfPast = time.timeIntervalSince(nighttimeHours[index]) >= (nighttimeHourDurationInSeconds / 2.0)
         } else {
             return nil
         }
@@ -149,7 +151,7 @@ public extension Array where Element == Date {
 
     public func index(ofTime time: Date,
                       hourDurationInSeconds: TimeInterval) -> Int? {
-        if (self.isEmpty) {
+        if self.isEmpty {
             return nil
         }
         // Append a fake extra time at the end to establish an upper bound for
@@ -159,30 +161,11 @@ public extension Array where Element == Date {
 
         if let (foundIndex, _) = embiggenedArray.enumerated()
             .dropLast()
-            .first(where: { (index, date) in
-                return embiggenedArray[index] <= time && time < embiggenedArray[index].addingTimeInterval(hourDurationInSeconds)
+            .first(where: { (index, _) in
+                return embiggenedArray[index] <= time
+                    && time < embiggenedArray[index].addingTimeInterval(hourDurationInSeconds)
             }) {
             return foundIndex
-        } else {
-            return nil
-        }
-    }
-
-    public func nearestIndex(toTime time: Date,
-                      hourDurationInSeconds: TimeInterval) -> Int? {
-        if let nearestPriorIndex = index(ofTime: time, hourDurationInSeconds: hourDurationInSeconds) {
-            if nearestPriorIndex == self.count - 1 {
-                return nearestPriorIndex
-            } else {
-                let lowerBound = self[nearestPriorIndex]
-                let upperBound = self[nearestPriorIndex + 1]
-
-                if time.timeIntervalSince(lowerBound) < upperBound.timeIntervalSince(time) {
-                    return nearestPriorIndex
-                } else {
-                    return nearestPriorIndex + 1
-                }
-            }
         } else {
             return nil
         }
