@@ -19,7 +19,6 @@ class ClockSubfaceLayer: ClockLayer {
     /// The astronomical information.
     var sunriseSunset: SunriseSunset?
 
-
     // MARK: - CALayer
 
     override func layoutSublayers() {

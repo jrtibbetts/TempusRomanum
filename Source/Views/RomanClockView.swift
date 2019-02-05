@@ -40,7 +40,7 @@ public final class RomanClockView: UIView {
 
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
+
         let backgroundSideLength = min(frame.width, frame.height)
         let backgroundSize = CGSize(width: backgroundSideLength,
                                     height: backgroundSideLength)

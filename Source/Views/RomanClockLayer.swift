@@ -44,7 +44,7 @@ final class RomanClockLayer: CALayer {
             guard let sunriseSunset = sunriseSunset else {
                 return
             }
-            
+
             daylightLayer.sunriseSunset = sunriseSunset
 
             nighttimeClockLayer.sunriseSunset = sunriseSunset

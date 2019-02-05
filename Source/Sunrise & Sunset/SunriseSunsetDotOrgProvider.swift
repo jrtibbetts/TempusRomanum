@@ -57,7 +57,7 @@ Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+0
     }
 
     // MARK: - Public Functions
-    
+
     /// Get a `Promise` with sunrise & sunset information for a specific date.
     ///
     /// - parameter coordinate: The latitude & longitude.

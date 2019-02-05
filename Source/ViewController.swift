@@ -29,14 +29,14 @@ public final class ViewController: UIViewController {
     private var timeFormatter: DateFormatter {
         return settings.use24HourClock ? twelveHourTimeFormatter : twentyFourHourTimeFormatter
     }
-    
+
     /// A `DateFormatter` for getting displaying 24-hour time for `Date`s,
     /// like `08:00` (as opposed to true military time, which doesn't use
     /// colons, like `0800`). The date information of the date is not displayed.
     private let twentyFourHourTimeFormatter = DateFormatter() <~ {
         $0.dateFormat = "HH:mm"
     }
-    
+
     private let twelveHourTimeFormatter = DateFormatter() <~ {
         $0.dateFormat = "hh:mm a"
     }
