@@ -63,7 +63,7 @@ final class RomanClockLayer: CALayer {
         let frameWidth = self.bounds.width
         let faceOrigin = CGPoint(x: (frameWidth - minimumDimension) / 2.0, y: (frameHeight - minimumDimension) / 2.0)
         let faceSize = CGSize(width: minimumDimension, height: minimumDimension)
-        
+
         return CGRect(origin: faceOrigin, size: faceSize)
     }
 
@@ -99,7 +99,7 @@ final class RomanClockLayer: CALayer {
     }
 
     // MARK: - CALayer
-    
+
     override func layoutSublayers() {
         super.layoutSublayers()
 
