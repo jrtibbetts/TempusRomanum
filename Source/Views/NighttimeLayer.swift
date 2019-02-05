@@ -54,14 +54,21 @@ class NighttimeClockLayer: ClockSubfaceLayer {
 
     }
 
-    func gradientLayer(from startDate: Date, to endDate: Date, color: CGColor) -> CALayer {
-        return gradientLayer(from: startDate.rotationAngle, to: endDate.rotationAngle, color: color)
+    func gradientLayer(fromStartDate startDate: Date,
+                       toEndDate endDate: Date,
+                       color: CGColor) -> CALayer {
+        return gradientLayer(fromAngle: startDate.rotationAngle,
+                             toAngle: endDate.rotationAngle,
+                             color: color)
     }
 
-    func gradientLayer(from: CGFloat, to: CGFloat, color: CGColor) -> CALayer {
+    func gradientLayer(fromAngle: CGFloat, toAngle: CGFloat, color: CGColor) -> CALayer {
         let layer = CAShapeLayer()
         layer.fillColor = color
-        layer.path = UIBezierPath(sliceCenter: boundsCenter, radius: radius, startAngle: from, endAngle: to).cgPath
+        layer.path = UIBezierPath(sliceCenter: boundsCenter,
+                                  radius: radius,
+                                  startAngle: fromAngle,
+                                  endAngle: toAngle).cgPath
 
         return layer
     }
@@ -69,8 +76,8 @@ class NighttimeClockLayer: ClockSubfaceLayer {
     private func addDawnAndDuskLayers(dawnStart: Date, dawnEnd: Date,
                                       duskStart: Date, duskEnd: Date,
                                       color: CGColor) {
-        addSublayer(gradientLayer(from: dawnStart, to: dawnEnd, color: color))
-        addSublayer(gradientLayer(from: duskStart, to: duskEnd, color: color))
+        addSublayer(gradientLayer(fromStartDate: dawnStart, toEndDate: dawnEnd, color: color))
+        addSublayer(gradientLayer(fromStartDate: duskStart, toEndDate: duskEnd, color: color))
     }
 
     private func addSolarAndLunarLayers(for times: SolarAndLunarTimes) {
@@ -88,12 +95,12 @@ class NighttimeClockLayer: ClockSubfaceLayer {
                              duskEnd: times.nauticalDusk,
                              color: nauticalColor)
 
-        let astronomicalColor = UIColor(named: "Astronomical Dawn and Dusk")!.cgColor
+        let astroColor = UIColor(named: "Astronomical Dawn and Dusk")!.cgColor
         addDawnAndDuskLayers(dawnStart: times.astronomicalDawn,
                              dawnEnd: times.nauticalDawn,
                              duskStart: times.nauticalDusk,
                              duskEnd: times.astronomicalDusk,
-                             color: astronomicalColor)
+                             color: astroColor)
     }
 
 }

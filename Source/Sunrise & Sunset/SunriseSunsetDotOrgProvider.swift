@@ -31,9 +31,11 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
                     return date
                 } else {
                     throw DecodingError.dataCorruptedError(in: container,
-                                                           debugDescription: """
-Date values must be formatted according to ISO 8601, like "2015-05-21T05:05:35+00:00". The format that was passed in, "\(dateString)", is not formatted correctly."
-""")
+                                                           debugDescription:
+                        "Date values must be formatted according to ISO 8601," +
+                        "like \"2015-05-21T05:05:35+00:00\". The format that " +
+                        "was passed in, \"\(dateString)\", is not formatted " +
+                        "correctly.")
                 }
             }
         }

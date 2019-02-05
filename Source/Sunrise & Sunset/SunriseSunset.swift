@@ -128,12 +128,12 @@ public extension SunriseSunset {
                                            hourDurationInSeconds: daylightHour) {
             hourIndex = index
             isDaylightHour = true
-            isHalfPast = time.timeIntervalSince(daylightHours[hourIndex]) >= (daylightHourDurationInSeconds / 2.0)
+            isHalfPast = time.timeIntervalSince(daylightHours[hourIndex]) >= (daylightHour / 2.0)
         } else if let index = nighttimeHours.index(ofTime: time,
                                                    hourDurationInSeconds: nighttimeHour) {
             hourIndex = index
             isDaylightHour = false
-            isHalfPast = time.timeIntervalSince(nighttimeHours[index]) >= (nighttimeHourDurationInSeconds / 2.0)
+            isHalfPast = time.timeIntervalSince(nighttimeHours[index]) >= (nighttimeHour / 2.0)
         } else {
             return nil
         }
