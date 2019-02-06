@@ -12,7 +12,7 @@ import Stylobate
 /// @see https://sunrise-sunset.org/api
 public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
-    class SunriseSunsetDotOrgJSONDecoder: JSONDecoder {
+    class Decoder: JSONDecoder {
 
         /// The formatter for date strings returned by `sunrise-sunset.org`.
         /// These are in the `.medium` time style, like `"7:27:02 AM"` and
@@ -41,10 +41,14 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         }
     }
 
+    // MARK: - Internal, Testable Properties
+
+    static var urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@&date=%@&formatted=0"
+
     // MARK: - Private Properties
 
     /// The JSON decoder, which converts snake_case keys to CamelCase ones.
-    private let jsonDecoder = SunriseSunsetDotOrgJSONDecoder()
+    private let jsonDecoder = Decoder()
 
     private static let queryDateFormatter = ISO8601DateFormatter() <~ {
         $0.formatOptions = .withFullDate
@@ -106,7 +110,6 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
     ///             times.
     static func urlRequest(for coordinate: CLLocationCoordinate2D,
                            date: Date) -> URLRequest? {
-        let urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@&date=%@&formatted=0"
         let coordinateStrings = coordinate.strings
         let urlString = String(format: urlPattern,
                                coordinateStrings.latitude,

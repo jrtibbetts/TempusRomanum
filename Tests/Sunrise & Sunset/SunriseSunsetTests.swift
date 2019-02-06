@@ -34,7 +34,7 @@ class SunriseSunsetTests: XCTestCase {
                      baseDate,
                      Date(timeInterval: 2500, since: baseDate)]
         let targetDate = Date(timeInterval: 1000, since: baseDate)
-        XCTAssertEqual(dates.index(ofTime: targetDate, hourDurationInSeconds: 2500), 2)
+        XCTAssertEqual(dates.index(ofTime: targetDate, hourDurationInSeconds: 2500)!.0, 2)
     }
 
     func testIndexOfTimePastEndReturnsNil() {

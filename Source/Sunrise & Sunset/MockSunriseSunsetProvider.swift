@@ -3,7 +3,7 @@
 import PromiseKit
 import UIKit
 
-struct SimpleSunriseSunset: SunriseSunset {
+struct SimpleSunriseSunset: SunriseSunset, Codable {
 
     var sunrise: Date
 

@@ -25,7 +25,7 @@ class SunriseSunsetDotOrgTimesTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        let decoder = SunriseSunsetDotOrgProvider.SunriseSunsetDotOrgJSONDecoder()
+        let decoder = SunriseSunsetDotOrgProvider.Decoder()
         let jsonData = json.data(using: .utf8)!
         times = try! decoder.decode(SunriseSunsetDotOrgTimes.self, from: jsonData)
     }

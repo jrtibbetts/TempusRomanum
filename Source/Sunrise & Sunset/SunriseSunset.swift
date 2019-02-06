@@ -118,29 +118,19 @@ public extension SunriseSunset {
     /// - returns: A `RomanNumeral` constant, plus `true` if it's a daylight
     ///            hour.
     public func romanHour(forDate time: Date = Date()) -> RomanTime? {
-        let hourIndex: Int
-        let isDaylightHour: Bool
-        let isHalfPast: Bool
-        let daylightHour = daylightHourDurationInSeconds
-        let nighttimeHour = nighttimeHourDurationInSeconds
-
-        if let index = daylightHours.index(ofTime: time,
-                                           hourDurationInSeconds: daylightHour) {
-            hourIndex = index
-            isDaylightHour = true
-            isHalfPast = time.timeIntervalSince(daylightHours[hourIndex]) >= (daylightHour / 2.0)
-        } else if let index = nighttimeHours.index(ofTime: time,
-                                                   hourDurationInSeconds: nighttimeHour) {
-            hourIndex = index
-            isDaylightHour = false
-            isHalfPast = time.timeIntervalSince(nighttimeHours[index]) >= (nighttimeHour / 2.0)
-        } else {
-            return nil
+        if let (hourIndex, isHalfPast) = daylightHours.index(ofTime: time,
+                                                             hourDurationInSeconds: daylightHourDurationInSeconds) {
+            return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
+                             isDaylightHour: true,
+                             isHalfPast: isHalfPast)
+        } else if let (hourIndex, isHalfPast) = nighttimeHours.index(ofTime: time,
+                                                                     hourDurationInSeconds: nighttimeHourDurationInSeconds) {
+            return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
+                             isDaylightHour: false,
+                             isHalfPast: isHalfPast)
         }
 
-        return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
-                         isDaylightHour: isDaylightHour,
-                         isHalfPast: isHalfPast)
+        return nil
     }
 
 }
@@ -150,10 +140,11 @@ public extension Array where Element == Date {
     // MARK: - Public Functions
 
     public func index(ofTime time: Date,
-                      hourDurationInSeconds: TimeInterval) -> Int? {
+                      hourDurationInSeconds: TimeInterval) -> (Int, Bool)? {
         if self.isEmpty {
             return nil
         }
+
         // Append a fake extra time at the end to establish an upper bound for
         // real final element. This makes it far easier to calculate whether
         // the time falls during the last real element.
@@ -165,7 +156,9 @@ public extension Array where Element == Date {
                 return embiggenedArray[index] <= time
                     && time < embiggenedArray[index].addingTimeInterval(hourDurationInSeconds)
             }) {
-            return foundIndex
+
+            let isHalfPast = time.timeIntervalSince(self[foundIndex]) >= (hourDurationInSeconds / 2.0)
+            return (foundIndex, isHalfPast)
         } else {
             return nil
         }
