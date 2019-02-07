@@ -12,35 +12,6 @@ import Stylobate
 /// @see https://sunrise-sunset.org/api
 public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
-    class Decoder: JSONDecoder {
-
-        /// The formatter for date strings returned by `sunrise-sunset.org`.
-        /// These are in the `.medium` time style, like `"7:27:02 AM"` and
-        /// `"12:16:28 PM"`.
-        let dateFormatter = ISO8601DateFormatter()
-
-        override init() {
-            super.init()
-            keyDecodingStrategy = .convertFromSnakeCase
-            dateDecodingStrategy = .custom { (decoder) -> Date in
-                let container = try decoder.singleValueContainer()
-                let dateString = try container.decode(String.self)
-                let date = self.dateFormatter.date(from: dateString)
-
-                if let date = date {
-                    return date
-                } else {
-                    throw DecodingError.dataCorruptedError(in: container,
-                                                           debugDescription:
-                        "Date values must be formatted according to ISO 8601," +
-                        "like \"2015-05-21T05:05:35+00:00\". The format that " +
-                        "was passed in, \"\(dateString)\", is not formatted " +
-                        "correctly.")
-                }
-            }
-        }
-    }
-
     // MARK: - Internal, Testable Properties
 
     static var urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@&date=%@&formatted=0"
@@ -48,7 +19,10 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
     // MARK: - Private Properties
 
     /// The JSON decoder, which converts snake_case keys to CamelCase ones.
-    private let jsonDecoder = Decoder()
+    public static let jsonDecoder = JSONDecoder() <~ {
+        $0.keyDecodingStrategy = .convertFromSnakeCase
+        $0.dateDecodingStrategy = .iso8601
+    }
 
     private static let queryDateFormatter = ISO8601DateFormatter() <~ {
         $0.formatOptions = .withFullDate
@@ -81,8 +55,8 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
 
             // Call the server.
             URLSession.shared.dataTask(.promise, with: request).validate().done { (response) in
-                let responseData = try self.jsonDecoder.decode(ResponseData.self,
-                                                               from: response.data)
+                let responseData = try type(of: self).jsonDecoder.decode(ResponseData.self,
+                                                                         from: response.data)
                 self.handle(response: responseData, promise: promise)
                 }.catch {
                     promise.reject($0)
