@@ -55,23 +55,3 @@ open class ModernHourMarksLayer: ClockLayer {
     }
 
 }
-
-private extension CGRect {
-
-    var topCenter: CGPoint {
-        return CGPoint(x: midX, y: 0.0)
-    }
-
-    var rightCenter: CGPoint {
-        return CGPoint(x: width, y: midY)
-    }
-
-    var bottomCenter: CGPoint {
-        return CGPoint(x: midX, y: height)
-    }
-
-    var leftCenter: CGPoint {
-        return CGPoint(x: 0, y: midY)
-    }
-
-}

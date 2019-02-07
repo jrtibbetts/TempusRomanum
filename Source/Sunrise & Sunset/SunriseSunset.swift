@@ -118,13 +118,16 @@ public extension SunriseSunset {
     /// - returns: A `RomanNumeral` constant, plus `true` if it's a daylight
     ///            hour.
     public func romanHour(forDate time: Date = Date()) -> RomanTime? {
+        let daylightHour = daylightHourDurationInSeconds
+        let nighttimeHour = nighttimeHourDurationInSeconds
+
         if let (hourIndex, isHalfPast) = daylightHours.index(ofTime: time,
-                                                             hourDurationInSeconds: daylightHourDurationInSeconds) {
+                                                             hourDurationInSeconds: daylightHour) {
             return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
                              isDaylightHour: true,
                              isHalfPast: isHalfPast)
         } else if let (hourIndex, isHalfPast) = nighttimeHours.index(ofTime: time,
-                                                                     hourDurationInSeconds: nighttimeHourDurationInSeconds) {
+                                                                     hourDurationInSeconds: nighttimeHour) {
             return RomanTime(RomanNumeral.romanNumeral(for: hourIndex + 1)!,
                              isDaylightHour: false,
                              isHalfPast: isHalfPast)

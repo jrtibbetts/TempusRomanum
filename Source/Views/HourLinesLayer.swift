@@ -19,27 +19,6 @@ open class HourLinesLayer: ClockLayer {
     /// The encoding key for the `hours` field.
     fileprivate let hoursKey = "hours"
 
-    // MARK: - Initializers & Serialization
-
-    /// Create an hours layer with a list of hour `Date`s.
-    ///
-    /// - parameter hours: The hour times for which to draw lines. They don't
-    /// need to be in chronological order, but all of them _should_ be on the
-    /// same calendar date, if you don't want strange results.
-    public init(hours: [Date] = []) {
-        self.hours = hours
-        super.init()
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    public override init(layer: Any) {
-        self.hours = []
-        super.init(layer: layer)
-    }
-
     open override func layoutSublayers() {
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.

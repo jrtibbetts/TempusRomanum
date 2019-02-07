@@ -10,8 +10,6 @@ public final class ViewController: UIViewController {
 
     @IBOutlet private weak var modernTimeLabel: UILabel!
     @IBOutlet private weak var romanTimeLabel: UILabel!
-    @IBOutlet fileprivate weak var romanSunriseLabel: UILabel!
-    @IBOutlet fileprivate weak var romanSunsetLabel: UILabel!
     @IBOutlet fileprivate weak var modernSunriseLabel: UILabel!
     @IBOutlet fileprivate weak var modernSunsetLabel: UILabel!
     @IBOutlet fileprivate weak var clockView: RomanClockView!
@@ -66,7 +64,7 @@ public final class ViewController: UIViewController {
 
     // MARK: - Actions and Selectors
 
-    @objc private func updateTime() {
+    private func updateTime() {
         let now = Date()
         modernTimeLabel.text = timeFormatter.string(from: now)
         romanTimeLabel.text = sunriseSunset?.romanHour(forDate: now)?.string
