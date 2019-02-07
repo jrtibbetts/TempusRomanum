@@ -19,10 +19,11 @@ class SunriseSunsetDotOrgProviderTests: XCTestCase {
 
         do {
             _ = try decoder.decode(SimpleSunriseSunset.self, from: jsonData)
-            XCTFail("A DecodingError.dataCorruptedError should have been thrown.")
+            XCTFail("A DecodingError.dataCorrupted error should have been thrown.")
+        } catch DecodingError.dataCorrupted(let context) {
+            XCTAssertTrue(context.debugDescription.starts(with: "Date values must be formatted"))
         } catch {
-            // I can't seem to catch the specific DecodingError.dataCorruptedError;
-            // see my question at https://stackoverflow.com/questions/54546829/swift-cant-catch-specific-error-case-with-associated-data
+            XCTFail("A DecodingError.dataCorrupted error should have been thrown.")
         }
     }
 
