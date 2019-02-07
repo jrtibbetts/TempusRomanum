@@ -3,7 +3,7 @@
 import Stylobate
 import UIKit
 
-class NighttimeClockLayer: ClockSubfaceLayer {
+class NighttimeLayer: ClockSubfaceLayer {
 
     override var sunriseSunset: SunriseSunset? {
         didSet {
