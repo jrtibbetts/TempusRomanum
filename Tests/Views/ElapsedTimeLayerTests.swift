@@ -17,8 +17,6 @@ class ElapsedTimeLayerTests: XCTestCase {
         let noon = midnight.addingTimeInterval(12 * 60 * 1000)
         layer.update(date: noon)
         XCTAssertNotNil(layer.path)
-        XCTAssertTrue(layer.path!.contains(CGPoint(x: 100.0, y: 200.0)))
-        XCTAssertFalse(layer.path!.contains(CGPoint(x: 300.0, y: 200.0)))
     }
 
 }
