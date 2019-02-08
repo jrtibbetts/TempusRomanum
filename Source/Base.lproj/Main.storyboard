@@ -54,10 +54,14 @@
                                         <accessibility key="accessibilityConfiguration">
                                             <accessibilityTraits key="traits" notEnabled="YES"/>
                                         </accessibility>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
                                             <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="ddg-4z-owZ" appends="YES" id="yaw-Ep-5hK"/>
+                                        </connections>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-fI-w8P" userLabel="Current Times">
                                         <rect key="frame" x="0.0" y="260" width="240" height="49"/>
@@ -227,9 +231,14 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRy-Ip-TMr" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Sgd-Ts-Dg6">
+                <tapGestureRecognizer id="Sgd-Ts-Dg6" userLabel="Time Label Tap Recognizer">
                     <connections>
                         <action selector="toggleTimeFormat" destination="TTA-zJ-V0f" id="UPX-wL-gkW"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="ddg-4z-owZ" userLabel="Clock Double-Tap Recognizer">
+                    <connections>
+                        <action selector="update" destination="dim-oQ-clJ" id="fqr-1A-UzW"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

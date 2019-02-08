@@ -51,7 +51,7 @@ public final class RomanClockView: UIView {
 
     // MARK: - Other Functions
 
-    @objc public func update() {
+    @IBAction public func update() {
         romanClockLayer.elapsedTimeLayer.update()
     }
 
