@@ -7,7 +7,7 @@
 [![License](http://img.shields.io/:license-mit-blue.svg)](http://doge.mit-license.org)
 
 # TempusRomanum
-An 📱 and ⌚️ clock that tells time the [Roman way](https://en.wikipedia.org/wiki/Roman_timekeeping): each daylight hour is 1/12th of the time from dawn (the first hour of daytime, i.e. *prima hora diei*) to dusk (i.e. the first hour of nighttime, *prima hora noctis*), and the 12 nighttime hours are divided evenly from dusk to dawn. It was inspired by the [XKCD comic comic "6/6 Time"]((https://xkcd.com/2050/), which goes
+An 📱 and ⌚️ clock that tells time the [Roman way](https://en.wikipedia.org/wiki/Roman_timekeeping): each daylight hour is 1/12th of the time from dawn (the first hour of daytime, i.e. *prima hora diei*) to dusk (i.e. the first hour of nighttime, *prima hora noctis*), and the 12 nighttime hours are divided evenly from dusk to dawn. It was inspired by the [XKCD comic comic "6/6 Time"](https://xkcd.com/2050/), which goes
 
 ![6/6 Time](https://imgs.xkcd.com/comics/6_6_time.png)
 
