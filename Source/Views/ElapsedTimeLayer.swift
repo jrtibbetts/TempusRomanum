@@ -17,12 +17,14 @@ public class ElapsedTimeLayer: ClockLayer {
     /// - parameter date: The end time of the shaded area. By default, this is
     ///                   the exact time when this function was called.
     public func update(date: Date = Date()) {
+        strokeColor = UIColor.white.cgColor
+        lineWidth = 2.0
         fillColor = UIColor(named: "Elapsed Time")?.cgColor
         let endAngle = date.rotationAngle
 
         path = UIBezierPath(sliceCenter: boundsCenter,  // from ClockLayer
                             radius: radius,             // from ClockLayer
-                            startAngle: midnightAngle,
+                            startAngle: endAngle,
                             endAngle: endAngle).cgPath
 
         setNeedsDisplay()
