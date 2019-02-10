@@ -34,8 +34,8 @@ open class ModernHourMarksLayer: ClockLayer {
     private func updateMarks() {
         fillColor = UIColor.clear.cgColor
         strokeColor = UIColor.black.cgColor
-        let path = UIBezierPath() // UIBezierPath(ovalIn: ringFrame)
-        lineWidth = 1.0
+        lineWidth = 2.0
+        let path = UIBezierPath()
 
         // Noon
         stride(from: 0.0, to: 360.0, by: 15.0).forEach { (angle) in

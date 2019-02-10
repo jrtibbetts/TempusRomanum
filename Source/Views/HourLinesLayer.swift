@@ -42,7 +42,7 @@ open class HourLinesLayer: ClockLayer {
                 addSublayer(textLayer)
                 textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.2)) * cos(angle)),
                                              y: boundsCenter.y + ((radius - (numeralMargin / 2.2)) * sin(angle))))
-                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
+//                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
             } else {
                 path.addLine(to: borderPoint(at: angle))
             }
