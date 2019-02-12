@@ -32,14 +32,22 @@ open class ModernHourMarksLayer: ClockLayer {
     }
 
     private func updateMarks() {
+        if frame.isEmpty {
+            return
+        }
+
         fillColor = UIColor.clear.cgColor
         strokeColor = UIColor.black.cgColor
         lineWidth = 2.0
         let path = UIBezierPath()
 
         // Noon
-        stride(from: 0.0, to: 360.0, by: 15.0).forEach { (angle) in
-            addLine(fromBorderAt: (CGFloat.pi * 2.0 * angle / 360.0), length: -margin, toPath: path)
+        stride(from: 0.0, to: 360.0, by: 15.0).enumerated().forEach { (index, angle) in
+            if index % 6 == 0 {
+                return
+            } else {
+                addLine(fromBorderAt: (CGFloat.pi * 2.0 * CGFloat(angle) / 360.0), length: -margin, toPath: path)
+            }
         }
 
         self.path = path.cgPath

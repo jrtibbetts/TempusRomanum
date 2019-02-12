@@ -16,17 +16,18 @@ open class HourLinesLayer: ClockLayer {
         }
     }
 
-    /// The encoding key for the `hours` field.
-    fileprivate let hoursKey = "hours"
-
     open override func layoutSublayers() {
+        if frame.isEmpty {
+            return
+        }
+
         sublayers?.forEach { $0.removeFromSuperlayer() }
 
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.
         let path = UIBezierPath()
         path.lineWidth = lineWidth
-        let numeralMargin: CGFloat = 20.0
+        let numeralMargin: CGFloat = 30.0
 
         hours.dropFirst().enumerated().forEach { (index, hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
@@ -40,9 +41,9 @@ open class HourLinesLayer: ClockLayer {
 
                 let textLayer = self.textLayer(forRomanNumeral: RomanNumeral.romanNumeral(for: index + 2)!)
                 addSublayer(textLayer)
-                textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.2)) * cos(angle)),
-                                             y: boundsCenter.y + ((radius - (numeralMargin / 2.2)) * sin(angle))))
-//                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
+                textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.4)) * cos(angle)),
+                                             y: boundsCenter.y + ((radius - (numeralMargin / 2.4)) * sin(angle))))
+                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
             } else {
                 path.addLine(to: borderPoint(at: angle))
             }
@@ -56,8 +57,8 @@ open class HourLinesLayer: ClockLayer {
         let textLayer = CATextLayer()
         textLayer.string = romanNumeral.rawValue
         textLayer.foregroundColor = strokeColor
-        textLayer.fontSize = 12.0
-        textLayer.frame = CGRect(x: 0.0, y: 0.0, width: 18.0, height: 16.0)
+        textLayer.fontSize = 20.0
+        textLayer.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
         textLayer.alignmentMode = .center
 
         return textLayer

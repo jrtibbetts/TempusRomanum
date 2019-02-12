@@ -13,7 +13,7 @@ class ClockSubfaceLayer: ClockLayer {
     /// The layer that draws lines for each hour in this subface.
     var hourLinesLayer = HourLinesLayer() <~ {
         $0.strokeColor = UIColor(named: "Hour Marks")?.cgColor
-        $0.lineWidth = 1.0
+        $0.lineWidth = 2.0
     }
 
     /// The astronomical information.
@@ -22,8 +22,6 @@ class ClockSubfaceLayer: ClockLayer {
     // MARK: - CALayer
 
     override func layoutSublayers() {
-        super.layoutSublayers()
-
         if hourLinesLayer.superlayer == nil {
             addSublayer(hourLinesLayer)
         }

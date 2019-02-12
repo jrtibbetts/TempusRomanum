@@ -63,8 +63,8 @@ class NighttimeLayer: ClockSubfaceLayer {
                                   radius: radius,
                                   startAngle: startDate.rotationAngle,
                                   endAngle: endDate.rotationAngle).cgPath
-
-        addSublayer(layer)
+        gradientLayers.append(layer)
+        insertSublayer(layer, below: hourLinesLayer)
     }
 
     private func addSolarAndLunarLayers(for times: SolarAndLunarTimes) {
