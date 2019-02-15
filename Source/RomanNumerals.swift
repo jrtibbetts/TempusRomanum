@@ -35,7 +35,7 @@ public enum RomanNumeral: String, CaseIterable {
     /// Get the Roman numeral for a number from 1 to 12.
     ///
     /// - parameter number: The value whose Roman numeral should be returned.
-    ///                     If it's less than `0` or greater than `12`, then
+    ///                     If it's less than `1` or greater than `12`, then
     ///                     `nil` is returned.
     static func romanNumeral(for number: Int) -> RomanNumeral? {
         if 1 <= number && number <= allCases.count {

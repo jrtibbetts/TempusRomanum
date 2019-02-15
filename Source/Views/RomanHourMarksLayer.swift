@@ -50,7 +50,6 @@ public final class RomanHourMarksLayer: ClockLayer {
     // MARK: - CALayer
 
     public override func layoutSublayers() {
-        super.layoutSublayers()
 
         labelLayers.forEach { (sublayer) in
             sublayer.removeFromSuperlayer()

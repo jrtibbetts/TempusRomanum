@@ -31,7 +31,7 @@ final class RomanClockLayer: CALayer {
     /// The layer that draws the nighttime portion of the clock table.
     private var nighttimeClockLayer = NighttimeLayer()
 
-    private var romanHourMarksInset: CGFloat = 15.0 {
+    private var romanHourMarksInset: CGFloat = /* 15 */ 0.0 {
         didSet {
             layoutSublayers()
         }
@@ -79,12 +79,12 @@ final class RomanClockLayer: CALayer {
         addSublayer(nighttimeClockLayer)
         addSublayer(daylightLayer)
 
-        modernHourMarksInset = 5.0
+        modernHourMarksInset = 25.0
         modernHourMarksLayer = ModernHourMarksLayer()
         modernHourMarksLayer!.margin = modernHourMarksInset
         addSublayer(modernHourMarksLayer!)
         romanHourMarksLayer = RomanHourMarksLayer()
-        addSublayer(romanHourMarksLayer!)
+//        addSublayer(romanHourMarksLayer!)
 
         elapsedTimeLayer.fillColor = UIColor(named: "Elapsed Time")?.cgColor
         addSublayer(elapsedTimeLayer)
