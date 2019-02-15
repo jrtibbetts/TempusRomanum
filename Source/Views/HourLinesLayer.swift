@@ -26,20 +26,20 @@ open class HourLinesLayer: ClockLayer {
         // Create the path with a line from the layer's center point to the
         // points at which each hour falls on the circle.
         let path = UIBezierPath()
-        path.lineWidth = lineWidth
+        path.lineWidth = lineWidth * 5
         let numeralMargin: CGFloat = 30.0
 
-        hours.dropFirst().enumerated().forEach { (index, hour) in
+        hours.enumerated().forEach { (index, hour) in
             let angle = hour.rotationAngle  // relative to 12 am of the same
             // day.
             path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(angle)),
                                   y: boundsCenter.y + (radius * 0.2 * sin(angle))))
 
-            if index % 3 == 1 {
+            if index > 0 && index % 3 == 2 {
                 path.addLine(to: CGPoint(x: boundsCenter.x + ((radius - numeralMargin) * cos(angle)),
                                          y: boundsCenter.y + ((radius - numeralMargin) * sin(angle))))
 
-                let textLayer = self.textLayer(forRomanNumeral: RomanNumeral.romanNumeral(for: index + 2)!)
+                let textLayer = self.textLayer(forRomanNumeral: RomanNumeral.romanNumeral(for: index + 1)!)
                 addSublayer(textLayer)
                 textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.4)) * cos(angle)),
                                              y: boundsCenter.y + ((radius - (numeralMargin / 2.4)) * sin(angle))))
@@ -57,6 +57,7 @@ open class HourLinesLayer: ClockLayer {
         let textLayer = CATextLayer()
         textLayer.string = romanNumeral.rawValue
         textLayer.foregroundColor = strokeColor
+        textLayer.font = UIFont(name: "Palatino", size: 20.0)
         textLayer.fontSize = 20.0
         textLayer.frame = CGRect(x: 0.0, y: 0.0, width: 24.0, height: 24.0)
         textLayer.alignmentMode = .center
