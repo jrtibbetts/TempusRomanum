@@ -1,9 +1,0 @@
-{
-  "commitish" : "0.10.0",
-  "iOS" : [
-    {
-      "name" : "Stylobate",
-      "hash" : "6383cbea780d0ec238f8274c87d37da7fa25d79e189b55b9d4f9e3b408e31ae3"
-    }
-  ]
-}
