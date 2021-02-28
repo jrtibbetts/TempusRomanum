@@ -33,11 +33,26 @@ open class ModernHourMarksLayer: ClockLayer {
 
     private var hourLayers: [CATextLayer] = []
 
+    private var innerRadius: CGFloat {
+        return radius - margin
+    }
+
+    private var innerFrame: CGRect {
+        let innerWidth = innerRadius * 2.0
+        let origin = CGPoint(x: margin, y: margin)
+
+        return CGRect(origin: origin, size: CGSize(width: innerWidth, height: innerWidth))
+    }
+
     // MARK: - CAShapeLayer
 
     open override func layoutSublayers() {
         // Don't call super.layoutSublayers()
 
+        if frame.isEmpty {
+            return
+        }
+        
         hourLayers.forEach { (layer) in
             layer.removeFromSuperlayer()
         }
@@ -46,13 +61,13 @@ open class ModernHourMarksLayer: ClockLayer {
             let layer = CATextLayer()
             layer.string = key
             layer.alignmentMode = .center
-            layer.fontSize = 16.0
-            layer.frame = CGRect(x: 0.0, y: 0.0, width: 60.0, height: 30.0)
+            layer.fontSize = margin * 0.67
+            layer.frame = CGRect(x: 0.0, y: 0.0, width: margin * 2.0, height: margin)
             hourLayers.append(layer)
             addSublayer(layer)
-//            layer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
-            layer.center(at: CGPoint(x: boundsCenter.x + (radius * 1.05 * cos(angle)),
-                                     y: boundsCenter.y + (radius * 1.05 * sin(angle))))
+            layer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
+            layer.center(at: CGPoint(x: boundsCenter.x + (radius * cos(angle)),
+                                     y: boundsCenter.y + (radius * sin(angle))))
             layer.foregroundColor = UIColor.black.cgColor
         }
     }

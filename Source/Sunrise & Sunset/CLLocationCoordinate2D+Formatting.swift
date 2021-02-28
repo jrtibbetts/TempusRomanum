@@ -5,10 +5,10 @@ import CoreLocation
 public extension CLLocationCoordinate2D {
 
     /// A type that contains latitude and longitude strings.
-    public typealias CoordinateStrings = (latitude: String, longitude: String)
+    typealias CoordinateStrings = (latitude: String, longitude: String)
 
     /// The *string* representations of the coordinate's latitude and longitude.
-    public var strings: CoordinateStrings {
+    var strings: CoordinateStrings {
         return strings()
     }
 
@@ -20,7 +20,7 @@ public extension CLLocationCoordinate2D {
     ///                      which includes the first two decimal places.
     ///
     /// - returns: The string versions of the latitude and longitude.
-    public func strings(with pattern: String = "%.2f") -> CoordinateStrings {
+    func strings(with pattern: String = "%.2f") -> CoordinateStrings {
         return (String(format: pattern, latitude),
                 String(format: pattern, longitude))
     }

@@ -1,9 +1,9 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
 import CoreLocation
-import Foundation
 import PMKCoreLocation
 import PMKFoundation
+import PromiseKit
 import Stylobate
 
 /// A `SunriseSunsetProvider` that gets its data by calling

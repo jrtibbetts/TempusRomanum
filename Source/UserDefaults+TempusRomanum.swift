@@ -4,7 +4,7 @@ import Foundation
 
 public extension UserDefaults {
 
-    public var use24HourClock: Bool {
+    var use24HourClock: Bool {
         get {
             return bool(forKey: "use24HourClock")
         }

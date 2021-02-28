@@ -22,7 +22,6 @@
 		965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */; };
 		965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */; };
 		965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */; };
-		967547A121F6D92000A6DA63 /* RomanHourMarksLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */; };
 		967547A321F7F6FC00A6DA63 /* CALayer+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */; };
 		967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */; };
 		967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */; };
@@ -120,7 +119,6 @@
 		965DF67921A7BCF700A40698 /* ModernHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModernHourMarksLayer.swift; sourceTree = "<group>"; };
 		965DF68221AA6DF700A40698 /* SunriseSunsetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetProvider.swift; sourceTree = "<group>"; };
 		965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgProvider.swift; sourceTree = "<group>"; };
-		967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanHourMarksLayer.swift; sourceTree = "<group>"; };
 		967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Geometry.swift"; sourceTree = "<group>"; };
 		967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+GeometryTests.swift"; sourceTree = "<group>"; };
 		967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Formatting.swift"; sourceTree = "<group>"; };
@@ -246,7 +244,6 @@
 				ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */,
 				AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */,
 				960B52F2217FEDA3004754A5 /* RomanClockView.swift */,
-				967547A021F6D92000A6DA63 /* RomanHourMarksLayer.swift */,
 				965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */,
 			);
 			path = Views;
@@ -257,11 +254,11 @@
 			children = (
 				967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */,
 				96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */,
+				968F166F220AA1FA0029B2C6 /* DaylightLayerTests.swift */,
 				968F166B2209CF730029B2C6 /* ElapsedTimeLayerTests.swift */,
+				968F1671220BC93A0029B2C6 /* NighttimeLayerTests.swift */,
 				968F165B220736F40029B2C6 /* RomanClockViewTests.swift */,
 				968F1659220735030029B2C6 /* UIBezierPath+PieTests.swift */,
-				968F166F220AA1FA0029B2C6 /* DaylightLayerTests.swift */,
-				968F1671220BC93A0029B2C6 /* NighttimeLayerTests.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -420,7 +417,6 @@
 				965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
 				967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */,
-				967547A121F6D92000A6DA63 /* RomanHourMarksLayer.swift in Sources */,
 				965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */,
 				967547A321F7F6FC00A6DA63 /* CALayer+Geometry.swift in Sources */,
 				ADB8735221FA658600F2FE54 /* NighttimeLayer.swift in Sources */,

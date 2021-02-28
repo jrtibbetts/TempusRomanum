@@ -9,7 +9,7 @@ public extension CALayer {
     /// - parameter centerPoint: The new center point.
     ///
     /// - returns: The layer's new `frame`.
-    @discardableResult public func center(at centerPoint: CGPoint) -> CGRect {
+    @discardableResult func center(at centerPoint: CGPoint) -> CGRect {
         let newOriginX = centerPoint.x - (bounds.width / 2.0)
         let newOriginY = centerPoint.y - (bounds.height / 2.0)
         let newOrigin = CGPoint(x: newOriginX, y: newOriginY)
@@ -22,7 +22,7 @@ public extension CALayer {
     /// Move the layer so that it's centered in the superlayer's bounds.
     ///
     /// - returns: The layer's new `frame`.
-    @discardableResult public func centerInSuperlayer() -> CGRect {
+    @discardableResult func centerInSuperlayer() -> CGRect {
         guard let superlayer = superlayer else {
             return frame
         }
@@ -36,7 +36,7 @@ public extension CGRect {
 
     /// Get the point at the center of the rectangle. Why doesn't this exist
     /// already?
-    public var center: CGPoint {
+    var center: CGPoint {
         return CGPoint(x: width / 2.0, y: height / 2.0)
     }
 

@@ -31,14 +31,6 @@ final class RomanClockLayer: CALayer {
     /// The layer that draws the nighttime portion of the clock table.
     private var nighttimeClockLayer = NighttimeLayer()
 
-    private var romanHourMarksInset: CGFloat = /* 15 */ 0.0 {
-        didSet {
-            layoutSublayers()
-        }
-    }
-
-    private var romanHourMarksLayer: RomanHourMarksLayer?
-
     public var sunriseSunset: SunriseSunset? {
         didSet {
             guard let sunriseSunset = sunriseSunset else {
@@ -48,9 +40,6 @@ final class RomanClockLayer: CALayer {
             daylightLayer.sunriseSunset = sunriseSunset
 
             nighttimeClockLayer.sunriseSunset = sunriseSunset
-
-            romanHourMarksLayer?.daylightHours = sunriseSunset.daylightHours
-            romanHourMarksLayer?.nighttimeHours = sunriseSunset.nighttimeHours
 
             setNeedsLayout()
         }
@@ -83,8 +72,6 @@ final class RomanClockLayer: CALayer {
         modernHourMarksLayer = ModernHourMarksLayer()
         modernHourMarksLayer!.margin = modernHourMarksInset
         addSublayer(modernHourMarksLayer!)
-        romanHourMarksLayer = RomanHourMarksLayer()
-//        addSublayer(romanHourMarksLayer!)
 
         elapsedTimeLayer.fillColor = UIColor(named: "Elapsed Time")?.cgColor
         addSublayer(elapsedTimeLayer)
@@ -106,8 +93,7 @@ final class RomanClockLayer: CALayer {
         layoutMarksLayers()
 
         // Calculate the size of the clock layer
-        let marksInsets = modernHourMarksInset + romanHourMarksInset
-        let sublayerSideLength = frame.size.width - (marksInsets * 2)
+        let sublayerSideLength = frame.size.width - (modernHourMarksInset * 2)
         let clockFaceFrame = CGRect(x: 0.0, y: 0.0, width: sublayerSideLength, height: sublayerSideLength)
 
         [nighttimeClockLayer, daylightLayer, elapsedTimeLayer].forEach { (layer) in
@@ -121,14 +107,7 @@ final class RomanClockLayer: CALayer {
     }
 
     private func layoutMarksLayers() {
-        romanHourMarksLayer?.frame = self.bounds
-        romanHourMarksLayer?.centerInSuperlayer()
-
-        let modernHourMarksFrame = CGRect(x: 0.0,
-                                          y: 0.0,
-                                          width: frame.width - (romanHourMarksInset * 2.0),
-                                          height: frame.height - (romanHourMarksInset * 2.0))
-        modernHourMarksLayer?.frame = modernHourMarksFrame
+        modernHourMarksLayer?.frame = bounds
         modernHourMarksLayer?.centerInSuperlayer()
     }
 
