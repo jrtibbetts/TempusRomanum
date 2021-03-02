@@ -45,10 +45,7 @@
 		96AFE43B21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43A21FFFB0500F767E2 /* SunriseSunsetDotOrgTimesTests.swift */; };
 		96AFE43D2200AA0000F767E2 /* Date+TrigonometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43C2200AA0000F767E2 /* Date+TrigonometryTests.swift */; };
 		96AFE43F2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */; };
-		96EF1B7F25EC21A300D02D79 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 96EF1B7E25EC21A300D02D79 /* PromiseKit */; };
-		96EF1B8325EC21C800D02D79 /* PMKCoreLocation in Frameworks */ = {isa = PBXBuildFile; productRef = 96EF1B8225EC21C800D02D79 /* PMKCoreLocation */; };
 		96EF1B8725EC21E300D02D79 /* Stylobate in Frameworks */ = {isa = PBXBuildFile; productRef = 96EF1B8625EC21E300D02D79 /* Stylobate */; };
-		96EF1B8D25EC226C00D02D79 /* PMKFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 96EF1B8C25EC226C00D02D79 /* PMKFoundation */; };
 		AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */; };
 		AD5A718921B0AE2D0051820C /* RomanClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD5A718821B0AE2D0051820C /* RomanClockLayer.swift */; };
 		ADB8735221FA658600F2FE54 /* NighttimeLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADB8735121FA658600F2FE54 /* NighttimeLayer.swift */; };
@@ -140,9 +137,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96EF1B8D25EC226C00D02D79 /* PMKFoundation in Frameworks */,
-				96EF1B7F25EC21A300D02D79 /* PromiseKit in Frameworks */,
-				96EF1B8325EC21C800D02D79 /* PMKCoreLocation in Frameworks */,
 				96EF1B8725EC21E300D02D79 /* Stylobate in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,10 +285,7 @@
 			);
 			name = "Tempus Romanum";
 			packageProductDependencies = (
-				96EF1B7E25EC21A300D02D79 /* PromiseKit */,
-				96EF1B8225EC21C800D02D79 /* PMKCoreLocation */,
 				96EF1B8625EC21E300D02D79 /* Stylobate */,
-				96EF1B8C25EC226C00D02D79 /* PMKFoundation */,
 			);
 			productName = "Tempus Romanum";
 			productReference = 9621BF26215C521800C8EBB3 /* Tempus Romanum.app */;
@@ -347,10 +338,7 @@
 			);
 			mainGroup = 9621BF1D215C521700C8EBB3;
 			packageReferences = (
-				96EF1B7D25EC21A300D02D79 /* XCRemoteSwiftPackageReference "PromiseKit" */,
-				96EF1B8125EC21C800D02D79 /* XCRemoteSwiftPackageReference "CoreLocation" */,
 				96EF1B8525EC21E300D02D79 /* XCRemoteSwiftPackageReference "Stylobate" */,
-				96EF1B8B25EC226C00D02D79 /* XCRemoteSwiftPackageReference "Foundation" */,
 			);
 			productRefGroup = 9621BF27215C521800C8EBB3 /* Products */;
 			projectDirPath = "";
@@ -700,22 +688,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		96EF1B7D25EC21A300D02D79 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/PromiseKit/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.13.3;
-			};
-		};
-		96EF1B8125EC21C800D02D79 /* XCRemoteSwiftPackageReference "CoreLocation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PromiseKit/CoreLocation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.1.1;
-			};
-		};
 		96EF1B8525EC21E300D02D79 /* XCRemoteSwiftPackageReference "Stylobate" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/jrtibbetts/Stylobate";
@@ -724,36 +696,13 @@
 				kind = branch;
 			};
 		};
-		96EF1B8B25EC226C00D02D79 /* XCRemoteSwiftPackageReference "Foundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/PromiseKit/Foundation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.3.4;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		96EF1B7E25EC21A300D02D79 /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96EF1B7D25EC21A300D02D79 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		96EF1B8225EC21C800D02D79 /* PMKCoreLocation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96EF1B8125EC21C800D02D79 /* XCRemoteSwiftPackageReference "CoreLocation" */;
-			productName = PMKCoreLocation;
-		};
 		96EF1B8625EC21E300D02D79 /* Stylobate */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 96EF1B8525EC21E300D02D79 /* XCRemoteSwiftPackageReference "Stylobate" */;
 			productName = Stylobate;
-		};
-		96EF1B8C25EC226C00D02D79 /* PMKFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 96EF1B8B25EC226C00D02D79 /* XCRemoteSwiftPackageReference "Foundation" */;
-			productName = PMKFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
