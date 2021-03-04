@@ -1,6 +1,6 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
-import PromiseKit
+import Combine
 import Stylobate
 import UIKit
 
@@ -39,29 +39,38 @@ public final class ViewController: UIViewController {
         $0.dateFormat = "hh:mm a"
     }
 
+    private var sunriseSunsetCancellable: AnyCancellable?
+
     // MARK: - UIViewController
 
-    override public func viewDidLoad() {
-        super.viewDidLoad()
+    override public func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
 
         updateTime()
 
-        _ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { _ in
-            self.updateTime()
+        _ = Timer.scheduledTimer(withTimeInterval: 60.0, repeats: true) { [unowned self] _ in
+            updateTime()
         }
 
-        sunriseSunsetProvider.sunriseSunset().done { [weak self] (sunriseSunset) in
-            guard let self = self else { return }
-            self.sunriseSunset = sunriseSunset
-            self.modernSunriseLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunrise)
-            self.modernSunsetLabel?.text = self.timeFormatter.string(from: sunriseSunset.sunset)
-            self.clockView?.sunriseSunset = sunriseSunset
-            self.updateTime()
-            }.catch { (error) in
-                self.presentAlert(for: error, title: "Error")
-        }
+        sunriseSunsetCancellable = sunriseSunsetProvider.sunriseSunsetPublisher.sink(
+            receiveCompletion: { (completion) in
+                print("Completed? \(completion)")
+            }, receiveValue: { [unowned self] (sunriseSunset) in
+                self.sunriseSunset = sunriseSunset
+                modernSunriseLabel?.text = timeFormatter.string(from: sunriseSunset.sunrise)
+                modernSunsetLabel?.text = timeFormatter.string(from: sunriseSunset.sunset)
+                clockView?.sunriseSunset = sunriseSunset
+                updateTime()
+            })
+
+        sunriseSunsetProvider.start()
     }
 
+    public override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        sunriseSunsetProvider.stop()
+    }
     // MARK: - Actions and Selectors
 
     private func updateTime() {

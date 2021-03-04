@@ -1,22 +1,42 @@
 //  Copyright © 2018 Poikile Creations. All rights reserved.
 
+import Combine
 import CoreLocation
-import PMKCoreLocation
-import PMKFoundation
-import PromiseKit
+import Foundation
 import Stylobate
 
 /// A `SunriseSunsetProvider` that gets its data by calling
 /// https://api.sunrise-sunset.org/json, a free service.
 ///
 /// @see https://sunrise-sunset.org/api
-public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
+public class SunriseSunsetDotOrgProvider: NSObject, ObservableObject, SunriseSunsetProvider {
+
+    public var sunriseSunsetPublisher = PassthroughSubject<SunriseSunset, Error>()
+
+    public func start() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestWhenInUseAuthorization()
+        locationManager?.requestLocation()
+
+        locationUpdateTimer = Timer.scheduledTimer(withTimeInterval: 4 * 60 * 60,
+                                                   repeats: true) { [unowned self] (timer) in
+            locationManager?.requestLocation()
+        }
+    }
+
+    public func stop() {
+        locationManager?.stopUpdatingLocation()
+        locationUpdateTimer?.invalidate()
+    }
 
     // MARK: - Internal, Testable Properties
 
     static var urlPattern = "https://api.sunrise-sunset.org/json?lat=%@&lng=%@&date=%@&formatted=0"
 
     // MARK: - Private Properties
+
+    private var locationUpdateTimer: Timer?
 
     /// The JSON decoder, which converts snake_case keys to CamelCase ones.
     public static let jsonDecoder = JSONDecoder() <~ {
@@ -28,50 +48,61 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
         $0.formatOptions = .withFullDate
     }
 
+    private var locationManager: CLLocationManager?
+
+    // MARK: - Initialization
+
+    public override init() {
+        sunriseSunset = SimpleSunriseSunset(sunrise: Date(), sunset: Date())
+        isTrackingLocation = false
+
+        super.init()
+    }
+
     // MARK: - SunriseSunsetProvider
 
-    public func sunriseSunset() -> Promise<SunriseSunset> {
-        return CLLocationManager.requestLocation().then { (locations) -> Promise<SunriseSunset> in
-            return self.sunriseSunset(for: locations[0].coordinate)
+    @Published public private(set) var sunriseSunset: SunriseSunset {
+        didSet {
+            sunriseSunsetPublisher.send(sunriseSunset)
         }
     }
 
-    // MARK: - Public Functions
+    @Published public var isTrackingLocation: Bool = false
 
-    /// Get a `Promise` with sunrise & sunset information for a specific date.
-    ///
-    /// - parameter coordinate: The latitude & longitude.
-    /// - parameter date: The date to use for calculating sunrise and sunset
-    ///             times. By default, this is the date when the function is
-    ///             called.
-    public func sunriseSunset(for coordinate: CLLocationCoordinate2D,
-                              date: Date = Date()) -> Promise<SunriseSunset> {
-        return Promise<SunriseSunset> { (promise) in
-            // Construct the request.
-            guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
-                promise.reject(ResponseStatus.invalidRequest)
-                return
-            }
-
-            // Call the server.
-            URLSession.shared.dataTask(.promise, with: request).validate().done { (response) in
-                let responseData = try type(of: self).jsonDecoder.decode(ResponseData.self,
-                                                                         from: response.data)
-                self.handle(response: responseData, promise: promise)
-                }.catch {
-                    promise.reject($0)
-            }
+    private var sunriseSunsetCancellable: Cancellable? {
+        didSet {
+            oldValue?.cancel()
         }
     }
 
-    // MARK: - Private Functions
-
-    private func handle(response responseData: ResponseData, promise: Resolver<SunriseSunset>) {
-        if responseData.status == .OK {
-            promise.fulfill(responseData.results)
-        } else {
-            promise.reject(responseData.status)
+    public func updateSunriseSunset() {
+        guard let locationCoordinate = locationManager?.location?.coordinate else {
+            return
         }
+
+        updateSunriseSunset(for: locationCoordinate, date: Date())
+    }
+
+    public func updateSunriseSunset(for coordinate: CLLocationCoordinate2D,
+                                    date: Date = Date()) {
+        // Construct the request.
+        guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
+//            completion(Result<SunriseSunset, Error>.rejected(ResponseStatus.invalidRequest))
+            return
+        }
+
+        sunriseSunsetCancellable = URLSession.shared.dataTaskPublisher(for: request)
+            .map { $0.data }
+            .decode(type: ResponseData.self, decoder: type(of: self).jsonDecoder)
+            .map { $0.results }
+            .receive(on: RunLoop.main)
+            .sink(
+                receiveCompletion: { [unowned self] (completion) in
+                    // No more values will come in.
+                    locationManager?.stopUpdatingLocation()
+                }, receiveValue: { [unowned self] (times) in
+                    sunriseSunset = times
+                })
     }
 
     // MARK: - Static Utility Functions
@@ -125,6 +156,27 @@ public struct SunriseSunsetDotOrgProvider: SunriseSunsetProvider {
             case invalidDate = "INVALID_DATE"
             case unknownError = "UNKNOWN_ERROR"
         }
+    }
+
+}
+
+extension SunriseSunsetDotOrgProvider: CLLocationManagerDelegate {
+
+    public func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        isTrackingLocation = (manager.authorizationStatus == .authorizedWhenInUse)
+    }
+
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Failed to get a location! \(error.localizedDescription)")
+    }
+
+    public func locationManager(_ manager: CLLocationManager,
+                                didUpdateLocations locations: [CLLocation]) {
+        guard let firstLocationCoordinate = locations.first?.coordinate else {
+            return
+        }
+
+        updateSunriseSunset(for: firstLocationCoordinate, date: Date())
     }
 
 }
