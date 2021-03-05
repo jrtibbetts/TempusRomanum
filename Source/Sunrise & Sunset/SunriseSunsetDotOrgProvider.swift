@@ -87,7 +87,6 @@ public class SunriseSunsetDotOrgProvider: NSObject, ObservableObject, SunriseSun
                                     date: Date = Date()) {
         // Construct the request.
         guard let request = type(of: self).urlRequest(for: coordinate, date: date) else {
-//            completion(Result<SunriseSunset, Error>.rejected(ResponseStatus.invalidRequest))
             return
         }
 

@@ -18,8 +18,8 @@ class DaylightLayer: ClockSubfaceLayer {
     override func updatePath() {
         guard let sunriseSunset = sunriseSunset else { return }
         fillColor = UIColor(named: "Daylight")?.cgColor
-        updatePath(from: sunriseSunset.sunrise.rotationAngle,
-                   to: sunriseSunset.sunset.rotationAngle)
+        updatePath(from: CGFloat(sunriseSunset.sunrise.hour12RotationAngle.degrees),
+                   to: CGFloat(sunriseSunset.sunset.hour12RotationAngle.degrees))
     }
 
 }

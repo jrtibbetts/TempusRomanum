@@ -8,6 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 960B52F2217FEDA3004754A5 /* RomanClockView.swift */; };
+		961F89B225F1FDF200DF77B5 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F899725F1FDF200DF77B5 /* Clock.swift */; };
+		961F89B325F1FDF200DF77B5 /* ClockHands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F899825F1FDF200DF77B5 /* ClockHands.swift */; };
+		961F89B525F1FDF200DF77B5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F899A25F1FDF200DF77B5 /* SettingsView.swift */; };
+		961F89B625F1FDF200DF77B5 /* ClockFace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F899B25F1FDF200DF77B5 /* ClockFace.swift */; };
+		961F89B725F1FDF200DF77B5 /* ClockBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F899C25F1FDF200DF77B5 /* ClockBorder.swift */; };
+		961F89C025F1FDF200DF77B5 /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F89A625F1FDF200DF77B5 /* ClockView.swift */; };
+		961F89C225F1FDF200DF77B5 /* ClockSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F89A825F1FDF200DF77B5 /* ClockSettings.swift */; };
+		961F89C325F1FDF200DF77B5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 961F89AA25F1FDF200DF77B5 /* Preview Assets.xcassets */; };
+		961F89C525F1FDF200DF77B5 /* Tempus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F89AD25F1FDF200DF77B5 /* Tempus.swift */; };
+		961F89C925F1FDF200DF77B5 /* HourLines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F89B125F1FDF200DF77B5 /* HourLines.swift */; };
+		961F89D425F1FEED00DF77B5 /* Date+Trigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 961F89D325F1FEED00DF77B5 /* Date+Trigonometry.swift */; };
 		9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF29215C521800C8EBB3 /* AppDelegate.swift */; };
 		9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9621BF2B215C521800C8EBB3 /* ViewController.swift */; };
 		9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF2D215C521800C8EBB3 /* Main.storyboard */; };
@@ -15,7 +26,6 @@
 		9621BF34215C521A00C8EBB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */; };
 		965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */; };
 		965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF66E21A66D8600A40698 /* SunriseSunset.swift */; };
-		965DF67221A6719000A40698 /* Date+Trigonometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67121A6719000A40698 /* Date+Trigonometry.swift */; };
 		965DF67421A6740200A40698 /* HourLinesLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67321A6740200A40698 /* HourLinesLayer.swift */; };
 		965DF67621A72E3600A40698 /* DaylightLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67521A72E3600A40698 /* DaylightLayer.swift */; };
 		965DF67821A7B49A00A40698 /* ClockLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF67721A7B49A00A40698 /* ClockLayer.swift */; };
@@ -86,6 +96,17 @@
 
 /* Begin PBXFileReference section */
 		960B52F2217FEDA3004754A5 /* RomanClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RomanClockView.swift; sourceTree = "<group>"; };
+		961F899725F1FDF200DF77B5 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Clock.swift; sourceTree = "<group>"; };
+		961F899825F1FDF200DF77B5 /* ClockHands.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockHands.swift; sourceTree = "<group>"; };
+		961F899A25F1FDF200DF77B5 /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		961F899B25F1FDF200DF77B5 /* ClockFace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockFace.swift; sourceTree = "<group>"; };
+		961F899C25F1FDF200DF77B5 /* ClockBorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockBorder.swift; sourceTree = "<group>"; };
+		961F89A625F1FDF200DF77B5 /* ClockView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		961F89A825F1FDF200DF77B5 /* ClockSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClockSettings.swift; sourceTree = "<group>"; };
+		961F89AA25F1FDF200DF77B5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		961F89AD25F1FDF200DF77B5 /* Tempus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus.swift; sourceTree = "<group>"; };
+		961F89B125F1FDF200DF77B5 /* HourLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourLines.swift; sourceTree = "<group>"; };
+		961F89D325F1FEED00DF77B5 /* Date+Trigonometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Trigonometry.swift"; sourceTree = "<group>"; };
 		9621BF26215C521800C8EBB3 /* Tempus Romanum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus Romanum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF29215C521800C8EBB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9621BF2B215C521800C8EBB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -97,7 +118,6 @@
 		9621BF40215C521A00C8EBB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		965DF66C21A3E1D200A40698 /* UIBezierPath+Pie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath+Pie.swift"; sourceTree = "<group>"; };
 		965DF66E21A66D8600A40698 /* SunriseSunset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunset.swift; sourceTree = "<group>"; };
-		965DF67121A6719000A40698 /* Date+Trigonometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Trigonometry.swift"; sourceTree = "<group>"; };
 		965DF67321A6740200A40698 /* HourLinesLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourLinesLayer.swift; sourceTree = "<group>"; };
 		965DF67521A72E3600A40698 /* DaylightLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DaylightLayer.swift; sourceTree = "<group>"; };
 		965DF67721A7B49A00A40698 /* ClockLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayer.swift; sourceTree = "<group>"; };
@@ -151,6 +171,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		961F899625F1FDF200DF77B5 /* SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				961F899725F1FDF200DF77B5 /* Clock.swift */,
+				961F899C25F1FDF200DF77B5 /* ClockBorder.swift */,
+				961F899B25F1FDF200DF77B5 /* ClockFace.swift */,
+				961F899825F1FDF200DF77B5 /* ClockHands.swift */,
+				961F89A825F1FDF200DF77B5 /* ClockSettings.swift */,
+				961F89A625F1FDF200DF77B5 /* ClockView.swift */,
+				961F89B125F1FDF200DF77B5 /* HourLines.swift */,
+				961F899A25F1FDF200DF77B5 /* SettingsView.swift */,
+				961F89AD25F1FDF200DF77B5 /* Tempus.swift */,
+				961F89A925F1FDF200DF77B5 /* Preview Content */,
+			);
+			path = SwiftUI;
+			sourceTree = "<group>";
+		};
+		961F89A925F1FDF200DF77B5 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				961F89AA25F1FDF200DF77B5 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		9621BF1D215C521700C8EBB3 = {
 			isa = PBXGroup;
 			children = (
@@ -179,6 +224,7 @@
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				965DF68621AB039700A40698 /* Sunrise & Sunset */,
+				961F899625F1FDF200DF77B5 /* SwiftUI */,
 				965DF67021A6713D00A40698 /* Views */,
 				96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */,
 				96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */,
@@ -206,7 +252,6 @@
 				967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */,
 				965DF67721A7B49A00A40698 /* ClockLayer.swift */,
 				96AFE43021FDF4E100F767E2 /* ClockSubfaceLayer.swift */,
-				965DF67121A6719000A40698 /* Date+Trigonometry.swift */,
 				965DF67521A72E3600A40698 /* DaylightLayer.swift */,
 				967547B021FAB62800A6DA63 /* ElapsedTimeLayer.swift */,
 				965DF67321A6740200A40698 /* HourLinesLayer.swift */,
@@ -237,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */,
+				961F89D325F1FEED00DF77B5 /* Date+Trigonometry.swift */,
 				AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */,
 				968F1653220553100029B2C6 /* RomanTime.swift */,
 				965DF66E21A66D8600A40698 /* SunriseSunset.swift */,
@@ -357,6 +403,7 @@
 			files = (
 				9621BF34215C521A00C8EBB3 /* LaunchScreen.storyboard in Resources */,
 				9621BF31215C521A00C8EBB3 /* Assets.xcassets in Resources */,
+				961F89C325F1FDF200DF77B5 /* Preview Assets.xcassets in Resources */,
 				9621BF2F215C521800C8EBB3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				961F89C225F1FDF200DF77B5 /* ClockSettings.swift in Sources */,
 				96AFE43121FDF4E100F767E2 /* ClockSubfaceLayer.swift in Sources */,
 				965DF66F21A66D8600A40698 /* SunriseSunset.swift in Sources */,
 				965DF67421A6740200A40698 /* HourLinesLayer.swift in Sources */,
@@ -382,6 +430,8 @@
 				965DF67A21A7BCF800A40698 /* ModernHourMarksLayer.swift in Sources */,
 				AD5A718921B0AE2D0051820C /* RomanClockLayer.swift in Sources */,
 				968F1654220553100029B2C6 /* RomanTime.swift in Sources */,
+				961F89B325F1FDF200DF77B5 /* ClockHands.swift in Sources */,
+				961F89B725F1FDF200DF77B5 /* ClockBorder.swift in Sources */,
 				AD3348A521AF3B1A0032348D /* MockSunriseSunsetProvider.swift in Sources */,
 				965DF66D21A3E1D200A40698 /* UIBezierPath+Pie.swift in Sources */,
 				96AFE43F2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift in Sources */,
@@ -389,11 +439,17 @@
 				960B52F3217FEDA3004754A5 /* RomanClockView.swift in Sources */,
 				967547B121FAB62900A6DA63 /* ElapsedTimeLayer.swift in Sources */,
 				9621BF2C215C521800C8EBB3 /* ViewController.swift in Sources */,
-				965DF67221A6719000A40698 /* Date+Trigonometry.swift in Sources */,
+				961F89C025F1FDF200DF77B5 /* ClockView.swift in Sources */,
+				961F89C525F1FDF200DF77B5 /* Tempus.swift in Sources */,
 				965DF68321AA6DF700A40698 /* SunriseSunsetProvider.swift in Sources */,
+				961F89D425F1FEED00DF77B5 /* Date+Trigonometry.swift in Sources */,
+				961F89B625F1FDF200DF77B5 /* ClockFace.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
 				967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */,
+				961F89B225F1FDF200DF77B5 /* Clock.swift in Sources */,
+				961F89B525F1FDF200DF77B5 /* SettingsView.swift in Sources */,
 				965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */,
+				961F89C925F1FDF200DF77B5 /* HourLines.swift in Sources */,
 				967547A321F7F6FC00A6DA63 /* CALayer+Geometry.swift in Sources */,
 				ADB8735221FA658600F2FE54 /* NighttimeLayer.swift in Sources */,
 				96AFE43921FEC64F00F767E2 /* SunriseSunsetDotOrgTimes.swift in Sources */,

@@ -30,22 +30,22 @@ open class HourLinesLayer: ClockLayer {
         let numeralMargin: CGFloat = 30.0
 
         hours.enumerated().forEach { (index, hour) in
-            let angle = hour.rotationAngle  // relative to 12 am of the same
+            let degrees = CGFloat(hour.hour12RotationAngle.degrees)  // relative to 12 am of the same
             // day.
-            path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(angle)),
-                                  y: boundsCenter.y + (radius * 0.2 * sin(angle))))
+            path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(degrees)),
+                                  y: boundsCenter.y + (radius * 0.2 * sin(degrees))))
 
             if index > 0 && index % 3 == 2 {
-                path.addLine(to: CGPoint(x: boundsCenter.x + ((radius - numeralMargin) * cos(angle)),
-                                         y: boundsCenter.y + ((radius - numeralMargin) * sin(angle))))
+                path.addLine(to: CGPoint(x: boundsCenter.x + ((radius - numeralMargin) * cos(degrees)),
+                                         y: boundsCenter.y + ((radius - numeralMargin) * sin(degrees))))
 
                 let textLayer = self.textLayer(forRomanNumeral: RomanNumeral.romanNumeral(for: index + 1)!)
                 addSublayer(textLayer)
-                textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.4)) * cos(angle)),
-                                             y: boundsCenter.y + ((radius - (numeralMargin / 2.4)) * sin(angle))))
-                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: angle + (CGFloat.pi / 2.0)))
+                textLayer.center(at: CGPoint(x: boundsCenter.x + ((radius - (numeralMargin / 2.4)) * cos(degrees)),
+                                             y: boundsCenter.y + ((radius - (numeralMargin / 2.4)) * sin(degrees))))
+                textLayer.setAffineTransform(CGAffineTransform(rotationAngle: degrees + (CGFloat.pi / 2.0)))
             } else {
-                path.addLine(to: borderPoint(at: angle))
+                path.addLine(to: borderPoint(at: degrees))
             }
         }
 
