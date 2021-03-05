@@ -101,7 +101,8 @@ public class SunriseSunsetDotOrgProvider: NSObject, ObservableObject, SunriseSun
                     // No more values will come in.
                     locationManager?.stopUpdatingLocation()
                 }, receiveValue: { [unowned self] (times) in
-                    sunriseSunset = times
+                    // Convert it to a Simple version.
+                    sunriseSunset = SimpleSunriseSunset(sunrise: times.sunrise, sunset: times.sunset)
                 })
     }
 
