@@ -9,21 +9,21 @@ class Date_TrigonometryTests: XCTestCase {
 
     func testNoonRotationAngleOk() {
         let noon = midnight.addingTimeInterval(12 * 60 * 60)
-        XCTAssertEqual(noon.rotationAngle, (1.5 * CGFloat.pi), accuracy: 0.001)
+        XCTAssertEqual(noon.hour24RotationAngle.radians, (1.5 * Double.pi), accuracy: 0.001)
     }
 
     func testMidnightRotationAngleOk() {
-        XCTAssertEqual(midnight.rotationAngle, (CGFloat.pi / 2.0), accuracy: 0.001)
+        XCTAssertEqual(midnight.hour24RotationAngle.radians, (Double.pi / 2.0), accuracy: 0.001)
     }
 
     func test6amRotationAngleOk() {
         let sixAm = midnight.addingTimeInterval(6 * 60 * 60)
-        XCTAssertEqual(sixAm.rotationAngle, CGFloat.pi, accuracy: 0.001)
+        XCTAssertEqual(sixAm.hour24RotationAngle.radians, Double.pi, accuracy: 0.001)
     }
 
     func test6pmRotationAngleOk() {
         let sixPm = midnight.addingTimeInterval(18 * 60 * 60)
-        XCTAssertEqual(sixPm.rotationAngle, 2.0 * CGFloat.pi, accuracy: 0.001)
+        XCTAssertEqual(sixPm.hour24RotationAngle.radians, 2.0 * Double.pi, accuracy: 0.001)
     }
 
 }
