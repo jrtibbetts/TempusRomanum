@@ -107,6 +107,7 @@
 		961F89AD25F1FDF200DF77B5 /* Tempus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempus.swift; sourceTree = "<group>"; };
 		961F89B125F1FDF200DF77B5 /* HourLines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HourLines.swift; sourceTree = "<group>"; };
 		961F89D325F1FEED00DF77B5 /* Date+Trigonometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Trigonometry.swift"; sourceTree = "<group>"; };
+		961F89D925F3D8F000DF77B5 /* Radians.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Radians.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		9621BF26215C521800C8EBB3 /* Tempus Romanum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tempus Romanum.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9621BF29215C521800C8EBB3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9621BF2B215C521800C8EBB3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -199,6 +200,7 @@
 		9621BF1D215C521700C8EBB3 = {
 			isa = PBXGroup;
 			children = (
+				961F89D925F3D8F000DF77B5 /* Radians.playground */,
 				9621BF28215C521800C8EBB3 /* Source */,
 				9621BF3D215C521A00C8EBB3 /* Tests */,
 				9621BF27215C521800C8EBB3 /* Products */,
