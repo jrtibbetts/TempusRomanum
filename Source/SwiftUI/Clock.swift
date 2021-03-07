@@ -10,8 +10,8 @@ struct Clock : View {
         ZStack {
             ClockFace()
             ClockBorder()
-            HourLines(color: .white, dates: tempus.sunriseSunset?.nighttimeHours, thickness: 2.0)
-            HourLines(color: .blue, dates: tempus.sunriseSunset?.daylightHours, thickness: 2.0)
+            HourLines(color: Color(UIColor(named: "Nighttime")!), hours: tempus.sunriseSunset?.nighttimeHours, thickness: 2.0)
+            HourLines(color: Color(UIColor(named: "Daylight")!), hours: tempus.sunriseSunset?.daylightHours, thickness: 2.0)
             ClockHands()
         }
         .padding(Edge.Set([.leading, .top, .trailing]), 20.0)
