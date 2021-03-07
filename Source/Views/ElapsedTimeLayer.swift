@@ -20,7 +20,7 @@ public class ElapsedTimeLayer: ClockLayer {
         strokeColor = UIColor.white.cgColor
         lineWidth = 2.0
         fillColor = UIColor(named: "Elapsed Time")?.cgColor
-        let endAngle = CGFloat(date.hour12RotationAngle.degrees)
+        let endAngle = CGFloat(date.hour24RotationAngle.degrees)
 
         path = UIBezierPath(sliceCenter: boundsCenter,  // from ClockLayer
                             radius: radius,             // from ClockLayer

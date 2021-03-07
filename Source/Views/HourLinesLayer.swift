@@ -30,7 +30,7 @@ open class HourLinesLayer: ClockLayer {
         let numeralMargin: CGFloat = 30.0
 
         hours.enumerated().forEach { (index, hour) in
-            let degrees = CGFloat(hour.hour12RotationAngle.degrees)  // relative to 12 am of the same
+            let degrees = CGFloat(hour.hour24RotationAngle.degrees)  // relative to 12 am of the same
             // day.
             path.move(to: CGPoint(x: boundsCenter.x + (radius * 0.2 * cos(degrees)),
                                   y: boundsCenter.y + (radius * 0.2 * sin(degrees))))

@@ -43,12 +43,12 @@ class NighttimeLayer: ClockSubfaceLayer {
         let endAngle: CGFloat
 
         if let extendedTimes = sunriseSunset as? SolarAndLunarTimes {
-            startAngle = CGFloat(extendedTimes.astronomicalDusk.hour12RotationAngle.degrees)
-            endAngle = CGFloat(extendedTimes.astronomicalDawn.hour12RotationAngle.degrees)
+            startAngle = CGFloat(extendedTimes.astronomicalDusk.hour24RotationAngle.degrees)
+            endAngle = CGFloat(extendedTimes.astronomicalDawn.hour24RotationAngle.degrees)
             updatePath(from: startAngle, to: endAngle)
         } else if let sunriseSunset = sunriseSunset {
-            startAngle = CGFloat(sunriseSunset.sunset.hour12RotationAngle.degrees)
-            endAngle = CGFloat(sunriseSunset.sunrise.hour12RotationAngle.degrees)
+            startAngle = CGFloat(sunriseSunset.sunset.hour24RotationAngle.degrees)
+            endAngle = CGFloat(sunriseSunset.sunrise.hour24RotationAngle.degrees)
             updatePath(from: startAngle, to: endAngle)
         }
 
@@ -61,8 +61,8 @@ class NighttimeLayer: ClockSubfaceLayer {
         layer.fillColor = color
         layer.path = UIBezierPath(sliceCenter: boundsCenter,
                                   radius: radius,
-                                  startAngle: CGFloat(startDate.hour12RotationAngle.degrees),
-                                  endAngle: CGFloat(endDate.hour12RotationAngle.degrees)).cgPath
+                                  startAngle: CGFloat(startDate.hour24RotationAngle.degrees),
+                                  endAngle: CGFloat(endDate.hour24RotationAngle.degrees)).cgPath
         gradientLayers.append(layer)
         insertSublayer(layer, below: hourLinesLayer)
     }
