@@ -1,29 +1,59 @@
 //  Copyright © 2019 Poikile Creations. All rights reserved.
 
+@testable import Stylobate
 @testable import Tempus_Romanum
 import XCTest
 
 class Date_TrigonometryTests: XCTestCase {
 
-    let midnight = Calendar.current.startOfDay(for: Date())
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter
+    }()
 
-    func testNoonRotationAngleOk() {
-        let noon = midnight.addingTimeInterval(12 * 60 * 60)
-        XCTAssertEqual(noon.hour24RotationAngle.radians, (1.5 * Double.pi), accuracy: 0.001)
+    func testTwoOClockMinutesAngleIs270Degrees() {
+        let time = dateFormatter.date(from: "2:00 AM")!
+        XCTAssertEqual(time.minutesAngle.degrees, 270.0, accuracy: 0.001)
+    }
+
+    func testTwoFifteenAngleIs0Degrees() {
+        let time = dateFormatter.date(from: "2:15 AM")!
+        XCTAssertEqual(time.minutesAngle.degrees, 0.0, accuracy: 0.001)
+    }
+
+    func testTwoThirtyAngleIs90Degrees() {
+        let time = dateFormatter.date(from: "2:30 AM")!
+        XCTAssertEqual(time.minutesAngle.degrees, 90.0, accuracy: 0.001)
+    }
+
+    func testTwoFortyFiveAngleIs180Degrees() {
+        let time = dateFormatter.date(from: "2:45 AM")!
+        XCTAssertEqual(time.minutesAngle.degrees, 180.0, accuracy: 0.001)
     }
 
     func testMidnightRotationAngleOk() {
-        XCTAssertEqual(midnight.hour24RotationAngle.radians, (Double.pi / 2.0), accuracy: 0.001)
+        let midnight = dateFormatter.date(from: "12:00 AM")!
+        XCTAssertEqual(midnight.rotationAngle, (CGFloat.pi / 2.0), accuracy: 0.001) // Stylobate
+        XCTAssertEqual(midnight.hour24RotationAngle.degrees, 270.0, accuracy: 0.001) // TR
     }
 
     func test6amRotationAngleOk() {
-        let sixAm = midnight.addingTimeInterval(6 * 60 * 60)
-        XCTAssertEqual(sixAm.hour24RotationAngle.radians, Double.pi, accuracy: 0.001)
+        let sixAm = dateFormatter.date(from: "6:00 AM")!
+        XCTAssertEqual(sixAm.rotationAngle, CGFloat.pi, accuracy: 0.001) // Stylobate
+        XCTAssertEqual(sixAm.hour24RotationAngle.degrees, 0.0, accuracy: 0.001) // TR
+    }
+
+    func testNoonRotationAngleOk() {
+        let noon = dateFormatter.date(from: "12:00 PM")!
+        XCTAssertEqual(noon.rotationAngle, (1.5 * CGFloat.pi), accuracy: 0.001) // Stylobate
+        XCTAssertEqual(noon.hour24RotationAngle.degrees, 90.0, accuracy: 0.001) // TR
     }
 
     func test6pmRotationAngleOk() {
-        let sixPm = midnight.addingTimeInterval(18 * 60 * 60)
-        XCTAssertEqual(sixPm.hour24RotationAngle.radians, 2.0 * Double.pi, accuracy: 0.001)
+        let sixPm = dateFormatter.date(from: "6:00 PM")!
+        XCTAssertEqual(sixPm.rotationAngle, 2.0 * CGFloat.pi, accuracy: 0.001) // Stylobate
+        XCTAssertEqual(sixPm.hour24RotationAngle.degrees, 180.0, accuracy: 0.001) // TR
     }
 
 }
