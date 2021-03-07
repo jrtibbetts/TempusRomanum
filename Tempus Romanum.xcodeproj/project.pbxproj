@@ -34,7 +34,6 @@
 		965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */; };
 		967547A321F7F6FC00A6DA63 /* CALayer+Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */; };
 		967547A521F7F86900A6DA63 /* CALayer+GeometryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */; };
-		967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */; };
 		967547AB21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */; };
 		967547AD21F9BB6C00A6DA63 /* SunriseSunsetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */; };
 		967547AF21F9BF6E00A6DA63 /* ClockLayerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */; };
@@ -127,7 +126,6 @@
 		965DF68421AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetDotOrgProvider.swift; sourceTree = "<group>"; };
 		967547A221F7F6FC00A6DA63 /* CALayer+Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+Geometry.swift"; sourceTree = "<group>"; };
 		967547A421F7F86900A6DA63 /* CALayer+GeometryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer+GeometryTests.swift"; sourceTree = "<group>"; };
-		967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+Formatting.swift"; sourceTree = "<group>"; };
 		967547AA21F9782000A6DA63 /* CLLocationCoordinate2D+FormattingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+FormattingTests.swift"; sourceTree = "<group>"; };
 		967547AC21F9BB6C00A6DA63 /* SunriseSunsetTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetTests.swift; sourceTree = "<group>"; };
 		967547AE21F9BF6E00A6DA63 /* ClockLayerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockLayerTests.swift; sourceTree = "<group>"; };
@@ -220,17 +218,17 @@
 		9621BF28215C521800C8EBB3 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				9621BF29215C521800C8EBB3 /* AppDelegate.swift */,
-				9621BF30215C521A00C8EBB3 /* Assets.xcassets */,
 				9621BF35215C521A00C8EBB3 /* Info.plist */,
+				9621BF29215C521800C8EBB3 /* AppDelegate.swift */,
+				96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */,
+				96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */,
+				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
+				9621BF30215C521A00C8EBB3 /* Assets.xcassets */,
 				9621BF32215C521A00C8EBB3 /* LaunchScreen.storyboard */,
 				9621BF2D215C521800C8EBB3 /* Main.storyboard */,
 				965DF68621AB039700A40698 /* Sunrise & Sunset */,
 				961F899625F1FDF200DF77B5 /* SwiftUI */,
 				965DF67021A6713D00A40698 /* Views */,
-				96AFE43421FEB4D700F767E2 /* RomanNumerals.swift */,
-				96AFE43E2202B70C00F767E2 /* UserDefaults+TempusRomanum.swift */,
-				9621BF2B215C521800C8EBB3 /* ViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -283,7 +281,6 @@
 		965DF68621AB039700A40698 /* Sunrise & Sunset */ = {
 			isa = PBXGroup;
 			children = (
-				967547A621F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift */,
 				961F89D325F1FEED00DF77B5 /* Date+Trigonometry.swift */,
 				AD3348A421AF3B1A0032348D /* MockSunriseSunsetProvider.swift */,
 				968F1653220553100029B2C6 /* RomanTime.swift */,
@@ -447,7 +444,6 @@
 				961F89D425F1FEED00DF77B5 /* Date+Trigonometry.swift in Sources */,
 				961F89B625F1FDF200DF77B5 /* ClockFace.swift in Sources */,
 				9621BF2A215C521800C8EBB3 /* AppDelegate.swift in Sources */,
-				967547A721F9755F00A6DA63 /* CLLocationCoordinate2D+Formatting.swift in Sources */,
 				961F89B225F1FDF200DF77B5 /* Clock.swift in Sources */,
 				961F89B525F1FDF200DF77B5 /* SettingsView.swift in Sources */,
 				965DF68521AB030A00A40698 /* SunriseSunsetDotOrgProvider.swift in Sources */,
