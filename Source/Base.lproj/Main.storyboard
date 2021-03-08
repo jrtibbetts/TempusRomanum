@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yEL-cS-pYL">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -43,36 +42,26 @@
             <objects>
                 <viewController storyboardIdentifier="Main" id="TTA-zJ-V0f" customClass="ViewController" customModule="Tempus_Romanum" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tHB-PF-3mm">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="S1g-cR-ctb" userLabel="Root Stack View">
-                                <rect key="frame" x="20" y="20" width="280" height="349"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="389"/>
                                 <subviews>
-                                    <view tag="23" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="500" verticalCompressionResistancePriority="500" translatesAutoresizingMaskIntoConstraints="NO" id="dim-oQ-clJ" customClass="RomanClockView" customModule="Tempus_Romanum" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="280" height="280"/>
-                                        <accessibility key="accessibilityConfiguration">
-                                            <accessibilityTraits key="traits" notEnabled="YES"/>
-                                        </accessibility>
-                                        <gestureRecognizers/>
+                                    <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Par-j5-me8">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="height" multiplier="1:1" id="G3e-tI-89S"/>
-                                            <constraint firstAttribute="width" constant="240" id="Klh-sX-1M4"/>
+                                            <constraint firstAttribute="width" secondItem="Par-j5-me8" secondAttribute="height" id="QYP-eW-na7"/>
                                         </constraints>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="Klh-sX-1M4"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="ddg-4z-owZ" appends="YES" id="yaw-Ep-5hK"/>
+                                            <segue destination="Dk9-Qo-4Py" kind="embed" identifier="embedClock" id="YEu-xH-asN"/>
                                         </connections>
-                                    </view>
+                                    </containerView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="firstBaseline" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-fI-w8P" userLabel="Current Times">
-                                        <rect key="frame" x="0.0" y="300" width="280" height="49"/>
+                                        <rect key="frame" x="44" y="340" width="232.5" height="49"/>
                                         <subviews>
                                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" text="12:43 pm" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDp-6l-tc7" userLabel="Current Time (Modern)">
-                                                <rect key="frame" x="103.5" y="0.0" width="73" height="20.5"/>
+                                                <rect key="frame" x="79.5" y="0.0" width="73" height="20.5"/>
                                                 <gestureRecognizers/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="73" id="awH-x7-Hw5"/>
@@ -85,7 +74,7 @@
                                                 </connections>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="251" verticalCompressionResistancePriority="1000" text="secunda hora noctis et dimidia" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz8-5R-blT" userLabel="Current Time (Roman)">
-                                                <rect key="frame" x="24" y="28.5" width="232.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="28.5" width="232.5" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -95,7 +84,7 @@
                                         <variation key="heightClass=regular" alignment="center"/>
                                     </stackView>
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dbX-9v-aeU" userLabel="Times View">
-                                        <rect key="frame" x="13.5" y="349" width="253" height="184"/>
+                                        <rect key="frame" x="33.5" y="389" width="253" height="184"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QeC-Y6-Npk">
                                                 <rect key="frame" x="0.0" y="0.0" width="253" height="88"/>
@@ -182,7 +171,6 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="aHV-fI-w8P" firstAttribute="width" secondItem="dim-oQ-clJ" secondAttribute="width" id="QJF-aU-kTD"/>
                                     <constraint firstItem="dbX-9v-aeU" firstAttribute="width" secondItem="S1g-cR-ctb" secondAttribute="width" id="msn-MX-se2"/>
                                 </constraints>
                                 <variation key="default">
@@ -201,37 +189,26 @@
                         <viewLayoutGuide key="safeArea" id="OKQ-Kr-609"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OKQ-Kr-609" firstAttribute="trailing" secondItem="dim-oQ-clJ" secondAttribute="trailing" constant="20" id="Cgv-L7-Mc2"/>
                             <constraint firstItem="S1g-cR-ctb" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="UOU-TR-wLl"/>
                             <constraint firstItem="S1g-cR-ctb" firstAttribute="centerX" secondItem="OKQ-Kr-609" secondAttribute="centerX" id="eye-9Z-oI1"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="top" secondItem="OKQ-Kr-609" secondAttribute="top" constant="20" id="jde-il-cYy"/>
-                            <constraint firstItem="dim-oQ-clJ" firstAttribute="leading" secondItem="OKQ-Kr-609" secondAttribute="leading" constant="20" id="luC-pl-B4F"/>
-                            <constraint firstItem="OKQ-Kr-609" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="dim-oQ-clJ" secondAttribute="bottom" constant="20" id="sAe-Uo-P1V"/>
+                            <constraint firstItem="Par-j5-me8" firstAttribute="width" secondItem="tHB-PF-3mm" secondAttribute="width" id="nMm-ip-fU4"/>
                             <constraint firstItem="S1g-cR-ctb" firstAttribute="centerY" secondItem="OKQ-Kr-609" secondAttribute="centerY" id="tFs-DC-pzP"/>
                         </constraints>
                         <edgeInsets key="layoutMargins" top="20" left="20" bottom="20" right="20"/>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="Cgv-L7-Mc2"/>
-                                <exclude reference="sAe-Uo-P1V"/>
                                 <exclude reference="UOU-TR-wLl"/>
                                 <exclude reference="tFs-DC-pzP"/>
-                                <exclude reference="jde-il-cYy"/>
-                                <exclude reference="luC-pl-B4F"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="sAe-Uo-P1V"/>
                                 <include reference="tFs-DC-pzP"/>
-                                <include reference="jde-il-cYy"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular">
                             <mask key="constraints">
-                                <include reference="Cgv-L7-Mc2"/>
                                 <include reference="UOU-TR-wLl"/>
-                                <include reference="luC-pl-B4F"/>
                             </mask>
                         </variation>
                     </view>
@@ -244,7 +221,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="clockView" destination="dim-oQ-clJ" id="qkE-r9-F59"/>
                         <outlet property="modernSunriseLabel" destination="f5D-iC-JKC" id="avG-OW-WbW"/>
                         <outlet property="modernSunsetLabel" destination="hfr-ad-evj" id="PXC-rc-PBh"/>
                         <outlet property="modernTimeLabel" destination="nDp-6l-tc7" id="dDJ-m0-1TW"/>
@@ -257,20 +233,24 @@
                         <action selector="toggleTimeFormat" destination="TTA-zJ-V0f" id="UPX-wL-gkW"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer numberOfTapsRequired="2" id="ddg-4z-owZ" userLabel="Clock Double-Tap Recognizer">
-                    <connections>
-                        <action selector="update" destination="dim-oQ-clJ" id="fqr-1A-UzW"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer numberOfTapsRequired="2" id="ddg-4z-owZ" userLabel="Clock Double-Tap Recognizer"/>
             </objects>
             <point key="canvasLocation" x="894.20289855072474" y="67.633928571428569"/>
+        </scene>
+        <!--Clock Hosting Controller-->
+        <scene sceneID="E9c-Sk-PcW">
+            <objects>
+                <hostingController id="Dk9-Qo-4Py" customClass="ClockHostingController" customModule="Tempus_Romanum" customModuleProvider="target" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nja-Xn-bTz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="824"/>
         </scene>
         <!--About-->
         <scene sceneID="ttq-MI-Ftu">
             <objects>
                 <viewController id="Edj-Wc-orO" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5xh-6Q-5L5">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tempus Romanum" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVe-hg-YAO">

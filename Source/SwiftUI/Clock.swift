@@ -25,6 +25,27 @@ struct Clock_Previews : PreviewProvider {
         Clock()
             .environmentObject(ClockSettings())
             .environmentObject(Tempus.debugInstance)
+            .background(Color.green)
+    }
+
+}
+
+import UIKit
+
+class ClockHostingController: UIHostingController<ClockContainer> {
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: ClockContainer())
+    }
+
+}
+
+struct ClockContainer: View {
+
+    var body: some View {
+        return Clock()
+            .environmentObject(ClockSettings())
+            .environmentObject(Tempus.debugInstance)
     }
 
 }
