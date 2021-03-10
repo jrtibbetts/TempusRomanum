@@ -39,6 +39,17 @@ struct ClockBorder : View {
             }
         }
     }
+
+    func hourMark(in frame: CGRect) -> Path {
+        return Path { (path) in
+            let markLength = settings.modernMarkLength
+            let leftPoint = CGPoint(x: markLength - (markLength / 2.0), y: 0)
+            let rightPoint = CGPoint(x: markLength + (markLength / 2.0), y: 0)
+            let pointPoint = CGPoint(x: markLength, y: markLength)
+            path.move(to: leftPoint)
+            path.addLines([rightPoint, pointPoint, leftPoint])
+        }
+    }
     
     private func edgePoints(for geometry: GeometryProxy) -> [CGFloat: CGPoint] {
         let frame = self.frame(for: geometry)
