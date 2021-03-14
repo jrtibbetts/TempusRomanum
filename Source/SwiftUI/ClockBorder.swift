@@ -13,56 +13,60 @@ struct ClockBorder : View {
             VStack {
                 ZStack {
                     // Border
-                    Path { path in
-                        path.addEllipse(in: self.frame(for: geometry))
-                    }
+                    let circleFrame = self.frame(for: geometry)
+
+                    Circle()
                         .stroke(self.settings.borderColor, lineWidth: self.settings.borderWidth)
-                    
+                        .frame(width: circleFrame.width, height: circleFrame.height)
+
+                    Text("Foo")
                     // Modern hour marks
-                    if self.settings.showModernMarks {
-                        Path { path in
-                            let frame = self.frame(for: geometry)
-                            let center = CGPoint(x: frame.size.width / 2.0,
-                                                 y: frame.size.height / 2.0)
-                            let radius = center.x
-                            
-                            self.edgePoints(for: geometry).forEach { (angle, edgePoint) in
-                                path.move(to: edgePoint)
-                                let lineEndPoint = CGPoint(x: center.x + (cos(angle) * (radius - self.settings.modernMarkLength)),
-                                                           y: center.y + (sin(angle) * (radius - self.settings.modernMarkLength)))
-                                path.addLine(to: lineEndPoint)
-                            }
-                        }
-                            .stroke(self.settings.borderColor, lineWidth: self.settings.borderWidth)
+                    let center = circleFrame.center
+                    let radius = center.x
+
+                    ForEach(edgePoints(for: geometry), id: \.radians) { (point) in
+                         HourMark()
                     }
                 }
             }
         }
     }
 
-    func hourMark(in frame: CGRect) -> Path {
-        return Path { (path) in
-            let markLength = settings.modernMarkLength
-            let leftPoint = CGPoint(x: markLength - (markLength / 2.0), y: 0)
-            let rightPoint = CGPoint(x: markLength + (markLength / 2.0), y: 0)
-            let pointPoint = CGPoint(x: markLength, y: markLength)
-            path.move(to: leftPoint)
-            path.addLines([rightPoint, pointPoint, leftPoint])
+    struct HourMark: View {
+
+        @EnvironmentObject private var settings: ClockSettings
+
+        var body: some View {
+            Path { (path) in
+                let markLength = settings.modernMarkLength
+                let leftPoint = CGPoint(x: markLength - (markLength / 2.0), y: 0)
+                let rightPoint = CGPoint(x: markLength + (markLength / 2.0), y: 0)
+                let pointPoint = CGPoint(x: markLength, y: markLength)
+                path.move(to: leftPoint)
+                path.addLines([rightPoint, pointPoint, leftPoint])
+            }
         }
+
     }
-    
-    private func edgePoints(for geometry: GeometryProxy) -> [CGFloat: CGPoint] {
+
+    struct EdgePoint {
+        var radians: CGFloat
+        var point: CGPoint
+    }
+
+    private func edgePoints(for geometry: GeometryProxy) -> [EdgePoint] {
         let frame = self.frame(for: geometry)
         let center = CGPoint(x: frame.size.width / 2.0,
                              y: frame.size.height / 2.0)
         let radius = center.x
         
-        return (0..<numberOfMarks).reduce(into: [CGFloat: CGPoint]()) { (result, i) in
-            let radians = (CGFloat(i) / CGFloat(numberOfMarks)) * (2.0 * CGFloat.pi)
-            let edgePoint = CGPoint(x: center.x + (cos(radians) * radius),
-                                    y: center.y + (sin(radians) * radius))
-            result[radians] = edgePoint
-        }
+        return (0..<numberOfMarks)
+            .reduce(into: [EdgePoint]()) { (result, i) in
+                let radians = (CGFloat(i) / CGFloat(numberOfMarks)) * (2.0 * CGFloat.pi)
+                let point = CGPoint(x: center.x + (cos(radians) * radius),
+                                        y: center.y + (sin(radians) * radius))
+                result.append(EdgePoint(radians: radians, point: point))
+            }
     }
 
     private func frame(for geometry: GeometryProxy) -> CGRect {
@@ -78,5 +82,6 @@ struct ClockBorder_Previews : PreviewProvider {
     static var previews: some View {
         ClockBorder()
             .environmentObject(ClockSettings())
+            .padding(20)
     }
 }
