@@ -76,8 +76,9 @@ final public class Tempus: ObservableObject {
     // MARK: - Debugging
     
     public static var debugInstance: Tempus = {
-        let sunrise = Date()
-        let sunset = Date().addingTimeInterval(8 * 60 * 60)
+        let midnight = Calendar.current.startOfDay(for: Date())
+        let sunrise = midnight.addingTimeInterval(7 * 60 * 60)
+        let sunset = sunrise.addingTimeInterval(10 * 60 * 60)
         let sunriseSunset = SimpleSunriseSunset(sunrise: sunrise, sunset: sunset)
         let tempus = Tempus()
         tempus.sunriseSunset = sunriseSunset
